@@ -1,0 +1,892 @@
+---
+title: "MCH Client Movement in e-Registries Matlab: a Visual Analysis"
+author: "Brian O'Donnell"
+date: "5/8/2020"
+output: 
+  html_document:
+    number_sections: true
+    code_folding: hide
+    code_download: yes
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, encoding="UTF-8")
+
+Sys.setlocale("LC_ALL","Bangla")
+#install.packages("devtools")
+#install.packages("htmltools")
+library(htmltools)
+library(devtools)
+
+
+#install_version("networkD3", version = "0.2.13", repos = "http://cran.us.r-project.org", upgrade="never")
+
+library(igraph)
+library(dplyr)
+library(tidyverse)
+library(readr)
+library(ggplot2)
+library(gganimate)
+library(httr)
+library(jsonlite)
+library(assertthat)
+library(kableExtra)
+library(viridis)
+library(tidygraph)
+library(networkD3)
+
+
+devtools::install_github("mattflor/chorddiag")
+password<-read_lines("passw.txt")
+
+library(chorddiag)
+library(htmlwidgets)
+```
+
+
+# Introduction 
+
+As of August 2020, over 75 countries had [implemented DHIS2 Tracker](https://www.dhis2.org/in-action), an open source tool designed to [capture indivudal level health data](https://docs.dhis2.org/2.34/en/implementer/html/dhis2_tracker_implementation_guide_full.html#what-can-tracker-be-used-for). Those deployed support a wide spectrum of health programs--and layer on additional client-communication and decision support features--but within the realm of digital health interventions, DHIS2 Tracker often falls under the broad [WHO classification of a "Client Health Record"](https://apps.who.int/iris/bitstream/handle/10665/260480/WHO-RHR-18.06-eng.pdf?sequence=1) which supports "Longitudinal tracking of clients’ health status and services".
+
+A central feature of *Client Health Records* is a single cohesive record for each client, which can be shared and accessed across various levels of the health system. The portability of a health record is a significant, life-saving innovation. As soon as the patient is provided a unique identifier code, a care provider in the hospital might, for example, [transmit limited critical test results](https://www.ghspjournal.org/content/1/2/160) to a community health worker's client register, and vice versa. 
+
+Not only does a shared health record strengthen continuity of care and enhanced decision support systems, but enable **analysis of client movement through the health system.** Health system managers can access real-time information on referrals or care-seeking behavior; lag times between lab result notification and outreach by a frontline care worker; identify clinics that "leak" patients to other clinics, and those that "gain" clients from other locations.
+
+However, DHIS2 has not traditionally supported advanced analysis of such multidimensional individual-level data. Most program indicators of DHIS2 Tracker programs are aggregated by the location of discrete facility visits ("events") or patient registrations ("enrollments"). Essentially, the organization unit ("orgUnit" or "OU") can only be used as a single dimension within a chart or pivot table. Absent any designations of a "transfer from" org unit and a "transfer to" org unit, there is limited analysis of patient "cross-over" between facilities. Yet, the raw data is available within DHIS2 to perform a "cross-over" analysis in external software, such as R. 
+
+The goal of this paper is to present exploratory visualizations that convey client movement patterns found in DHIS2, and support development of a generic analytic framework to visualize these data as a native DHIS2 feature. This work should be seen as *experimental* and not prescriptive. Code is provided to encourage reader experimentation and comment. Furthermore, separate research will be conducted to untangle the determinants for patient movement specific to the case study in Bangladesh.
+
+
+## Visual Encoding and Gestalt Principles
+
+To assess the appropriateness and effectiveness of each data visualization format, this paper will describe the tested visualizations through Gestalt principles and William Cleveland's channels for mapping data.
+
+
+**Visual Channel Rankings**
+
+A number of psychological experiments have been conducted to reveal which information channels are most expressive and accurate when visually perceived. For example, William S. Cleveland and Robert McGill asked participants to estimate the difference between two values within a chart e.g., two bars in a bar chart, or two slices of a pie chart. From the errors recorded, they determine that numeric information is more effectively communicated through the length (bar chart) than angle (pie chart). Their results have been collated into a hierarchy of visual channels to express both ordered and categorical attributes. The rankings are outlined in Tamara Munzer's textbook ["Visual Analysis & Design"](https://www.cs.ubc.ca/~tmm/vadbook/), below, and you can read more about Cleveland's original [experiments here.](https://socviz.co/lookatdata.html) 
+
+Fundamentally, this ranking of visual channels will help a designer match the salience of a given data dimension to its prominence within the visualization.
+
+
+```{r munzer, echo=FALSE, fig.cap="Munzer 2014, fig 5.6, Pg 102", out.width = '60%'}
+knitr::include_graphics("munzer2014.jpg")
+```
+
+
+
+**Gestalt Principles**
+
+But in visualization, as the saying goes, “the whole is more than the sum of the parts”. The Gestalt Principles, developed by German psychologists in the 1920s, help explain the _holistic_ [characteristics of perception](http://www.scholarpedia.org/article/Gestalt_principles) in data visualization.
+
+Taken together, Gestalt Principles suggest how users will read and interpret experimental visualizations as a whole, providing a useful design framework drawing draw users' attention to key parts of a graph. Visual channels summarize how each _part_ of a visualization is perceived; Gestalt Principles assess the _whole_.
+
+The seven principles are...
+* Proximity: Things that are spatially near to one another seem to be related.
+* Similarity: Things that look alike seem to be related.
+* Connection: Things that are visually tied to one another seem to be related.
+* Continuity: Partially hidden objects are completed into familiar shapes.
+* Closure: Incomplete shapes are perceived as complete.
+* Figure and Ground: Visual elements are taken to be either in the foreground or the background.
+* Common Fate: Elements sharing a direction of movement are perceived as a unit.
+
+
+```{r, out.width='80%', fig.caption="Gestalt Principle of Connection"}
+
+knitr::include_graphics("http://www.scholarpedia.org/w/images/thumb/1/18/Todorovic-Gestalt_principles-Figure_4.jpg/800px-Todorovic-Gestalt_principles-Figure_4.jpg")
+
+
+```
+
+
+Previous [research](https://ieeexplore.ieee.org/document/1028859) suggests these principles are especially salient when considering interactive or [animated visuals](http://users.umiacs.umd.edu/~elm/projects/common-fate/common-fate.pdf), which are less common in the context of DHIS2 or RMNCH.
+
+
+## The Matlab eRegistry context
+
+Data were collected as part of an ongoing [randomized controlled trial in Matlab, Bangladesh](http://www.isrctn.com/ISRCTN69491836). Broadly, the primary research question is whether a comprehensive eRegistries system with decision support and targeted client communication, compared to a control electronic data entry screen without feedback, leads to improved quality of care in maternal health system.
+
+The system was built on top of DHIS2 Tracker, and run on both Android devices and chromebooks. It presents an ideal use case to examine Org Unit cross-over, for two key reasons. 
+
+First, the system employs a novel approach to a main challenge of client health records in in low-resource settings: unique client identification. For the purposes of the trial, 99.9% of clients consented to identification with a palm-based biometric system developed by Element, Inc., which leverages the built-in camera on mobile devices to image palmprints and generate unique identifiers that are copied into the DHIS2 app. The application runs on the same mobile devices used to enter data, and also has the ability to work offline in areas with poor connectivity. In separate trials on a subset of 150 clients in Matlab, 84% of care providers were able to correctly identify a patient with the app [on the first scan](http://globalhealth.no/assets/img/Abstract-bok.pdf); 100% were identified within 3 attempts.
+
+While duplicate records may still be possible within the database, duplicates are much less common than other community-level client health records, due to an ultra-portable, highly accurate biometric ID system.
+
+The tweet below illustrates this workflow in practice.
+
+```{r tweet, out.width='50%'}
+
+tweetrmd::tweet_embed("https://twitter.com/eRegistries/status/1064585334216749057")
+
+#knitr::include_graphics("https://pbs.twimg.com/media/DsYpHaMVYAAjCsY?format=jpg&name=small")
+```
+
+
+
+Second, the system encourages sharing of records across org units. Indeed, the *link between community-level identification and facility-level service delivery is built into the standard workflow*. As designed, a community health worker can identify a pregnancy in first trimester, then encourage the client to seek clinical care. When the  later opens the client record, she already has the gestational age calculated by the community health worker. So, if a high blood pressure reading is entered, the diagnosis would be automatically written to the record as either chronic or gestational hypertension, dependent on trimester of visit. The diagnoses would then be visible to the community worker at the next visit.
+
+
+
+### Note on Org Unit Hierarchy of MCH Services in Bangladesh
+
+For our purposes it is important to know which workers and organiszation units (aka "org units" or "OUs") provide reproductive health services in Matlab. There are two directorates under the Bangladesh Ministry of Health and Family Welfare that provide services, with cadres of community and facility based health workers. In particular, **Family Welfare Assistants** are responsible for Family Planning services to their FWA **Units**. They routinely visit all households in the area with women of reproductive age to counsel, share contraception options, and offer pregnancy tests. **Health Assistants** have community outposts to provide vaccination services at **Ward** level. Any of these health workers, plus the facility based staff at Community Clinics and Family Welfare Centres, can identify a pregnancy within the e-Registry system, on chromebooks or tablets provided by the project.
+
+
+```{r}
+
+ou_table<-tibble("Directorate General of Family Planning"=c("Family Welfare Center (FWC)","Family Welfare Assistant (FWA) Unit"),
+                 "Directorate General of Health Services"=c("Community Centre (CC)","Health Assistant (HA) Ward"))
+
+rownames(ou_table)<-c("Facility","Community")
+
+kable(ou_table) %>% 
+  kable_styling()
+  
+
+```
+
+
+# Data Import and Processing
+
+These analyses pull data from production and development DHIS2 environments to assess client movement.
+
+Raw data were pulled from production through SQL view by the implementing partner, and look like this:
+
+```{r prod data}
+
+#read file from production and view
+
+raw4<-suppressMessages(read_csv("BrianDs.csv"))
+
+#View(raw4)
+#colnames(raw4)
+
+head(raw4)
+
+```
+
+
+To provide context, metadata from development environment
+
+```{r dev data}
+#now get background data from dev
+#get Org Unit groups
+baseurl<-"https://bd-eregistry.dhis2.org/dhis/"
+username<-"ing_test"
+
+
+#function for logging in
+loginDHIS2<-function(baseurl,username,password) {
+  url<-paste0(baseurl,"api/me")
+  r<-GET(url,authenticate(username,password))
+  warn_for_status(r, task="log in")
+  if(r$status_code == 200L){return(TRUE)}
+}
+
+
+if(loginDHIS2(baseurl, username, password)==TRUE){
+  print("successfully logged in")
+}else{
+  stop("could not log in! Please check url, username and password")
+}
+
+#groups
+url<-paste0(baseurl, "api/organisationUnitGroups.json?paging=false&fields=id,name,organisationUnits")
+ou_groups<-fromJSON(content(GET(url), "text"), flatten = TRUE) %>% 
+  data.frame() %>% 
+  select("name"=1,"id"=2,"members"=3) %>% 
+  unnest_longer(members) %>% 
+  flatten()
+head(ou_groups)
+  
+#stages
+url<-paste0(baseurl, "api/programStages.json?paging=false&fields=id,name")
+ps<-fromJSON(content(GET(url), "text"), flatten = TRUE) %>% 
+  data.frame() %>% 
+  select("id"=2, "psname"=1)
+
+tail(ps)
+
+#OU names
+url<-paste0(baseurl, "api/organisationUnits.json?paging=false&fields=id,name")
+ou_names<-fromJSON(content(GET(url), "text"), flatten = TRUE) %>% 
+  data.frame() %>% 
+  select("name"=1, "ou_id"=2) %>% 
+  mutate("ou_type"=case_when(
+    str_detect(name, " FWC") ~ "FWC",
+    str_detect(name, "(?i)CC") ~ "CC",
+    str_detect(name, "Unit") ~ "Unit",
+    str_detect(name, "Ward") ~ "Ward"))
+
+head(ou_names)
+
+
+
+```
+
+## Processing
+
+We then merge the raw outputs of TEI events with org unit information.
+
+When arranging events by visit number, we classify subsequent visits as being at the same or different org unit than the initial visit.
+
+```{r processing}
+
+my_data<-raw4 %>% 
+  left_join(ou_names, by=c("EvtOrgUnit"="ou_id")) %>% 
+  select(tei=3, ga=8, "ou_id"=EvtOrgUnit, ou_type, name, VisitNo, EnrOrgUnit, StageUid) %>% 
+  distinct() %>% #event must be unique visit, i.e. an ANC management and ANC stage same week would be merged
+  mutate(ga=round(as.numeric(ga))) %>% 
+  filter(!is.na(ou_type) & !is.na(ga) & ga <= 50 & ga >= 1) %>% 
+  mutate(VisitNo=if_else(VisitNo > 6, "7+", as.character(VisitNo))) %>% 
+  mutate(VisitNo=as.factor(VisitNo)) %>% 
+  mutate(ou_type=recode_factor(ou_type, "FWC"="FWC", "CC"="CC", "Ward"="Ward", "Unit"="Unit" )) %>% 
+  group_by(tei) %>% 
+  add_tally() %>% 
+  arrange(tei, ga) %>% 
+  mutate(first = dplyr::first(ou_id)) %>%
+  mutate(ga_initial = dplyr::first(ga)) %>% 
+  mutate(last_ou = lag(ou_id)) %>% 
+  mutate(Moved_ou = case_when(first == ou_id & is.na(last_ou)  ~ "Event 1",
+                              first == ou_id & !is.na(last_ou) ~ "Event 2+, same ou as Event 1", 
+                              first != ou_id ~ "Event 2+, different ou as Event 1")) %>% 
+  mutate(Moved_ou_wrap = str_wrap(Moved_ou, width = 20))
+
+
+head(my_data)
+
+```
+
+
+
+# Visualization 
+
+Now to the fun stuff! Let's start simple with a histogram. GA of each visit, by OU type.
+
+```{r hist basic}
+p<-ggplot(my_data, aes(ga))+
+  geom_histogram(bins=25)+
+  facet_wrap(~ou_type, ncol=1)+
+  labs(title="Events by GA and OU type")
+p
+
+```
+
+
+## Density Plot by Org Unit type and Gestational Age
+
+Another way to show this histogram is a density dot plot. To make it interesting we can animate it, to emphasize this progression of time. It looks a bit like a paint roller...
+
+```{r density anim}
+
+p<-ggplot(my_data, aes(ga, ou_type)) +
+  geom_jitter(aes(group = ga, size = .3), height = 0.25, show.legend = FALSE) +
+  labs(title="Pregnancy events in e-Reg Matlab by Org Unit",
+       subtitle = 'Visits at Gestational Age {closest_state}',
+       y = 'Org Unit Type') +
+ # scale_colour_manual(values = col_scale) +
+  transition_states(ga, transition_length = 3, state_length = 2) +
+  shadow_mark(size = .2) +
+  ease_aes('linear')
+
+animate(
+  plot = p, 
+  nframes = 200,
+  duration = 15,
+  end_pause = 50
+)
+
+
+
+```
+
+But this doesnt say much about patient movement. When do clients move to a different org unit clinic?
+
+* The red dots are the GA and location (org unit) of the first event (identification). 
+
+* The blue dots are subsequent events that are at same location as first event. 
+
+* The green dots are movement to a DIFFERENT location than the identification org unit.
+
+```{r density with colors}
+p<-ggplot(my_data, aes(ga, Moved_ou_wrap)) +
+  geom_jitter(aes(group = ga, color = Moved_ou_wrap), size = 0.01) +
+  facet_wrap(~ou_type, ncol = 1)+
+    theme(legend.position = "none") +
+    labs(title="Pregnancy events in e-Reg Matlab by Org Unit") +
+    ylab("")
+
+p
+
+```
+
+
+Same thing, but animated...
+
+```{r animated paint roller}
+p<-p +
+  labs(title="Pregnancy events in e-Reg Matlab by Org Unit",
+       subtitle = 'Visits at Gestational Age {closest_state}') +
+  theme(legend.position = "none") +
+  transition_states(ga, transition_length = 3, state_length = 2) +
+  shadow_mark(size = .3) +
+  ease_aes('linear')
+
+animate(
+  plot = p, 
+  nframes = 200,
+  duration = 15,
+  end_pause = 50
+)
+
+
+```
+
+
+Now we can see that if a client is not enrolled by an FWA, her first time visiting is often after 36 weeks (Home ANC visit). But if she starts from an HA ward or FWA Unit, she might move to FWC between 14 and 35 weeks. Comparatively fewer women choose to move to CC, if they were identified elsewhere.
+
+This approach tells us what kind of org unit pregnancies GO to, but not what kind of org unit they COME from. We want to narrow in on the patients who start at one org unit, and receive services at another.
+
+
+## Facet Grid - All Events
+
+We can render the enrollment and event org unit types as two separate dimensions in a grid, and then show a bar chart of event ou category for gestational age ranges.
+
+```{r}
+
+#What percent of Event 2+ are outside ou of event 1?
+my_data %>% 
+  ungroup() %>% 
+  filter(Moved_ou!="Event 1") %>% 
+  group_by(Moved_ou) %>% 
+  tally() %>% 
+  mutate(percent=n/sum(n))
+
+facgrid_data<-my_data %>% 
+  ungroup() %>%
+    mutate(gestage_event=case_when(
+    ga >= 0 & ga < 10 ~ "0-10",
+    ga >= 10 & ga < 18 ~ "10-17",
+    ga >= 18 & ga < 24 ~ "18-23",
+    ga >= 24 & ga < 29 ~ "24-29",
+    ga >= 29 & ga < 34 ~ "29-33",
+    ga >= 34 & ga < 40 ~ "34-39",
+               ga >= 40 ~ "40+",
+  )) %>% 
+  select("event_ou_type"=ou_type, everything()) %>% 
+  left_join(ou_names, by=c("EnrOrgUnit"="ou_id")) %>% 
+  rename("enrol"=ou_type) %>% 
+  mutate_if(is.factor, as.character) %>% 
+  group_by(enrol, event_ou_type, Moved_ou, gestage_event) %>% 
+  tally() %>% 
+  na.omit()
+
+# facgrid_data %>% 
+#   filter(enr_ou_type=="FWC")
+
+facgrid_data %>% 
+  ggplot() +
+  geom_col(aes(x=gestage_event, y=n, fill=Moved_ou)) +
+  facet_grid(enrol ~ event_ou_type, labeller = label_both) +
+  labs(title="Total Events by Enrollment OU and Event OU") +
+  theme(legend.position="bottom",
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+The grid shows the links between org unit of enrollment and subsequent visits, scaled to show total visits. This efficiently communicates 5 dimensions.
+
+
+However, the 92% of events _after_ enrollment occur at the same org unit as enrollment. So a major downside of this scale is that we cannot infer trends of crossover between org units (the green dots levels). 
+
+
+## Heat Map
+
+If we focus on the patients who move to a new location (the green dots in dot plot above), we can see the overlap of service provision between types of org unit.
+
+Here is a table of events that are at a *different org unit* than the enrollment org unit, arranged by org unit type.
+
+```{r pcords heatmap data}
+pcords_data <-my_data %>% 
+  ungroup() %>% 
+  filter(Moved_ou=="Event 2+, different ou as Event 1") %>% 
+  rename("event_ou_id"=ou_id, "event_ou_type"=ou_type) %>% 
+  left_join(ou_names, by=c("EnrOrgUnit"="ou_id")) %>% 
+  rename("enr_ou_type"=ou_type) %>%
+  select(enr_ou_type, event_ou_type, "event_ga"=ga, "enr_ga"=ga_initial) 
+
+
+test<-pcords_data %>%
+  arrange(event_ou_type) %>% 
+  mutate(event_ou_type=factor(event_ou_type, levels=c("CC","FWC","Unit","Ward"))) %>% 
+  group_by(enr_ou_type, event_ou_type) %>% 
+  select("enrollment OU"=enr_ou_type, "event OU"=event_ou_type) %>% 
+  summarize(count=n())
+
+kable(test) %>%
+  kable_styling()
+
+
+```
+
+We can visualize this table graphically in a heatmap
+
+```{r heatmap 1}
+# Give extreme colors:
+library(viridis)
+
+ggplot(test, aes(`enrollment OU`, `event OU`, fill= count)) + 
+  geom_tile() +
+  scale_fill_viridis(discrete=FALSE) +
+  theme_minimal()
+
+```
+
+We can facet these down by enrollment OU, then show the event GA for each subsequent event, again clustering by gestational age.
+
+```{r heatmap 2}
+
+heat2<-pcords_data %>%
+    mutate(event_ou_type=factor(event_ou_type, levels=c("CC","FWC","Unit","Ward"))) %>% 
+  mutate(gestage_event=case_when(
+    event_ga >= 0 & event_ga < 18 ~ "0-17",
+    event_ga >= 18 & event_ga < 24 ~ "18-23",
+    event_ga >= 24 & event_ga < 29 ~ "24-29",
+    event_ga >= 29 & event_ga < 34 ~ "29-33",
+    event_ga >= 34 & event_ga < 40 ~ "34-39",
+                     event_ga >= 40 ~ "40+",
+  )) %>% 
+  group_by(enr_ou_type, event_ou_type, gestage_event) %>% 
+  select("enrollment OU"=enr_ou_type, "event OU"=event_ou_type, gestage_event) %>% 
+  summarize(count=n())
+
+
+ggplot(heat2, aes(gestage_event, `event OU`, fill= count)) + 
+  geom_tile() +
+  scale_fill_viridis(discrete=FALSE) +
+  facet_wrap(~`enrollment OU`,labeller = "label_both")+
+  labs(title="Events at different OU than enrollment",
+       subtitle="By Event Gest Age and OU Type")
+
+
+```
+
+This is good, but for interpretability, color is not as perceptible as area. We can take the panel grid from earlier and zero in on the same subset of events as the heat map.
+
+## Facet Grid - CrossOver
+
+```{r}
+
+facgrid_data %>% 
+  filter(Moved_ou =="Event 2+, different ou as Event 1") %>% 
+  ggplot() +
+  geom_col(aes(x=gestage_event, y=n), fill="darkgreen") +
+  facet_grid(enrol ~ event_ou_type, labeller = label_both) +
+  labs(title="Events at Different OU than Enrollment") +
+  theme(legend.position="bottom",
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+```
+
+This may be the most efficient way to represent org unit crossover in MCH context. **The most common follow up visit to a new org unit appears to be a Unit -> FWC transfer, around 18-23 weeks.**
+
+
+## Animated Dot Plot of Transfer Events
+
+If a client moves to a different clinic, at what trimester would she usually make that change? Is it shortly after the first visit, or is there a long delay?
+
+To emphasize the time dimension of transfers, we return to animations. This animation focuses on the "crossover" events, or the green dots in the dot plot above. Thus, each green dot is an *event*. The horizontal lines represent a type of org unit. The middle grey dots represent the identification events--once they cross that dot, the pregnancy is identified.
+
+After that, clients go to many other types of org units. Some go to a different org unit of same type, while others go to a new org unit type.
+
+By animating this over gestational age at visit, we can see which weeks had high "crossover" of events. The speed of dot movement represents the time between visits. 
+
+This animation exemplifies the "Similarity" and  "common fate" Gestalt principle: because each dot is the same color and size, the primary information channel is movement from one level to another.
+
+```{r animation}
+
+pcord2<-pcords_data %>% 
+rownames_to_column(var="id") %>% 
+mutate("enr_start"=enr_ou_type) %>% 
+pivot_longer(c('enr_start', 'enr_ou_type','event_ou_type'), 
+             names_to = "start_finish", 
+             values_to="ou_type") %>% 
+  mutate(gestage=if_else(start_finish=="enr_ou_type", enr_ga, 
+                          if_else(start_finish=="event_ou_type", event_ga, 0))) %>% 
+  mutate(endpoint=if_else(start_finish=="enr_start", 0,
+                          if_else(start_finish=="enr_ou_type", 1, 2))) %>% 
+  mutate(ou_type=factor(ou_type, levels = c("Unit","Ward","FWC","CC"))) %>% 
+  mutate(gestage=if_else(endpoint==2 & enr_ga > 30 & gestage > 30, gestage + 2, gestage)) %>% 
+  mutate(gestage=if_else(endpoint==2, gestage + 1, gestage))
+
+
+pcord_summ<-pcord2 %>% 
+  filter(endpoint!=0) %>% 
+  group_by(endpoint, ou_type, gestage) %>% 
+  summarise("count"=n_distinct(id)) %>% 
+  mutate("cumsum"=cumsum(count))
+
+#pcord2 %>% filter(endpoint==2 & gestage > 35)
+
+
+ps1<-pcord_summ %>% filter(endpoint==1)
+ps2<-pcord_summ %>% filter(endpoint==2)
+
+p2<-ggplot() +
+  geom_point(data = pcord2, aes(x=endpoint, y = ou_type, 
+                                group = id), col = "green")  +
+  geom_point(data = ps1, aes(x=endpoint, y = ou_type, size = cumsum),
+                                col="grey", alpha=0.8) +
+  geom_point(data = ps2, aes(x=endpoint, y = ou_type, size = cumsum),
+                               col="grey", alpha=0.8) +
+  theme_minimal() + 
+  transition_reveal(gestage) +
+  scale_x_continuous(breaks=c(0, 1, 2),
+                   labels=c("GA 0","Identification", "Other Event")) +
+  labs(title="e-Reg Matlab -- Events at Different Org Unit than Identification",
+       subtitle = 'Events at Gestational Age {round(frame_along)}',
+       x = "")
+
+animate(p2,
+        nframes = 200,
+        duration = 15,
+        end_pause = 50)
+```
+
+If a dot moves quickly between identification and subsequent visit, that means that the next visit happened quickly after identification (e.g., Unit identifies pregnancy at 16 weeks, facility visit to CC at 18 weeks). Inversely, the second visit may occur long after identification (if the same client again visits CC at 32 weeks, this would be a slower moving dot).
+
+Eventually we will recreate these data as a [Sankey flow diagram](https://www.hvitfeldt.me/blog/recreate-sankey-flow-chart/) across 4 ANC visits. [See below.](#sankey) 
+
+
+
+
+## Chord Diagram
+
+So far, these visualizations have examined the type of visit, and whether it was different that the location where the pregnancy enrolled. Yet many pregnancies have more than one visit. So we could reframe the question on _VISITs_ to a question about _pregnancies_: what is the frequency of co-occurrence between different org unit types within pregnancies? What is the per-client overlap?
+
+[Chord diagrams]( https://bost.ocks.org/mike/uberdata/) might be helpful here. A recent study has shown that chord diagrams can be useful in the context of RMNCH. Data from Kenya's DHS were rendered  as a chord diagram in R to express the year-over-year contraceptive trajectory, or "churn". When presented to pilot testers at an international conference in Rwanda, testers needed limited support with the interactive visual to understand the "flow" between contraception types.
+
+The below chord diagram can be interpreted as the number of women who visited more than one org unit during their pregnancy, arranged by org unit type. For example, 338 women visited both their FWA Unit and an FWC. Scroll over the links to see all connections. 
+
+
+
+
+```{r chord diagram}
+
+#STARTER DATA
+start<-my_data %>% 
+    select(tei, ou_type, name, VisitNo) %>% 
+    distinct() %>% 
+    select(-VisitNo)
+#unique GA weeks/visit
+
+#self join
+startend<-start %>% 
+  left_join(start, by=c("tei"), suffix=c("_start","_end")) %>% 
+  filter(name_start!=name_end) %>% #not a repeat visit/event at same clinic
+  ungroup() %>%
+  select(-tei, -name_start, -name_end) %>% 
+  group_by(ou_type_start, ou_type_end) %>% #group by ou type and tally
+  mutate("count"=n()) %>% 
+  distinct()
+
+  
+#create a co-occurence matrix
+dm<-as.matrix(igraph::as_adjacency_matrix(as_tbl_graph(startend),attr = "count"))
+
+
+#create diagram
+library(chorddiag)
+chord<-chorddiag(data = dm,
+#                      groupColors = c("#000000", "#FFDD89", "#957244", "#F26223"),
+                      showGroupnames =TRUE ,
+                      showTicks =FALSE,
+                      tooltipGroupConnector = "    &#x25B6;    ",
+                      chordedgeColor = "#B3B6B7"
+                      )
+chord
+
+```
+
+Thinking what types of locations provide services to the same pregnancy is a first step to diagramming the cascade of care.
+
+# Mapping the Cascade of Care
+
+This section shows the **SEQUENCE** of visits for each patient. Following the previous animations, we can think of these as a cascade, flowing from one location to the next. Note that these data would considers each identification, ANC visit, or home visit stage at a distinct org units or GA as a separate "visit". 
+
+## Dropouts: Isolating Clients with only one event
+
+About 19% of clients have only one event in the system. Maybe they are systematically different for some reason than other clients or events.
+
+For example, what stage was their only event?
+
+What kind of org unit?
+
+The below tables are only one event. 
+
+First is by org unit -- most of these are the Pregnancy ID stage.
+
+```{r kable}
+library(kableExtra)
+###Isolate those that only havd one event
+my_data_iso<-raw4 %>% 
+  left_join(ou_names, by=c("EvtOrgUnit"="ou_id")) %>% 
+  select(tei=3, ga=8, "ou_id"=EvtOrgUnit, ou_type, name, VisitNo, EnrOrgUnit, StageUid) %>%
+  left_join(ps, by = c("StageUid"="id")) %>% 
+  mutate(ga=round(as.numeric(ga))) %>% 
+  filter(!is.na(ou_type) & !is.na(ga) & 
+           ga <= 50 & ga >= 1 &
+          str_detect(psname, paste(c("regnanc", "ANC", "Newborn","PNC","Lab"),collapse = '|')) &
+          !str_detect(psname, paste(c("Prev","Risk","Manag"),collapse = '|'))) %>% 
+  group_by(tei) %>% 
+  add_tally() %>% 
+  arrange(tei, ga) %>% 
+  mutate(first = dplyr::first(ou_id)) %>%
+  mutate(last_ou = lag(ou_id)) %>%
+  ungroup() %>% 
+  mutate(Moved_ou = case_when(first == ou_id & is.na(last_ou)  ~ "Event 1",
+                              first == ou_id & !is.na(last_ou) ~ "Event 2+, same ou as Event 1", 
+                              first != ou_id ~ "Event 2+, different ou as Event 1"))
+
+# my_data_iso %>%
+#   group_by(n) %>%
+#   summarise("events"= n()) %>%
+#   mutate(percent = round(events/sum(events), 2))
+
+
+
+test2<-my_data_iso %>% 
+  group_by(tei) %>% 
+  filter(n==1) %>% 
+  group_by(psname) %>% 
+  summarize("stage_count"=n())
+
+test3<-my_data_iso %>% 
+  filter(n==1) %>% 
+  group_by(ou_type) %>% 
+  summarize("ou_type_count"=n())
+
+
+#kableExtra::kable(test2)
+kable(test2) %>% 
+  kable_styling()
+
+
+```
+
+Next is by org unit. Most of these are the FWA Units.
+
+```{r}
+kable(test3) %>% 
+  kable_styling()
+
+```
+
+
+
+## Sankey Diagram
+
+A traditional way to display flow of resources or people is through a Sankey Diagram. These can grow from [simple](https://www.data-to-viz.com/graph/sankey.html) to quite [technical and complex](https://www.iea.org/sankey/).
+
+Below we show the scale of movement between visits at different locations. It begins with "ALL" pregnancies on the far left, and ends with "LTFU" (Lost To Follow Up) on the far right. Organization unit types are matched by color, and visit number correspond to the X axis.
+
+Interactivity, provided by the ["networkD3" package](https://christophergandrud.github.io/networkD3/#sankey), helps to drill down to the segmented flows. Scroll over a "node" (org unit type) to show all patients associated with it. Scroll over a "link" to see total number of clients who moved between these org units at the corresponding visit number.
+
+```{r sankey}
+library(networkD3)
+
+cascade_data <-my_data %>% 
+  ungroup() %>% 
+  rename("event_ou_id"=ou_id, "event_ou_type"=ou_type) %>% 
+  select(tei, event_ou_type, "event_ga"=ga, Moved_ou, StageUid, event_ou_id) %>% 
+  left_join(ps, by = c("StageUid"="id")) %>% 
+  filter(!is.na(event_ou_type) & !is.na(event_ga) & 
+           event_ga <= 50 & event_ga >= 1 &
+          str_detect(psname, paste(c("regnanc", "ANC"),collapse = '|')) &
+          !str_detect(psname, paste(c("Prev","Risk","Manag", "Out"),collapse = '|'))) %>% 
+  group_by(tei) %>% 
+  distinct(tei, event_ga, event_ou_id, .keep_all = TRUE) %>% 
+#  mutate("VisitNo"=if_else(str_detect(psname, "ident"), 1, 2)) %>% 
+  arrange(event_ga) %>% 
+  mutate("VisitNo"=row_number()) 
+
+
+cascade_data<-cascade_data %>% 
+  mutate("VisitNo"=if_else(VisitNo==1, 0, as.double(VisitNo))) %>% 
+  bind_rows(cascade_data %>%  filter(VisitNo == 1)) %>% 
+  mutate("Moved_ou"=if_else(VisitNo <=1, "Event 1", Moved_ou)) %>% 
+  mutate(event_ou_type=factor(event_ou_type, levels = c("Unit","Ward","FWC","CC"))) %>% 
+  mutate(groupid= group_indices()) %>% 
+  arrange(tei, VisitNo) %>% 
+  mutate(gestage=if_else(VisitNo==0, 0, event_ga)) %>% 
+  filter(VisitNo<8) %>% 
+  mutate(gestage=if_else(gestage==lag(gestage) & groupid==lag(groupid) & gestage!=0, lag(gestage)+2, gestage))
+
+
+
+sank<-cascade_data %>% 
+  ungroup() %>% 
+  select(groupid, VisitNo, event_ou_type) %>% 
+  group_by(groupid) %>% 
+  mutate(ev1_type=if_else(VisitNo==0, "ALL", as.character(event_ou_type)),
+         ev2_type=if_else(!is.na(lead(ev1_type)), lead(ev1_type), "LTFU")) %>% 
+  mutate(source = paste0(ev1_type, '_', VisitNo)) %>%
+  mutate(target = paste0(ev2_type, '_', VisitNo+1)) %>%
+  mutate(target=if_else(str_detect(target, "LTFU"), "LTFU", target)) %>% 
+  ungroup() %>% 
+  select(source, target) 
+
+
+nodes <- data.frame(name = unique(c(sank$source, sank$target)))
+
+links<-sank %>% 
+  group_by_all() %>% 
+  tally(name = "value")
+
+links$source <- match(links$source, nodes$name) - 1
+links$target <- match(links$target, nodes$name) - 1
+
+
+nodes$name <- sub('_[0-9]+$', '', nodes$name)
+
+
+sankeyNetwork(Links = links, Nodes = nodes, Source = 'source',
+              Target = 'target', Value = 'value', NodeID = 'name')
+
+
+```
+
+
+## Animated Cascade by Visit Number
+
+While the Sankey diagram does a good job of showing _scale_ of flow, it makes little use of the _time_ between visits. At what gestational age to transfers between units and FWC occur?
+
+We can visualize the visit number (x axis), GA at visit (time), and type of org unit at each visit (y axis). The inspiration is this [NYTimes infographic](https://www.nytimes.com/interactive/2018/03/19/upshot/race-class-white-and-black-men.html)
+
+Each dot represents a single patient as she moves through each level of the MCH system. The patient's dot "rests" at the location of her last visit recorded. 
+
+You can see that very few patients get past the 3rd visit at any level. Most of the migration occurs from the FWA Unit level "up" the system to FWC. And compared to CC level, more clients who made it to FWC by the third visit started from another org unit (red dots).
+
+
+```{r cascade by visit}
+
+p3<-ggplot() +
+  geom_jitter(data = cascade_data, aes(x=VisitNo, y = event_ou_type, 
+                                group = groupid, col = Moved_ou), 
+                                size=0.5, width = 0.15, height=0.1)  +
+  theme_minimal() + 
+  transition_reveal(gestage) +
+  scale_x_continuous(breaks=c(0:7),
+                   labels=c("GA 0", "Visit1", "Visit2",
+                            "Visit3","Visit4","Visit5", "Visit6","Visit7"),
+                   minor_breaks = NULL) +
+  scale_colour_manual(values = c("grey", "red", "darkblue")) +
+  labs(title="e-Reg Matlab -- Events 1-7",
+       subtitle = 'Events at Gestational Age {round(frame_along)}',
+       x = "",
+       y="")+
+  theme(legend.position = "bottom")
+
+
+animate(p3,
+        nframes = 200,
+        duration = 15,
+        end_pause = 50)
+
+#gganimate::anim_save("bd_visit1to7.gif")
+
+
+#only two TEI went to more than 2 org units!!
+# cascade_data %>% 
+#   group_by(tei) %>% 
+#   mutate(ous=n_distinct(event_ou_id)) %>% 
+#   filter(ous>2) %>% 
+#   arrange(tei)
+
+# cascade_data %>%
+#   group_by(tei) %>%
+#   filter(gestage>0) %>% 
+#   mutate(ous=n_distinct(event_ou_id),
+#          range=max(gestage)-min(gestage),
+#          maxv=max(VisitNo)) %>%
+#   filter(ous>1, maxv>4, range>10, event_ou_type=="Unit") %>% 
+#    arrange(tei)
+
+```
+
+
+
+
+### Cascade -- Highlighting an Individual Case
+
+It's very rare that a patient makes more than one transfer between organization units--only two TEI went to three or more org units. But when such transfers do happen, we can highlight this case to put it in context.
+
+We see that this case moves from FWA Unit to CC for ANC 1, back to Unit, then two more visits at CC in rapid succession.
+
+
+```{r}
+#let's follow the path of one 
+cd2<-cascade_data %>% 
+  mutate("size"=if_else(tei=="WLgbmeKuEXI", 1, 0.5))
+
+
+ cd3<-cd2 %>%
+   filter(tei=="WLgbmeKuEXI")
+
+
+#recreate it with a larger dot
+p4<-ggplot() +
+  geom_jitter(data = cd2, aes(x=VisitNo, y = event_ou_type,
+                                group = groupid, size=size,
+                                col = Moved_ou, group=groupid),
+                          width = 0.15, height=0.1, alpha=0.5)  +
+  geom_segment(data = cd3, aes(x=VisitNo, xend=VisitNo, y=0, yend=event_ou_type,
+                             group = groupid),
+                        color="darkgreen", size=0.8, alpha=0.6) +
+  geom_text(data = cd3, aes(x=VisitNo, y=0.8, label="_Highlighted Case",
+                             group = groupid),
+                        color="darkgreen", size=5, hjust=0, alpha=0.6) +
+  theme_minimal() +
+  transition_reveal(gestage) +
+  scale_size_continuous(guide=NULL) +
+  scale_x_continuous(breaks=c(0:7),
+                   labels=c("GA 0", "Visit1", "Visit2",
+                            "Visit3","Visit4","Visit5", "Visit6","Visit7"),
+                   minor_breaks = NULL) +
+  scale_colour_manual(values = c("grey", "red", "darkblue")) +
+  labs(title="e-Reg Matlab -- Visits 1-7",
+       subtitle = 'Visits at Gestational Age {round(frame_along)}',
+       x = "",
+       y="")+
+  theme(legend.position = "bottom")
+
+#p4
+animate(p4,
+        nframes = 200,
+        duration = 15,
+        end_pause = 50)
+
+
+```
+
+
+
+# Summary and Discussion
+
+This paper has explored some modalities to display multi-dimensional orgUnit crossover data from DHIS2 Tracker. The eRegistries project in Matlab, Bangladesh offered a prime opportunity to explore visualizations of patient migration behavior, since an advanced biometric solution enabled a shared patient record that was accessible to community service providers and clinical staff. As more health systems work with common patient registers, such analyses of patient migration flows will grow more prevalent, more sophisticated, and more complex. Open source client tracking software such as DHIS2 should promote standard visualization frameworks to help health system managers make sense of these patterns.
+
+Initial 
+
+~~~ Insert table showing analysis of chart type by visual channel here
+
+```{r}
+
+```
+
+
+
