@@ -22,7 +22,7 @@ Brian O'Donnell / HISP Centre
 
 ## Introduction
 
-[DHIS2](dhis2.org) is a digital public good used in over 120 countries and by 80+ national health authorities to manage routine health data. While DHIS2 core software is maintained by the HISP Centre at the Univeristy of Oslo, DHIS2 implementers define the contents of their own DHIS2 database without alerting DHIS2 developers or the wider HISP network. With a global and diverse user base, understanding the scope, depth, and complexity of specific use cases in the health domain presents a critical challenge for the HISP Centre's global support team. 
+[DHIS2](https://dhis2.org) is a digital public good used in over 120 countries and by 80+ national health authorities to manage routine health data. While DHIS2 core software is maintained by the HISP Centre at the Univeristy of Oslo, DHIS2 implementers define the contents of their own DHIS2 database without alerting DHIS2 developers or the wider HISP network. With a global and diverse user base, understanding the scope, depth, and complexity of specific use cases in the health domain presents a critical challenge for the HISP Centre's global support team. 
 
  Typically, research on DHIS2 use cases rely on all 23 HISP groups providing country and regional DHIS2 support. HISPs regularly share country-level information on health use case coverage through an internal spreadsheet with the HISP Centre at UiO. HISP groups and other DHIS2 implementers also share their country use cases publicly on the online Community of Practice and at global conferences. However, the information gleaned from voluntary inputs is not always timely, detailed or comprehensive enough for specific use cases; further, some national DHIS2 systems operate without HISP engagement, meaning coverage estimates are potentially biased.
 
@@ -36,7 +36,7 @@ This report documents my initial attempts at a global DHIS2 use search task with
 
 I used Claude Code with the Opus 4.6 model. Installation and folder setup followed online instructions [here](https://hannahstulberg.substack.com/p/claude-code-for-everything-finally), including background on my role, and links for context to DHIS2 as a software and HISP Centre as an organization.
 
-I first downloaded a list of all DHIS2 countries from internal country status tracker sheet, countries visible on the [DHIS2 website](dhis2.org/in-action) (I made a decision early on to exclude other countries, since it was highly unlikely a DHIS2-based cancer database was operating in a public health system with no previous history of DHIS2 use.)
+I first downloaded a list of all DHIS2 countries from internal country status tracker sheet, countries visible on the [DHIS2 website](https://dhis2.org/in-action) (I made a decision early on to exclude other countries, since it was highly unlikely a DHIS2-based cancer database was operating in a public health system with no previous history of DHIS2 use.)
 
 I also downloaded a list of known aliases of DHIS2-based HMIS in each country (e.g. "KHIS" in Kenya, "DHIMS" in Ghana).
 
