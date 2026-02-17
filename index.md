@@ -9,5 +9,3 @@ See the [eRegistries website](http://eregistries.org/) for latest research, foll
 
 ### Google Play store app
 - [Matlab MCH eRegistry on Android](https://play.google.com/store/apps/details?id=org.icddrb.dhis.android.eregistry2&hl=nl)
-
-![EReg logo](http://eregistries.org/wp-content/uploads/2017/02/eRegistries-New-Logo.png)
