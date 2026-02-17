@@ -3,6 +3,7 @@
 Brian O'Donnell / HISP Centre
 
 02/17/2026
+____
 
 
 ## *ToC*
@@ -21,7 +22,6 @@ Brian O'Donnell / HISP Centre
 
 
 ## Introduction
-
 [DHIS2](https://dhis2.org) is a digital public good used in over 120 countries and by 80+ national health authorities to manage routine health data. While DHIS2 core software is maintained by the HISP Centre at the Univeristy of Oslo, DHIS2 implementers define the contents of their own DHIS2 database without alerting DHIS2 developers or the wider HISP network. With a global and diverse user base, understanding the scope, depth, and complexity of specific use cases in the health domain presents a critical challenge for the HISP Centre's global support team. 
 
  Typically, research on DHIS2 use cases rely on all 23 HISP groups providing country and regional DHIS2 support. HISPs regularly share country-level information on health use case coverage through an internal spreadsheet with the HISP Centre at UiO. HISP groups and other DHIS2 implementers also share their country use cases publicly on the online Community of Practice and at global conferences. However, the information gleaned from voluntary inputs is not always timely, detailed or comprehensive enough for specific use cases; further, some national DHIS2 systems operate without HISP engagement, meaning coverage estimates are potentially biased.
@@ -60,10 +60,8 @@ After the first 10 countries I quickly saw this approach took many resources for
 - Vietnamese
 
 I asked ChatGPT for recommendations for search terms on public health and cancer surveillance, settling on:
-
-```
 `"Cancer registry", "Breast cancer screening program", "Cervical cancer screening", "Colorectal cancer screening", "Lung cancer screening", "Prostate cancer screening", "Mammography tracking system", "HPV vaccination registry", "Pap test surveillance", "Oncology information system", "Tumor registry", "Cancer treatment monitoring", "Colonoscopy tracking", "Low-dose CT lung screening", "PSA testing program", "Cancer surveillance system", "Tobacco cessation program", "HPV immunization tracking", "Cancer patient navigation system", "Radiation oncology system", "Chemotherapy administration", "Cancer early detection program", "Skin cancer screening", "Cancer survivorship care", "Population-based cancer control"`
-```
+
 
 If a country had a non-English language, the keywords and country name were translated into that language, and two languages were performed.
 
@@ -115,6 +113,8 @@ When this is done I compared results with:
 > Note: Based on the resulting text, if a profile had "no evidence" it seems likely the agent found no publicly available information on DHIS2 for *any* cancer related purpose in the country. "Low" suggests Claude found some evidence DHIS2 was used as a general-purpose HMIS with plausible cancer/NCD aggregate datasets.
 
 In our country implementation google drive, 26 countries had "cancer" somewhere in their country's drive--which could either imply suggestive, planned, or non-verified evidence of use, or alternatively actual HMIS metadata shared with HISP. We had prior evidence of 12 countries using DHIS2 as a cancer __*registry*__ or cervical cancer tracker.
+
+Eight countries (Bhutan, Guinnea-Bissau, Ethiopia, Haiti, India, Kenya, Uganda, Zambia) all had moderate to high evidence of DHIS2 for cancer, but were not previously tracked. 
 
 
 |country                      |claude's finding |known dhis2 cancer registry |cancer term in country folder |
@@ -522,7 +522,7 @@ DHIS2 is the designated national HMIS platform, and there are documented plans t
 9. **Antigua/Barbuda Cancer Incidence Study (WIMJ Open)** -- https://www.mona.uwi.edu/wimjopen/article/1600
    Historical cancer incidence study for Antigua and Barbuda published in the West Indian Medical Journal.
 
-10. **CARPHA and Vital Strategies sign agreement to strengthen cancer data collection in Jamaica (Antigua Observer)** -- https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen--cancer--data-collection-systems-in-jamaica/
+10. **CARPHA and Vital Strategies sign agreement to strengthen cancer data collection in Jamaica (Antigua Observer)** -- https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen-cancer-data-collection-systems-in-jamaica/
     Regional efforts by CARPHA and Vital Strategies to strengthen cancer data collection systems in the Caribbean, relevant to Antigua and Barbuda's regional context.
 
 
@@ -562,7 +562,7 @@ Argentina has its own well-established health information infrastructure (SISA, 
 8. **Portal de Datos Abiertos Salud -- Cancer (Argentina.gob.ar)** -- https://datos.salud.gob.ar/dataset?tags=cancer
    Argentina's open health data portal with cancer-related datasets available for public access.
 
-9. **RITA: Registro Institucional de Tumores de Argentina -- Cancer cases diagnosed 2012-2022** -- https://datos.salud.gob.ar/dataset/rita-registro-institucional-de-tumores-de-argentina-casos-de--cancer--diagnosticados-2012-2022
+9. **RITA: Registro Institucional de Tumores de Argentina -- Cancer cases diagnosed 2012-2022** -- https://datos.salud.gob.ar/dataset/rita-registro-institucional-de-tumores-de-argentina-casos-de-cancer-diagnosticados-2012-2022
    Open data from RITA covering cancer cases diagnosed from 2012 to 2022.
 
 10. **Sistema Integrado de Informacion Sanitaria Argentino (SISA)** -- https://sisa.msal.gov.ar/sisa/
@@ -734,7 +734,7 @@ Brazil uses its own suite of national health information systems (Siscan, SISMAM
 #### Portuguese query results
 (Query: Brasil cancer DHIS2 registro cancer rastreio)
 
-1. **Registro de Cancer de Base Populacional (RCBP) -- IBGE** -- https://ces.ibge.gov.br/base-de-dados/metadados/ministerio-da-saude/registro-de--cancer--de-base-populacional-rcbp.html
+1. **Registro de Cancer de Base Populacional (RCBP) -- IBGE** -- https://ces.ibge.gov.br/base-de-dados/metadados/ministerio-da-saude/registro-de-cancer-de-base-populacional-rcbp.html
    Official metadata page for Brazil's population-based cancer registries, operational since 1967 with over 20 registries across the country.
 
 2. **Deteccao Precoce do Cancer -- INCA** -- https://www.inca.gov.br/sites/ufu.sti.inca.local/files/media/document/deteccao-precoce-do-cancer.pdf
@@ -764,7 +764,7 @@ Burkina Faso has confirmed use of DHIS2 Tracker for cervical cancer screening pr
 ### Search Results
 
 #### French query results
-1. **Accelerer l'elimination du cancer du col de l'uterus au Burkina Faso** -- https://www.uicc.org/news/acc%C3%A9l%C3%A9rer-l%C3%A9limination-du--cancer--du-col-de-lut%C3%A9rus-au-burkina-faso
+1. **Accelerer l'elimination du cancer du col de l'uterus au Burkina Faso** -- https://www.uicc.org/news/acc%C3%A9l%C3%A9rer-l%C3%A9limination-du-cancer-du-col-de-lut%C3%A9rus-au-burkina-faso
    UICC article on the SUCCESS project using DHIS2 Tracker for cervical cancer elimination in Burkina Faso.
 
 2. **Strategie nationale de lutte contre le cancer 2021-2025** -- https://www.iccp-portal.org/sites/default/files/plans/BFA_B5_Strat%C3%A9gie%20nationale%20de%20lutte%20contre%20le%20cancer%202021-2025_VF%2022-10-2020.pdf
@@ -773,10 +773,10 @@ Burkina Faso has confirmed use of DHIS2 Tracker for cervical cancer screening pr
 3. **Implementation du depistage du cancer du col -- Medecins du Monde** -- https://www.medecinsdumonde.org/app/uploads/2024/04/MDM-Rapport-CCU-BurkinaFaso_version-online-1.pdf
    Report on cervical cancer screening implementation in Burkina Faso.
 
-4. **Renforcer la prevention secondaire du cancer du col de l'uterus (SUCCESS/Expertise France)** -- https://linitiative.expertisefrance.fr/app/uploads/2025/01/capitalisation-success-renforcer-la-prevention-secondaire-du--cancer--du-col-de-luterus.pdf
+4. **Renforcer la prevention secondaire du cancer du col de l'uterus (SUCCESS/Expertise France)** -- https://linitiative.expertisefrance.fr/app/uploads/2025/01/capitalisation-success-renforcer-la-prevention-secondaire-du-cancer-du-col-de-luterus.pdf
    SUCCESS project capitalisation report describing use of DHIS2 Tracker for cervical cancer screening in Burkina Faso and Cote d'Ivoire.
 
-5. **Au Burkina Faso, ameliorer le depistage et la prevention du cancer du col de l'uterus (WHO AFRO)** -- https://www.afro.who.int/fr/news/au-burkina-faso-ameliorer-le-depistage-et-la-prevention-du--cancer--du-col-de-luterus
+5. **Au Burkina Faso, ameliorer le depistage et la prevention du cancer du col de l'uterus (WHO AFRO)** -- https://www.afro.who.int/fr/news/au-burkina-faso-ameliorer-le-depistage-et-la-prevention-du-cancer-du-col-de-luterus
    WHO AFRO article on improving cervical cancer screening and prevention in Burkina Faso.
 
 6. **Le Cancer du Sein a Bobo-Dioulasso: Resultats de la Prise en Charge** -- https://www.techscience.com/oncologie/v24n2/48737/html
@@ -1232,7 +1232,7 @@ Djibouti has some engagement with the DHIS2 ecosystem (participants attended a D
 ### Search Results
 
 #### French query results
-1. **Profil pour le cancer du col de l'uterus - Djibouti** — https://cdn.who.int/media/docs/default-source/country-profiles/cervical-cancer/cervical--cancer--dji-2021-country-profile-fr.pdf
+1. **Profil pour le cancer du col de l'uterus - Djibouti** — https://cdn.who.int/media/docs/default-source/country-profiles/cervical-cancer/cervical-cancer-dji-2021-country-profile-fr.pdf
    WHO cervical cancer country profile for Djibouti with morbidity and mortality data (2021).
 
 2. **An Overview of Cancer in Djibouti: Current Status, Therapeutic Approaches, and Promising Endeavors** — https://www.mdpi.com/1424-8247/16/11/1617
@@ -1245,7 +1245,7 @@ Djibouti has some engagement with the DHIS2 ecosystem (participants attended a D
 4. **An Overview of Cancer in Djibouti (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC10674319/
    PMC version of the comprehensive overview of cancer status in Djibouti.
 
-5. **Cancer Today - Djibouti Fact Sheet** — https://gco.iarc.fr/today/data/factsheets/populations/262-djibouti-fact-sheets.pdf
+5. **Cancer Today - Djibouti Fact Sheet** — https://gco.iarc.who.int/media/globocan/factsheets/populations/262-djibouti-fact-sheet.pdf
    IARC Global Cancer Observatory fact sheet for Djibouti with incidence and mortality data.
 
 #### Arabic query results
@@ -1787,7 +1787,7 @@ DHIS2 is used as the national HMIS for aggregate disease surveillance, but there
 1. **Analyse des resultats des campagnes de depistage du cancer du col de l'uterus a Conakry, Guinee** — https://www.em-consulte.com/article/1181723/analyse-des-resultats-des-campagnes-de-depistage-d
    Analysis of cervical cancer screening campaign results in Conakry, documenting VIA/VILI screening methods and case findings.
 
-2. **Guinee: Formation regionale au depistage du cancer de col de l'uterus par IVA/cryotherapie** — https://staging.afro.who.int/fr/countries/guinea/news/guinee-formation-regionale-au-depistage-du--cancer--de-col-de-luterus-par-iva-cryotherapie
+2. **Guinee: Formation regionale au depistage du cancer de col de l'uterus par IVA/cryotherapie** — https://staging.afro.who.int/fr/countries/guinea/news/guinee-formation-regionale-au-depistage-du-cancer-de-col-de-luterus-par-iva-cryotherapie
    WHO regional training programme on cervical cancer screening using visual inspection and cryotherapy treatment methods.
 
 #### English query results
@@ -1925,7 +1925,7 @@ India was an early DHIS2 adopter (2006) with implementations across multiple sta
 ### Search Results
 
 #### Hindi query results
-1. **National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)** — https://main.mohfw.gov.in/Major-Programmes/non-communicable-diseases-injury-trauma/Non-Communicable-Disease-II/National-Programme-for-Prevention-and-Control-of--cancer--diabetes-Cardiovascular-diseases-and-Stroke-NPCDCS
+1. **National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)** — https://main.mohfw.gov.in/Major-Programmes/non-communicable-diseases-injury-trauma/Non-Communicable-Disease-II/National-Programme-for-Prevention-and-Control-of-Cancer-Diabetes-Cardiovascular-diseases-and-Stroke-NPCDCS
    Ministry of Health and Family Welfare page on India's national NCD program covering oral, breast, and cervical cancer screening through primary health centers.
 
 2. **ICMR-NCDIR National Cancer Registry Programme** — https://www.icmr.gov.in/icmrobject/custom_data/1702893085_icmr_press_release_ncrp_18082020.pdf
@@ -2054,19 +2054,19 @@ Jamaica has implemented DHIS2 Tracker for its National Cancer Registry, making i
 ### Search Results
 
 #### English query results
-1. **Jamaica to Enhance Cancer Data Tracking with New Software (Ministry of Health and Wellness, Jamaica)** — https://www.moh.gov.jm/jamaica-to-enhance--cancer--data-tracking-with-new-software/
+1. **Jamaica to Enhance Cancer Data Tracking with New Software (Ministry of Health and Wellness, Jamaica)** — https://www.moh.gov.jm/jamaica-to-enhance-cancer-data-tracking-with-new-software/
    Official government announcement of Jamaica as the first Caribbean country and second in the world to use DHIS2 for population-wide cancer reporting.
 
 2. **Cancer Registration Data Systems Being Strengthened (Jamaica Information Service)** — https://jis.gov.jm/cancer-registration-data-systems-being-strengthened/
    Jamaica Information Service report on the strengthening of cancer registration data systems through DHIS2 implementation.
 
-3. **CARPHA and Vital Strategies Sign New Agreement to Strengthen Cancer Data Collection Systems in Jamaica** — https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen--cancer--data-collection-systems-in-jamaica/
+3. **CARPHA and Vital Strategies Sign New Agreement to Strengthen Cancer Data Collection Systems in Jamaica** — https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen-cancer-data-collection-systems-in-jamaica/
    Report on the CARPHA-Vital Strategies agreement for the US$100,000 Bloomberg D4H grant supporting Jamaica's DHIS2 cancer registry.
 
 4. **Cancer registration data systems being strengthened (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231025/cancer-registration-data-systems-being-strengthened
    Jamaica Gleaner coverage of the cancer registration data system strengthening initiative.
 
-5. **Jamaica to enhance cancer data tracking with new software (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231027/jamaica-enhance--cancer--data-tracking-new-software
+5. **Jamaica to enhance cancer data tracking with new software (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231027/jamaica-enhance-cancer-data-tracking-new-software
    Jamaica Gleaner report on the new DHIS2-based cancer data tracking software implementation.
 
 6. **Cancer registration data system being introduced to better monitor disease (Jamaica Observer)** — https://www.jamaicaobserver.com/latest-news/cancer-registration-data-system-being-introduced-to-better-monitor-disease-dr-tufton/
@@ -2314,7 +2314,7 @@ Lesotho has comprehensive DHIS2 implementation across all health facilities for 
 4. **Determinants of cervical cancer screening uptake in Lesotho: evidence from 2024 Demographic and Health Survey (BMC Public Health)** — https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-025-23593-4
    Research on cervical cancer screening determinants in Lesotho using 2024 DHS data, highlighting low screening coverage despite high cervical cancer burden.
 
-5. **Lesotho — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/426-lesotho-fact-sheets.pdf
+5. **Lesotho — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/426-lesotho-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Lesotho.
 
 
@@ -2419,7 +2419,7 @@ Malawi has comprehensive national DHIS2 implementation for health data reporting
 1. **Cervical cancer screening uptake and challenges in Malawi from 2011 to 2015: retrospective cohort study (BMC Public Health)** — https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y
    Retrospective analysis of cervical cancer VIA screening programme scale-up across Malawi from 2011 to 2015, documenting expansion from 75 to 130 sites.
 
-2. **Bridging gaps in lung cancer diagnosis and surveillance: Gap analysis and development of new registers and algorithms for lung cancer identification and care in Malawi (CIOC 2026)** — https://cancer-conferences.magnusgroup.org/program/scientific-program/2026/bridging-gaps-in-lung--cancer--diagnosis-and-surveillance-gap-analysis-and-development-of-new-registers-and-algorithms-for-lung-cancer-identification-and-care-in-malawi
+2. **Bridging gaps in lung cancer diagnosis and surveillance: Gap analysis and development of new registers and algorithms for lung cancer identification and care in Malawi (CIOC 2026)** — https://cancer-conferences.magnusgroup.org/program/scientific-program/2026/bridging-gaps-in-lung-cancer-diagnosis-and-surveillance-gap-analysis-and-development-of-new-registers-and-algorithms-for-lung-cancer-identification-and-care-in-malawi
    2025 gap analysis of cancer registry tools across Malawi's central hospitals identifying "limited integration with DHIS2" and "underutilization of CanReg5" as key deficiencies, with 17 standardized tools developed.
 
 3. **Malawi National Cancer Control Strategic Plan 2019-2029 (ICCP Portal)** — https://www.iccp-portal.org/sites/default/files/plans/MALAWI%20NATIONAL%20CANCER%20CONTROL%20STRATEGIC%20PLAN-%202019-2029.pdf
@@ -2470,7 +2470,7 @@ The Maldives has developed a DHIS2 Tracker-based cancer registry as one of the p
 4. **About the GICR — E-NNOVATE project (IARC)** — https://gicr.iarc.fr/news/2023/12/04/e-nnovate-iacr-write-up/
    IARC documentation of the E-NNOVATE project supporting electronic cancer registration innovations including DHIS2-based approaches piloted in the Maldives.
 
-5. **Maldives — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/462-maldives-fact-sheets.pdf
+5. **Maldives — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/462-maldives-fact-sheet.pdf
    IARC GLOBOCAN cancer statistics and projections for the Maldives.
 
 6. **Planning and Developing Population-Based Cancer Registration in Low- or Middle-Income Settings (PubMed)** — https://pubmed.ncbi.nlm.nih.gov/33502836/
@@ -2530,7 +2530,7 @@ No specific French-language results were found documenting cancer-DHIS2 integrat
 3. **Africa to Intensify Cancer Control through Cancer Registries (WHO AFRO)** — https://www.afro.who.int/news/africa-intensify-cancer-control-through-cancer-registries
    WHO Regional Office for Africa article on strengthening cancer control through cancer registries across the African region.
 
-4. **Mauritania — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/478-mauritania-fact-sheets.pdf
+4. **Mauritania — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/478-mauritania-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Mauritania.
 
 
@@ -2584,7 +2584,7 @@ Mongolia has begun reporting childhood cancer medicine data through DHIS2 as par
 4. **The public health challenge of liver cancer in Mongolia (Lancet Gastroenterology & Hepatology)** — https://www.thelancet.com/journals/langas/article/PIIS2468-1253(18)30243-7/abstract
    Lancet article examining the significant burden of liver cancer in Mongolia and public health responses.
 
-5. **Mongolia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/496-mongolia-fact-sheets.pdf
+5. **Mongolia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/496-mongolia-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Mongolia.
 
 
@@ -2661,7 +2661,7 @@ No evidence of cancer-specific DHIS2 modules or integration between Myanmar's ca
 4. **Current Status of Cervical Cancer Prevention and Screening in Myanmar (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9966159/
    Peer-reviewed study on the current status of cervical cancer prevention and screening programs in Myanmar.
 
-5. **Myanmar — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/104-myanmar-fact-sheets.pdf
+5. **Myanmar — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/104-myanmar-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Myanmar.
 
 
@@ -2688,7 +2688,7 @@ No evidence of cancer-specific DHIS2 modules or cancer registry integration with
 4. **Cancer Association of Namibia (UICC)** — https://www.uicc.org/membership/cancer-association-namibia
    UICC membership page for the Cancer Association of Namibia describing cancer control activities.
 
-5. **Namibia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/516-namibia-fact-sheets.pdf
+5. **Namibia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/516-namibia-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Namibia.
 
 
@@ -2791,7 +2791,7 @@ DHIS2 has been the national HMIS data management tool since 2013, but cancer reg
 4. **Nigeria imPACT Review Report (IAEA/NICRAT)** — https://www.nicrat.gov.ng/wp-content/uploads/2023/08/Nigeria-imPACT-Review-Report.pdf
    IAEA cancer control capacity and needs assessment report for Nigeria.
 
-5. **Nigeria — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/566-nigeria-fact-sheets.pdf
+5. **Nigeria — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/566-nigeria-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Nigeria.
 
 
@@ -2920,7 +2920,7 @@ No evidence of cancer-specific DHIS2 modules or cancer data management through D
 4. **Cancer control in the Pacific: big challenges facing small island states (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC7746436/
    Review of cancer control challenges in Pacific island states including PNG, covering registry development and resource constraints.
 
-5. **Papua New Guinea — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/598-papua-new-guinea-fact-sheets.pdf
+5. **Papua New Guinea — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/598-papua-new-guinea-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for PNG.
 
 
@@ -2970,7 +2970,7 @@ No evidence of cancer-specific DHIS2 modules or integration between Philippine C
 4. **Establishing the Philippine Cancer Center National Cancer Research Agenda 2024-2028 (JCO Global Oncology)** — https://ascopubs.org/doi/10.1200/GO-24-00613
    Article on the establishment of the Philippine Cancer Center's research agenda for 2024-2028.
 
-5. **Philippines — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/608-philippines-fact-sheets.pdf
+5. **Philippines — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/608-philippines-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for the Philippines.
 
 
@@ -3023,7 +3023,7 @@ Saint Lucia is planning to implement its cancer registry on DHIS2, indicating ac
 4. **Saint Lucia Cancer Society** — https://stluciacancersociety.org/
    Official website of the Saint Lucia Cancer Society providing cancer assistance and support services.
 
-5. **Saint Lucia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/662-saint-lucia-fact-sheets.pdf
+5. **Saint Lucia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/662-saint-lucia-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Saint Lucia.
 
 
@@ -3116,7 +3116,7 @@ No evidence of cancer-specific DHIS2 modules despite Sierra Leone having a compl
 4. **Spreading the cancer prevention message in Sierra Leone (ecancer)** — https://ecancer.org/en/news/3892-spreading-the-cancer-prevention-message-in-sierra-leone
    Article on cancer prevention awareness and advocacy efforts in Sierra Leone.
 
-5. **Sierra Leone — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/694-sierra-leone-fact-sheets.pdf
+5. **Sierra Leone — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/694-sierra-leone-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Sierra Leone.
 
 
@@ -3143,7 +3143,7 @@ No evidence of cancer-specific DHIS2 use in Solomon Islands. The country has a h
 4. **Cancer Epidemiology in the Pacific Islands — Past, Present and Future (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC4386924/
    Epidemiological review of cancer trends across Pacific island nations including Solomon Islands.
 
-5. **Solomon Islands — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/090-solomon-islands-fact-sheets.pdf
+5. **Solomon Islands — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/090-solomon-islands-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Solomon Islands.
 
 
@@ -3167,7 +3167,7 @@ No evidence of cancer-specific DHIS2 modules in Somalia. No formal cancer regist
 3. **The distribution of cancer cases in Somalia (ResearchGate)** — https://www.researchgate.net/publication/320475788_The_distribution_of_cancer_cases_in_Somalia
    Research on the distribution and patterns of cancer cases in Somalia.
 
-4. **Somalia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/706-somalia-fact-sheets.pdf
+4. **Somalia — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/706-somalia-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Somalia.
 
 
@@ -3194,7 +3194,7 @@ South Africa has extensive national DHIS2 infrastructure (WebDHIS) and a well-es
 4. **Cancer Statistics (NICD)** — https://www.nicd.ac.za/centres/national-cancer-registry/cancer-statistics/
    Cancer statistics from the National Cancer Registry including incidence trends and demographic analysis.
 
-5. **South Africa — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/710-south-africa-fact-sheets.pdf
+5. **South Africa — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/710-south-africa-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for South Africa.
 
 
@@ -3262,7 +3262,7 @@ Sudan uses DHIS2 for routine health information but no documented integration of
 3. **WHO Cancer Country Profile — Sudan** — https://www.who.int/publications/m/item/cancer-sdn
    WHO summary of cancer burden, infrastructure, and policy status in Sudan.
 
-4. **GLOBOCAN Fact Sheet — Sudan** — https://gco.iarc.fr/today/data/factsheets/populations/729-sudan-fact-sheets.pdf
+4. **GLOBOCAN Fact Sheet — Sudan** — https://gco.iarc.who.int/media/globocan/factsheets/populations/729-sudan-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Sudan.
 
 5. **Impact of conflict on health systems in Sudan** — https://www.emro.who.int/countries/sdn/index.html
@@ -3283,7 +3283,7 @@ No documented use of DHIS2 for any health information purpose in Suriname, and n
 1. **WHO Cancer Country Profile — Suriname** — https://www.who.int/publications/m/item/cancer-sur
    WHO summary of cancer burden, infrastructure, and national cancer control planning in Suriname.
 
-2. **GLOBOCAN Fact Sheet — Suriname** — https://gco.iarc.fr/today/data/factsheets/populations/740-suriname-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Suriname** — https://gco.iarc.who.int/media/globocan/factsheets/populations/740-suriname-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Suriname.
 
 3. **PAHO NCD Country Profile — Suriname** — https://www.paho.org/en/noncommunicable-diseases-and-mental-health/noncommunicable-diseases-and-mental-health-data-portal-0
@@ -3313,7 +3313,7 @@ No documented use of DHIS2 for cancer registration, reporting, or surveillance i
 2. **WHO Cancer Country Profile — Syria** — https://www.who.int/publications/m/item/cancer-syr
    WHO summary of cancer burden, infrastructure, and policy status in the Syrian Arab Republic.
 
-3. **Cancer incidence in Syria: epidemiology and burden of disease** — https://gco.iarc.fr/today/data/factsheets/populations/760-syrian-arab-republic-fact-sheets.pdf
+3. **Cancer incidence in Syria: epidemiology and burden of disease** — https://gco.iarc.who.int/media/globocan/factsheets/populations/760-syrian-arab-republic-fact-sheet.pdf
    IARC GLOBOCAN fact sheet summarizing estimated cancer incidence and mortality in Syria.
 
 4. **Syria health system profile — WHO EMRO** — https://www.emro.who.int/countries/syr/index.html
@@ -3367,7 +3367,7 @@ Tanzania has comprehensive DHIS2 deployment for routine health information, but 
 3. **WHO Cancer Country Profile — Tanzania** — https://www.who.int/publications/m/item/cancer-tza
    WHO summary of cancer burden, infrastructure, and national cancer control status in Tanzania.
 
-4. **GLOBOCAN Fact Sheet — Tanzania** — https://gco.iarc.fr/today/data/factsheets/populations/834-united-republic-of-tanzania-fact-sheets.pdf
+4. **GLOBOCAN Fact Sheet — Tanzania** — https://gco.iarc.who.int/media/globocan/factsheets/populations/834-united-republic-of-tanzania-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for the United Republic of Tanzania.
 
 5. **African Cancer Registry Network (AFCRN) — Tanzania** — https://afcrn.org/index.php/activities/membership
@@ -3400,7 +3400,7 @@ DHIS2 is not widely used in Thailand for health information management. Thailand
 3. **WHO Cancer Country Profile — Thailand** — https://www.who.int/publications/m/item/cancer-tha
    WHO summary of cancer burden, infrastructure, and national cancer control status in Thailand.
 
-4. **GLOBOCAN Fact Sheet — Thailand** — https://gco.iarc.fr/today/data/factsheets/populations/764-thailand-fact-sheets.pdf
+4. **GLOBOCAN Fact Sheet — Thailand** — https://gco.iarc.who.int/media/globocan/factsheets/populations/764-thailand-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Thailand.
 
 5. **Population-based cancer registries in Thailand** — https://pubmed.ncbi.nlm.nih.gov/24460416/
@@ -3421,7 +3421,7 @@ DHIS2 is in early deployment in Timor-Leste for basic health reporting. No cance
 1. **WHO Cancer Country Profile — Timor-Leste** — https://www.who.int/publications/m/item/cancer-tls
    WHO summary of cancer burden, infrastructure, and national cancer control status in Timor-Leste.
 
-2. **GLOBOCAN Fact Sheet — Timor-Leste** — https://gco.iarc.fr/today/data/factsheets/populations/626-timor-leste-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Timor-Leste** — https://gco.iarc.who.int/media/globocan/factsheets/populations/626-timor-leste-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Timor-Leste.
 
 3. **Timor-Leste health system profile — WHO** — https://www.who.int/countries/tls
@@ -3445,7 +3445,7 @@ Togo has DHIS2 deployed for routine HMIS but no documented cancer-specific modul
 1. **WHO Cancer Country Profile — Togo** — https://www.who.int/publications/m/item/cancer-tgo
    WHO summary of cancer burden, infrastructure, and national cancer control status in Togo.
 
-2. **GLOBOCAN Fact Sheet — Togo** — https://gco.iarc.fr/today/data/factsheets/populations/768-togo-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Togo** — https://gco.iarc.who.int/media/globocan/factsheets/populations/768-togo-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Togo.
 
 3. **African Cancer Registry Network (AFCRN) membership** — https://afcrn.org/index.php/activities/membership
@@ -3475,7 +3475,7 @@ No evidence of cancer-specific DHIS2 use in Tonga. The Cancer Registry uses CanR
 3. **IARC Pacific Islands Hub for Cancer Registration (GICR)** — https://gicr.iarc.fr/hub/pacific-islands/
    IARC Global Initiative for Cancer Registry Development Pacific Islands Hub covering Tonga.
 
-4. **Tonga — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/776-tonga-fact-sheets.pdf
+4. **Tonga — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/776-tonga-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Tonga.
 
 
@@ -3499,7 +3499,7 @@ No documented use of DHIS2 for health information management or cancer registrat
 3. **WHO Cancer Country Profile — Tunisia** — https://www.who.int/publications/m/item/cancer-tun
    WHO summary of cancer burden, infrastructure, and national cancer control status in Tunisia.
 
-4. **GLOBOCAN Fact Sheet — Tunisia** — https://gco.iarc.fr/today/data/factsheets/populations/788-tunisia-fact-sheets.pdf
+4. **GLOBOCAN Fact Sheet — Tunisia** — https://gco.iarc.who.int/media/globocan/factsheets/populations/788-tunisia-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Tunisia.
 
 5. **Cancer incidence in the Sousse Cancer Registry, Tunisia** — https://pubmed.ncbi.nlm.nih.gov/25074215/
@@ -3535,7 +3535,7 @@ Uganda uses DHIS2 for cervical cancer screening and newly diagnosed cervical can
 6. **Ministry of Health, Uganda Cancer Institute, and KOFIH Strengthen Cervical Cancer Screening (UCI)** — https://uci.or.ug/ministry-health-uganda-cancer-institute-kofih-strengthen-cervical-cancer-screening-services-uganda/
    Documentation of cervical cancer screening service expansion across 20 health facilities in Kampala, Mbarara, and other areas.
 
-7. **Uganda Cancer Profile — GLOBOCAN (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/800-uganda-fact-sheets.pdf
+7. **Uganda Cancer Profile — GLOBOCAN (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/800-uganda-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Uganda.
 
 
@@ -3589,7 +3589,7 @@ Uzbekistan participates in the WHO Global Platform for Childhood Cancer Medicine
 4. **Uzbekistan — Country fact sheet (CanScreen5/IARC)** — https://canscreen5.iarc.fr/?page=countryfactsheet&q=UZB
    IARC CanScreen5 country fact sheet on cancer screening programmes and coverage in Uzbekistan.
 
-5. **Uzbekistan — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.fr/today/data/factsheets/populations/860-uzbekistan-fact-sheets.pdf
+5. **Uzbekistan — GLOBOCAN Factsheet (IARC)** — https://gco.iarc.who.int/media/globocan/factsheets/populations/860-uzbekistan-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Uzbekistan.
 
 
@@ -3607,7 +3607,7 @@ DHIS2 is in early pilot stage in Vanuatu. No cancer-specific modules, cancer reg
 1. **WHO Cancer Country Profile — Vanuatu** — https://www.who.int/publications/m/item/cancer-vut
    WHO summary of cancer burden, infrastructure, and national cancer control status in Vanuatu.
 
-2. **GLOBOCAN Fact Sheet — Vanuatu** — https://gco.iarc.fr/today/data/factsheets/populations/548-vanuatu-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Vanuatu** — https://gco.iarc.who.int/media/globocan/factsheets/populations/548-vanuatu-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Vanuatu.
 
 3. **Pacific island cancer registration and control** — https://pubmed.ncbi.nlm.nih.gov/26773443/
@@ -3634,7 +3634,7 @@ No documented use of DHIS2 for cancer registration or health information managem
 1. **WHO Cancer Country Profile — Venezuela** — https://www.who.int/publications/m/item/cancer-ven
    WHO summary of cancer burden, infrastructure, and national cancer control status in Venezuela.
 
-2. **GLOBOCAN Fact Sheet — Venezuela** — https://gco.iarc.fr/today/data/factsheets/populations/862-venezuela-bolivarian-republic-of-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Venezuela** — https://gco.iarc.who.int/media/globocan/factsheets/populations/862-venezuela-bolivarian-republic-of-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Venezuela.
 
 3. **Impact of the Venezuelan crisis on cancer care** — https://pubmed.ncbi.nlm.nih.gov/30580796/
@@ -3667,7 +3667,7 @@ Vietnam has comprehensive DHIS2 deployment for routine health information. Cance
 3. **WHO Cancer Country Profile — Vietnam** — https://www.who.int/publications/m/item/cancer-vnm
    WHO summary of cancer burden, infrastructure, and national cancer control status in Vietnam.
 
-4. **GLOBOCAN Fact Sheet — Vietnam** — https://gco.iarc.fr/today/data/factsheets/populations/704-viet-nam-fact-sheets.pdf
+4. **GLOBOCAN Fact Sheet — Vietnam** — https://gco.iarc.who.int/media/globocan/factsheets/populations/704-viet-nam-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Vietnam.
 
 5. **Cancer control in Vietnam: challenges and priorities** — https://pubmed.ncbi.nlm.nih.gov/31006590/
@@ -3711,7 +3711,7 @@ DHIS2 is deployed in Yemen for basic health surveillance but no cancer-specific 
 2. **WHO Cancer Country Profile — Yemen** — https://www.who.int/publications/m/item/cancer-yem
    WHO summary of cancer burden, infrastructure, and national cancer control status in Yemen.
 
-3. **GLOBOCAN Fact Sheet — Yemen** — https://gco.iarc.fr/today/data/factsheets/populations/887-yemen-fact-sheets.pdf
+3. **GLOBOCAN Fact Sheet — Yemen** — https://gco.iarc.who.int/media/globocan/factsheets/populations/887-yemen-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for Yemen.
 
 4. **Impact of conflict on health services in Yemen** — https://pubmed.ncbi.nlm.nih.gov/31399256/
@@ -3738,7 +3738,7 @@ Zambia actively reports childhood cancer medicine data through DHIS2 as part of 
 3. **Zambia National Cancer Registry** — https://www.afcrn.org/membership/members/zambia
    Cancer registry operations in Zambia contributing to the African Cancer Registry Network.
 
-4. **Zambia Cancer Profile — GLOBOCAN** — https://gco.iarc.fr/today/data/factsheets/populations/894-zambia-fact-sheets.pdf
+4. **Zambia Cancer Profile — GLOBOCAN** — https://gco.iarc.who.int/media/globocan/factsheets/populations/894-zambia-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Zambia.
 
 5. **Zambia National Cancer Control Strategic Plan** — https://www.iccp-portal.org/plans/zambia-national-cancer-control-strategic-plan
@@ -3765,7 +3765,7 @@ Zanzibar has comprehensive DHIS2 deployment for routine health information as pa
 1. **WHO Cancer Country Profile — Tanzania** — https://www.who.int/publications/m/item/cancer-tza
    WHO summary of cancer burden and infrastructure for the United Republic of Tanzania, which includes Zanzibar.
 
-2. **GLOBOCAN Fact Sheet — Tanzania** — https://gco.iarc.fr/today/data/factsheets/populations/834-united-republic-of-tanzania-fact-sheets.pdf
+2. **GLOBOCAN Fact Sheet — Tanzania** — https://gco.iarc.who.int/media/globocan/factsheets/populations/834-united-republic-of-tanzania-fact-sheet.pdf
    IARC GLOBOCAN estimated cancer incidence and mortality data for the United Republic of Tanzania including Zanzibar.
 
 3. **Zanzibar health system strengthening** — https://www.who.int/countries/tza
@@ -3792,7 +3792,7 @@ Zimbabwe is actively exploring DHIS2 adoption for cancer registration with knowl
 2. **IARC-HISP Centre Collaboration** — https://hisp.uio.no/iarc-hisp-collaboration/
    Zimbabwe is a collaboration country in the IARC-HISP Centre partnership focused on strengthening cancer registration through digital health tools including DHIS2.
 
-3. **Zimbabwe Cancer Profile — GLOBOCAN** — https://gco.iarc.fr/today/data/factsheets/populations/716-zimbabwe-fact-sheets.pdf
+3. **Zimbabwe Cancer Profile — GLOBOCAN** — https://gco.iarc.who.int/media/globocan/factsheets/populations/716-zimbabwe-fact-sheet.pdf
    IARC GLOBOCAN fact sheet providing cancer incidence and mortality estimates for Zimbabwe.
 
 4. **MobiEMR DHIS2 Adaptation** — https://mobiemr.com/
@@ -3818,9 +3818,13 @@ For my first experience with Claude Code, I was overall surprised by the quality
 
 The search results uncovered cancer implementations in Kenya and Bhutan that were not on my radar from HISP discussions and Google Alert.
 
-However, it missed a few countries. [Mozambique](https://www.iaea.org/sites/default/files/2025-07/impact-review-mozambique-110524.pdf), [Tanzania](https://dhis2.udsm.ac.tz/strengthening--cancer--data-management-canreg5-dhis2-integration/) and [Malawi](https://www.iccp-portal.org/sites/default/files/plans/Malawi%20Cervical%20Cancer%20Strategic%20Plan_2022-2026-%20Final%20Print%20Ready%20Version%2016.12.2021%5B1796%5D.pdf) for example, have online sources that cite DHIS2 use for cancer data, which are not *deep* search results, but were marked "no evidence".
+However, it missed a few countries. [Mozambique](https://www.iaea.org/sites/default/files/2025-07/impact-review-mozambique-110524.pdf), [Tanzania](https://dhis2.udsm.ac.tz/strengthening-cancer-data-management-canreg5-dhis2-integration/) and [Malawi](https://www.iccp-portal.org/sites/default/files/plans/Malawi%20Cervical%20Cancer%20Strategic%20Plan_2022-2026-%20Final%20Print%20Ready%20Version%2016.12.2021%5B1796%5D.pdf) for example, have online sources that cite DHIS2 use for cancer data, which are not *deep* search results, but were marked "no evidence".
 
-Its general assessments of evidence for DHIS2 country use were mixed. I was expecting more insights into actual (printed) HMIS forms for monthly NCD reports, many of which are available online. Some links appear to no longer work.
+Its general assessments of evidence for DHIS2 country use were mixed. I was expecting more insights into actual (printed) HMIS forms for monthly NCD reports, many of which are available online. Some links appear to no longer work. Others simply did not exist... hisp.uio.no as one example... another is Ho Chi Monh cancer registry, leads to a totally different study: 
+```
+2. **Ho Chi Minh City Cancer Registry** — https://pubmed.ncbi.nlm.nih.gov/26773450/
+   Description of the Ho Chi Minh City population-based cancer registry and cancer incidence trends in southern Vietnam.
+```
 
 The search was extremely broad at the expense of detail and depth. Since I noticed it didn't pick up on confirmed Malawi implemenations, I asked for a follow up and specified "deep search" to make sure it covered oncology and cervical cancer. It added more sources but did not find evidence of cancer registry or HPV prevention which exist in country. More resources could give "deep" search to all countries marked "Low evidence".
 
@@ -3855,7 +3859,7 @@ This meant I needed another instruction (WEBSEARCH_CLEAN_RESULTS) to go back and
   cleanly separated by language. This matches the Chile template better than a combined header.
 ```
 
-## Conclusions
+## Conclusions and recommendations
 
 * LLMs processing websearch results could support DHIS2 global team to get a global and general overview of current implementations of DHIS2 at a country level. The point is to *quickly* get a broad overview of available open source literature.
 
