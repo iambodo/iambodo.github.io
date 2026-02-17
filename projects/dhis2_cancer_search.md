@@ -3,6 +3,7 @@
 Brian O'Donnell / HISP Centre
 
 02/17/2026
+
 ____
 
 
@@ -28,9 +29,9 @@ ____
 
 One example of an emerging use case in DHIS2 is cancer surveillance. Several countries have developed cancer registries or oncology modules with DHIS2 Tracker in recent years. Some initiatives have also managed cervical and breast cancer screenings or HPV vaccination campaigns with DHIS2 Tracker. Further, many countries report aggregated data on cancer diagnoses from district or facility level through the DHIS2-based HMIS systems. As the HISP centre works with WHO IARC to [share more resources on DHIS2 usage as a flexible cancer registry](https://dhis2.org/iarc-hisp-centre-cancer-registries/), a "quick and dirty" global landscape analysis would provide useful, timely, and actionable intelligence.
 
-AI tools present an opportunity to add to the HISP Centre's overall picture of DHIS2 usage by performing automated research and synthesis across open sources. While most countries do not publish HMIS any other sources of information are publicly available online, several academic papers and government sources document DHIS2 usage. Automating this online search could be combined with voluntary inputs from HISP groups and the DHIS2 community of practice.
+AI tools present an opportunity to add to the HISP Centre's overall picture of DHIS2 usage by performing automated research and synthesis across open sources. While most countries do not publish HMIS datasets, many other sources of information are publicly available online, and several academic papers and government sources document DHIS2 usage. Automating this online search could be combined with voluntary inputs from HISP groups and the DHIS2 community of practice to give a fuller picture of DHIS2 global use.
 
-This report documents my initial attempts at a global DHIS2 use search task with generative AI and a web search API.
+This report documents my initial attempts at a global DHIS2 use search task with generative AI and a web search API, with the cancer domain (registries or aggregate) as an example.
 
 ## Methods
 
