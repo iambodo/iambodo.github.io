@@ -239,119 +239,119 @@ In our country implementation google drive, 26 countries had "cancer" somewhere 
 
 __NOTE: The following results are all AI generated__
 
-- [Afghanistan -- Cancer & DHIS2 Profile](#afghanistan-cancer-dhis2-profile)
-- [Algeria -- Cancer & DHIS2 Profile](#algeria-cancer-dhis2-profile)
-- [Angola -- Cancer & DHIS2 Profile](#angola-cancer-dhis2-profile)
-- [Antigua and Barbuda -- Cancer & DHIS2 Profile](#antigua-and-barbuda-cancer-dhis2-profile)
-- [Argentina -- Cancer & DHIS2 Profile](#argentina-cancer-dhis2-profile)
-- [Bangladesh -- Cancer & DHIS2 Profile](#bangladesh-cancer-dhis2-profile)
-- [Benin -- Cancer & DHIS2 Profile](#benin-cancer-dhis2-profile)
-- [Bhutan -- Cancer & DHIS2 Profile](#bhutan-cancer-dhis2-profile)
-- [Botswana -- Cancer & DHIS2 Profile](#botswana-cancer-dhis2-profile)
-- [Brazil -- Cancer & DHIS2 Profile](#brazil-cancer-dhis2-profile)
-- [Burkina Faso -- Cancer & DHIS2 Profile](#burkina-faso-cancer-dhis2-profile)
-- [Burundi -- Cancer & DHIS2 Profile](#burundi-cancer-dhis2-profile)
-- [Cambodia -- Cancer & DHIS2 Profile](#cambodia-cancer-dhis2-profile)
-- [Cameroon -- Cancer & DHIS2 Profile](#cameroon-cancer-dhis2-profile)
-- [Cape Verde -- Cancer & DHIS2 Profile](#cape-verde-cancer-dhis2-profile)
-- [Central African Republic -- Cancer & DHIS2 Profile](#central-african-republic-cancer-dhis2-profile)
-- [Chad -- Cancer & DHIS2 Profile](#chad-cancer-dhis2-profile)
-- [Chile — Cancer & DHIS2 Profile](#chile-cancer-dhis2-profile)
-- [Colombia — Cancer & DHIS2 Profile](#colombia-cancer-dhis2-profile)
-- [Comoros — Cancer & DHIS2 Profile](#comoros-cancer-dhis2-profile)
-- [Congo Republic (Brazzaville) — Cancer & DHIS2 Profile](#congo-republic-brazzaville-cancer-dhis2-profile)
-- [Costa Rica — Cancer & DHIS2 Profile](#costa-rica-cancer-dhis2-profile)
-- [Cote d'Ivoire — Cancer & DHIS2 Profile](#cote-divoire-cancer-dhis2-profile)
-- [Djibouti — Cancer & DHIS2 Profile](#djibouti-cancer-dhis2-profile)
-- [Dominica — Cancer & DHIS2 Profile](#dominica-cancer-dhis2-profile)
-- [Dominican Republic — Cancer & DHIS2 Profile](#dominican-republic-cancer-dhis2-profile)
-- [DPR Korea — Cancer & DHIS2 Profile](#dpr-korea-cancer-dhis2-profile)
-- [DRC — Cancer & DHIS2 Profile](#drc-cancer-dhis2-profile)
-- [Ecuador — Cancer & DHIS2 Profile](#ecuador-cancer-dhis2-profile)
-- [Egypt — Cancer & DHIS2 Profile](#egypt-cancer-dhis2-profile)
-- [El Salvador — Cancer & DHIS2 Profile](#el-salvador-cancer-dhis2-profile)
-- [Equatorial Guinea — Cancer & DHIS2 Profile](#equatorial-guinea-cancer-dhis2-profile)
-- [Eritrea — Cancer & DHIS2 Profile](#eritrea-cancer-dhis2-profile)
-- [Eswatini — Cancer & DHIS2 Profile](#eswatini-cancer-dhis2-profile)
-- [Ethiopia — Cancer & DHIS2 Profile](#ethiopia-cancer-dhis2-profile)
-- [Gabon — Cancer & DHIS2 Profile](#gabon-cancer-dhis2-profile)
-- [Gambia — Cancer & DHIS2 Profile](#gambia-cancer-dhis2-profile)
-- [Ghana — Cancer & DHIS2 Profile](#ghana-cancer-dhis2-profile)
-- [Grenada — Cancer & DHIS2 Profile](#grenada-cancer-dhis2-profile)
-- [Guatemala — Cancer & DHIS2 Profile](#guatemala-cancer-dhis2-profile)
-- [Guinea-Bissau — Cancer & DHIS2 Profile](#guinea-bissau-cancer-dhis2-profile)
-- [Guinea — Cancer & DHIS2 Profile](#guinea-cancer-dhis2-profile)
-- [Guyana — Cancer & DHIS2 Profile](#guyana-cancer-dhis2-profile)
-- [Haiti — Cancer & DHIS2 Profile](#haiti-cancer-dhis2-profile)
-- [Honduras — Cancer & DHIS2 Profile](#honduras-cancer-dhis2-profile)
-- [India — Cancer & DHIS2 Profile](#india-cancer-dhis2-profile)
-- [Indonesia — Cancer & DHIS2 Profile](#indonesia-cancer-dhis2-profile)
-- [Iraq — Cancer & DHIS2 Profile](#iraq-cancer-dhis2-profile)
-- [Jamaica — Cancer & DHIS2 Profile](#jamaica-cancer-dhis2-profile)
-- [Jordan — Cancer & DHIS2 Profile](#jordan-cancer-dhis2-profile)
-- [Kazakhstan — Cancer & DHIS2 Profile](#kazakhstan-cancer-dhis2-profile)
-- [Kenya — Cancer & DHIS2 Profile](#kenya-cancer-dhis2-profile)
-- [Kiribati — Cancer & DHIS2 Profile](#kiribati-cancer-dhis2-profile)
-- [Kyrgyzstan — Cancer & DHIS2 Profile](#kyrgyzstan-cancer-dhis2-profile)
-- [Lao — Cancer & DHIS2 Profile](#lao-cancer-dhis2-profile)
-- [Lebanon — Cancer & DHIS2 Profile](#lebanon-cancer-dhis2-profile)
-- [Lesotho — Cancer & DHIS2 Profile](#lesotho-cancer-dhis2-profile)
-- [Liberia — Cancer & DHIS2 Profile](#liberia-cancer-dhis2-profile)
-- [Libya — Cancer & DHIS2 Profile](#libya-cancer-dhis2-profile)
-- [Madagascar — Cancer & DHIS2 Profile](#madagascar-cancer-dhis2-profile)
-- [Malawi — Cancer & DHIS2 Profile](#malawi-cancer-dhis2-profile)
-- [Maldives — Cancer & DHIS2 Profile](#maldives-cancer-dhis2-profile)
-- [Mali — Cancer & DHIS2 Profile](#mali-cancer-dhis2-profile)
-- [Mauritania — Cancer & DHIS2 Profile](#mauritania-cancer-dhis2-profile)
-- [Mauritius — Cancer & DHIS2 Profile](#mauritius-cancer-dhis2-profile)
-- [Mongolia — Cancer & DHIS2 Profile](#mongolia-cancer-dhis2-profile)
-- [Morocco — Cancer & DHIS2 Profile](#morocco-cancer-dhis2-profile)
-- [Mozambique — Cancer & DHIS2 Profile](#mozambique-cancer-dhis2-profile)
-- [Myanmar — Cancer & DHIS2 Profile](#myanmar-cancer-dhis2-profile)
-- [Namibia — Cancer & DHIS2 Profile](#namibia-cancer-dhis2-profile)
-- [Nepal — Cancer & DHIS2 Profile](#nepal-cancer-dhis2-profile)
-- [Nicaragua — Cancer & DHIS2 Profile](#nicaragua-cancer-dhis2-profile)
-- [Niger — Cancer & DHIS2 Profile](#niger-cancer-dhis2-profile)
-- [Nigeria — Cancer & DHIS2 Profile](#nigeria-cancer-dhis2-profile)
-- [Norway — Cancer & DHIS2 Profile](#norway-cancer-dhis2-profile)
-- [Pakistan — Cancer & DHIS2 Profile](#pakistan-cancer-dhis2-profile)
-- [Palestine — Cancer & DHIS2 Profile](#palestine-cancer-dhis2-profile)
-- [Panama — Cancer & DHIS2 Profile](#panama-cancer-dhis2-profile)
-- [Papua New Guinea — Cancer & DHIS2 Profile](#papua-new-guinea-cancer-dhis2-profile)
-- [Paraguay — Cancer & DHIS2 Profile](#paraguay-cancer-dhis2-profile)
-- [Philippines — Cancer & DHIS2 Profile](#philippines-cancer-dhis2-profile)
-- [Rwanda — Cancer & DHIS2 Profile](#rwanda-cancer-dhis2-profile)
-- [Saint Lucia — Cancer & DHIS2 Profile](#saint-lucia-cancer-dhis2-profile)
-- [Sao Tomé and Principe — Cancer & DHIS2 Profile](#sao-tomé-and-principe-cancer-dhis2-profile)
-- [Senegal — Cancer & DHIS2 Profile](#senegal-cancer-dhis2-profile)
-- [Seychelles — Cancer & DHIS2 Profile](#seychelles-cancer-dhis2-profile)
-- [Sierra Leone — Cancer & DHIS2 Profile](#sierra-leone-cancer-dhis2-profile)
-- [Solomon Islands — Cancer & DHIS2 Profile](#solomon-islands-cancer-dhis2-profile)
-- [Somalia — Cancer & DHIS2 Profile](#somalia-cancer-dhis2-profile)
-- [South Africa — Cancer & DHIS2 Profile](#south-africa-cancer-dhis2-profile)
-- [South Sudan — Cancer & DHIS2 Profile](#south-sudan-cancer-dhis2-profile)
-- [Sri Lanka — Cancer & DHIS2 Profile](#sri-lanka-cancer-dhis2-profile)
-- [Sudan — Cancer & DHIS2 Profile](#sudan-cancer-dhis2-profile)
-- [Suriname — Cancer & DHIS2 Profile](#suriname-cancer-dhis2-profile)
-- [Syria — Cancer & DHIS2 Profile](#syria-cancer-dhis2-profile)
-- [Tajikistan — Cancer & DHIS2 Profile](#tajikistan-cancer-dhis2-profile)
-- [Tanzania — Cancer & DHIS2 Profile](#tanzania-cancer-dhis2-profile)
-- [Thailand — Cancer & DHIS2 Profile](#thailand-cancer-dhis2-profile)
-- [Timor-Leste — Cancer & DHIS2 Profile](#timor-leste-cancer-dhis2-profile)
-- [Togo — Cancer & DHIS2 Profile](#togo-cancer-dhis2-profile)
-- [Tonga — Cancer & DHIS2 Profile](#tonga-cancer-dhis2-profile)
-- [Tunisia — Cancer & DHIS2 Profile](#tunisia-cancer-dhis2-profile)
-- [Uganda — Cancer & DHIS2 Profile](#uganda-cancer-dhis2-profile)
-- [Ukraine — Cancer & DHIS2 Profile](#ukraine-cancer-dhis2-profile)
-- [Uzbekistan — Cancer & DHIS2 Profile](#uzbekistan-cancer-dhis2-profile)
-- [Vanuatu — Cancer & DHIS2 Profile](#vanuatu-cancer-dhis2-profile)
-- [Venezuela — Cancer & DHIS2 Profile](#venezuela-cancer-dhis2-profile)
-- [Vietnam — Cancer & DHIS2 Profile](#vietnam-cancer-dhis2-profile)
-- [Western Sahara — Cancer & DHIS2 Profile](#western-sahara-cancer-dhis2-profile)
-- [Yemen — Cancer & DHIS2 Profile](#yemen-cancer-dhis2-profile)
-- [Zambia — Cancer & DHIS2 Profile](#zambia-cancer-dhis2-profile)
-- [Zanzibar — Cancer & DHIS2 Profile](#zanzibar-cancer-dhis2-profile)
-- [Zimbabwe — Cancer & DHIS2 Profile](#zimbabwe-cancer-dhis2-profile)
+- [Afghanistan -- Cancer & DHIS2 Profile](#afghanistan--cancer--dhis2-profile)
+- [Algeria -- Cancer & DHIS2 Profile](#algeria--cancer--dhis2-profile)
+- [Angola -- Cancer & DHIS2 Profile](#angola--cancer--dhis2-profile)
+- [Antigua and Barbuda -- Cancer & DHIS2 Profile](#antigua-and-barbuda--cancer--dhis2-profile)
+- [Argentina -- Cancer & DHIS2 Profile](#argentina--cancer--dhis2-profile)
+- [Bangladesh -- Cancer & DHIS2 Profile](#bangladesh--cancer--dhis2-profile)
+- [Benin -- Cancer & DHIS2 Profile](#benin--cancer--dhis2-profile)
+- [Bhutan -- Cancer & DHIS2 Profile](#bhutan--cancer--dhis2-profile)
+- [Botswana -- Cancer & DHIS2 Profile](#botswana--cancer--dhis2-profile)
+- [Brazil -- Cancer & DHIS2 Profile](#brazil--cancer--dhis2-profile)
+- [Burkina Faso -- Cancer & DHIS2 Profile](#burkina-faso--cancer--dhis2-profile)
+- [Burundi -- Cancer & DHIS2 Profile](#burundi--cancer--dhis2-profile)
+- [Cambodia -- Cancer & DHIS2 Profile](#cambodia--cancer--dhis2-profile)
+- [Cameroon -- Cancer & DHIS2 Profile](#cameroon--cancer--dhis2-profile)
+- [Cape Verde -- Cancer & DHIS2 Profile](#cape-verde--cancer--dhis2-profile)
+- [Central African Republic -- Cancer & DHIS2 Profile](#central-african-republic--cancer--dhis2-profile)
+- [Chad -- Cancer & DHIS2 Profile](#chad--cancer--dhis2-profile)
+- [Chile — Cancer & DHIS2 Profile](#chile--cancer--dhis2-profile)
+- [Colombia — Cancer & DHIS2 Profile](#colombia--cancer--dhis2-profile)
+- [Comoros — Cancer & DHIS2 Profile](#comoros--cancer--dhis2-profile)
+- [Congo Republic (Brazzaville) — Cancer & DHIS2 Profile](#congo-republic-brazzaville--cancer--dhis2-profile)
+- [Costa Rica — Cancer & DHIS2 Profile](#costa-rica--cancer--dhis2-profile)
+- [Cote d'Ivoire — Cancer & DHIS2 Profile](#cote-divoire--cancer--dhis2-profile)
+- [Djibouti — Cancer & DHIS2 Profile](#djibouti--cancer--dhis2-profile)
+- [Dominica — Cancer & DHIS2 Profile](#dominica--cancer--dhis2-profile)
+- [Dominican Republic — Cancer & DHIS2 Profile](#dominican-republic--cancer--dhis2-profile)
+- [DPR Korea — Cancer & DHIS2 Profile](#dpr-korea--cancer--dhis2-profile)
+- [DRC — Cancer & DHIS2 Profile](#drc--cancer--dhis2-profile)
+- [Ecuador — Cancer & DHIS2 Profile](#ecuador--cancer--dhis2-profile)
+- [Egypt — Cancer & DHIS2 Profile](#egypt--cancer--dhis2-profile)
+- [El Salvador — Cancer & DHIS2 Profile](#el-salvador--cancer--dhis2-profile)
+- [Equatorial Guinea — Cancer & DHIS2 Profile](#equatorial-guinea--cancer--dhis2-profile)
+- [Eritrea — Cancer & DHIS2 Profile](#eritrea--cancer--dhis2-profile)
+- [Eswatini — Cancer & DHIS2 Profile](#eswatini--cancer--dhis2-profile)
+- [Ethiopia — Cancer & DHIS2 Profile](#ethiopia--cancer--dhis2-profile)
+- [Gabon — Cancer & DHIS2 Profile](#gabon--cancer--dhis2-profile)
+- [Gambia — Cancer & DHIS2 Profile](#gambia--cancer--dhis2-profile)
+- [Ghana — Cancer & DHIS2 Profile](#ghana--cancer--dhis2-profile)
+- [Grenada — Cancer & DHIS2 Profile](#grenada--cancer--dhis2-profile)
+- [Guatemala — Cancer & DHIS2 Profile](#guatemala--cancer--dhis2-profile)
+- [Guinea-Bissau — Cancer & DHIS2 Profile](#guinea-bissau--cancer--dhis2-profile)
+- [Guinea — Cancer & DHIS2 Profile](#guinea--cancer--dhis2-profile)
+- [Guyana — Cancer & DHIS2 Profile](#guyana--cancer--dhis2-profile)
+- [Haiti — Cancer & DHIS2 Profile](#haiti--cancer--dhis2-profile)
+- [Honduras — Cancer & DHIS2 Profile](#honduras--cancer--dhis2-profile)
+- [India — Cancer & DHIS2 Profile](#india--cancer--dhis2-profile)
+- [Indonesia — Cancer & DHIS2 Profile](#indonesia--cancer--dhis2-profile)
+- [Iraq — Cancer & DHIS2 Profile](#iraq--cancer--dhis2-profile)
+- [Jamaica — Cancer & DHIS2 Profile](#jamaica--cancer--dhis2-profile)
+- [Jordan — Cancer & DHIS2 Profile](#jordan--cancer--dhis2-profile)
+- [Kazakhstan — Cancer & DHIS2 Profile](#kazakhstan--cancer--dhis2-profile)
+- [Kenya — Cancer & DHIS2 Profile](#kenya--cancer--dhis2-profile)
+- [Kiribati — Cancer & DHIS2 Profile](#kiribati--cancer--dhis2-profile)
+- [Kyrgyzstan — Cancer & DHIS2 Profile](#kyrgyzstan--cancer--dhis2-profile)
+- [Lao — Cancer & DHIS2 Profile](#lao--cancer--dhis2-profile)
+- [Lebanon — Cancer & DHIS2 Profile](#lebanon--cancer--dhis2-profile)
+- [Lesotho — Cancer & DHIS2 Profile](#lesotho--cancer--dhis2-profile)
+- [Liberia — Cancer & DHIS2 Profile](#liberia--cancer--dhis2-profile)
+- [Libya — Cancer & DHIS2 Profile](#libya--cancer--dhis2-profile)
+- [Madagascar — Cancer & DHIS2 Profile](#madagascar--cancer--dhis2-profile)
+- [Malawi — Cancer & DHIS2 Profile](#malawi--cancer--dhis2-profile)
+- [Maldives — Cancer & DHIS2 Profile](#maldives--cancer--dhis2-profile)
+- [Mali — Cancer & DHIS2 Profile](#mali--cancer--dhis2-profile)
+- [Mauritania — Cancer & DHIS2 Profile](#mauritania--cancer--dhis2-profile)
+- [Mauritius — Cancer & DHIS2 Profile](#mauritius--cancer--dhis2-profile)
+- [Mongolia — Cancer & DHIS2 Profile](#mongolia--cancer--dhis2-profile)
+- [Morocco — Cancer & DHIS2 Profile](#morocco--cancer--dhis2-profile)
+- [Mozambique — Cancer & DHIS2 Profile](#mozambique--cancer--dhis2-profile)
+- [Myanmar — Cancer & DHIS2 Profile](#myanmar--cancer--dhis2-profile)
+- [Namibia — Cancer & DHIS2 Profile](#namibia--cancer--dhis2-profile)
+- [Nepal — Cancer & DHIS2 Profile](#nepal--cancer--dhis2-profile)
+- [Nicaragua — Cancer & DHIS2 Profile](#nicaragua--cancer--dhis2-profile)
+- [Niger — Cancer & DHIS2 Profile](#niger--cancer--dhis2-profile)
+- [Nigeria — Cancer & DHIS2 Profile](#nigeria--cancer--dhis2-profile)
+- [Norway — Cancer & DHIS2 Profile](#norway--cancer--dhis2-profile)
+- [Pakistan — Cancer & DHIS2 Profile](#pakistan--cancer--dhis2-profile)
+- [Palestine — Cancer & DHIS2 Profile](#palestine--cancer--dhis2-profile)
+- [Panama — Cancer & DHIS2 Profile](#panama--cancer--dhis2-profile)
+- [Papua New Guinea — Cancer & DHIS2 Profile](#papua-new-guinea--cancer--dhis2-profile)
+- [Paraguay — Cancer & DHIS2 Profile](#paraguay--cancer--dhis2-profile)
+- [Philippines — Cancer & DHIS2 Profile](#philippines--cancer--dhis2-profile)
+- [Rwanda — Cancer & DHIS2 Profile](#rwanda--cancer--dhis2-profile)
+- [Saint Lucia — Cancer & DHIS2 Profile](#saint-lucia--cancer--dhis2-profile)
+- [Sao Tomé and Principe — Cancer & DHIS2 Profile](#sao-tomé-and-principe--cancer--dhis2-profile)
+- [Senegal — Cancer & DHIS2 Profile](#senegal--cancer--dhis2-profile)
+- [Seychelles — Cancer & DHIS2 Profile](#seychelles--cancer--dhis2-profile)
+- [Sierra Leone — Cancer & DHIS2 Profile](#sierra-leone--cancer--dhis2-profile)
+- [Solomon Islands — Cancer & DHIS2 Profile](#solomon-islands--cancer--dhis2-profile)
+- [Somalia — Cancer & DHIS2 Profile](#somalia--cancer--dhis2-profile)
+- [South Africa — Cancer & DHIS2 Profile](#south-africa--cancer--dhis2-profile)
+- [South Sudan — Cancer & DHIS2 Profile](#south-sudan--cancer--dhis2-profile)
+- [Sri Lanka — Cancer & DHIS2 Profile](#sri-lanka--cancer--dhis2-profile)
+- [Sudan — Cancer & DHIS2 Profile](#sudan--cancer--dhis2-profile)
+- [Suriname — Cancer & DHIS2 Profile](#suriname--cancer--dhis2-profile)
+- [Syria — Cancer & DHIS2 Profile](#syria--cancer--dhis2-profile)
+- [Tajikistan — Cancer & DHIS2 Profile](#tajikistan--cancer--dhis2-profile)
+- [Tanzania — Cancer & DHIS2 Profile](#tanzania--cancer--dhis2-profile)
+- [Thailand — Cancer & DHIS2 Profile](#thailand--cancer--dhis2-profile)
+- [Timor-Leste — Cancer & DHIS2 Profile](#timor-leste--cancer--dhis2-profile)
+- [Togo — Cancer & DHIS2 Profile](#togo--cancer--dhis2-profile)
+- [Tonga — Cancer & DHIS2 Profile](#tonga--cancer--dhis2-profile)
+- [Tunisia — Cancer & DHIS2 Profile](#tunisia--cancer--dhis2-profile)
+- [Uganda — Cancer & DHIS2 Profile](#uganda--cancer--dhis2-profile)
+- [Ukraine — Cancer & DHIS2 Profile](#ukraine--cancer--dhis2-profile)
+- [Uzbekistan — Cancer & DHIS2 Profile](#uzbekistan--cancer--dhis2-profile)
+- [Vanuatu — Cancer & DHIS2 Profile](#vanuatu--cancer--dhis2-profile)
+- [Venezuela — Cancer & DHIS2 Profile](#venezuela--cancer--dhis2-profile)
+- [Vietnam — Cancer & DHIS2 Profile](#vietnam--cancer--dhis2-profile)
+- [Western Sahara — Cancer & DHIS2 Profile](#western-sahara--cancer--dhis2-profile)
+- [Yemen — Cancer & DHIS2 Profile](#yemen--cancer--dhis2-profile)
+- [Zambia — Cancer & DHIS2 Profile](#zambia--cancer--dhis2-profile)
+- [Zanzibar — Cancer & DHIS2 Profile](#zanzibar--cancer--dhis2-profile)
+- [Zimbabwe — Cancer & DHIS2 Profile](#zimbabwe--cancer--dhis2-profile)
 
 ---
 
@@ -522,7 +522,7 @@ DHIS2 is the designated national HMIS platform, and there are documented plans t
 9. **Antigua/Barbuda Cancer Incidence Study (WIMJ Open)** -- https://www.mona.uwi.edu/wimjopen/article/1600
    Historical cancer incidence study for Antigua and Barbuda published in the West Indian Medical Journal.
 
-10. **CARPHA and Vital Strategies sign agreement to strengthen cancer data collection in Jamaica (Antigua Observer)** -- https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen-cancer-data-collection-systems-in-jamaica/
+10. **CARPHA and Vital Strategies sign agreement to strengthen cancer data collection in Jamaica (Antigua Observer)** -- https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen--cancer--data-collection-systems-in-jamaica/
     Regional efforts by CARPHA and Vital Strategies to strengthen cancer data collection systems in the Caribbean, relevant to Antigua and Barbuda's regional context.
 
 
@@ -562,7 +562,7 @@ Argentina has its own well-established health information infrastructure (SISA, 
 8. **Portal de Datos Abiertos Salud -- Cancer (Argentina.gob.ar)** -- https://datos.salud.gob.ar/dataset?tags=cancer
    Argentina's open health data portal with cancer-related datasets available for public access.
 
-9. **RITA: Registro Institucional de Tumores de Argentina -- Cancer cases diagnosed 2012-2022** -- https://datos.salud.gob.ar/dataset/rita-registro-institucional-de-tumores-de-argentina-casos-de-cancer-diagnosticados-2012-2022
+9. **RITA: Registro Institucional de Tumores de Argentina -- Cancer cases diagnosed 2012-2022** -- https://datos.salud.gob.ar/dataset/rita-registro-institucional-de-tumores-de-argentina-casos-de--cancer--diagnosticados-2012-2022
    Open data from RITA covering cancer cases diagnosed from 2012 to 2022.
 
 10. **Sistema Integrado de Informacion Sanitaria Argentino (SISA)** -- https://sisa.msal.gov.ar/sisa/
@@ -734,7 +734,7 @@ Brazil uses its own suite of national health information systems (Siscan, SISMAM
 #### Portuguese query results
 (Query: Brasil cancer DHIS2 registro cancer rastreio)
 
-1. **Registro de Cancer de Base Populacional (RCBP) -- IBGE** -- https://ces.ibge.gov.br/base-de-dados/metadados/ministerio-da-saude/registro-de-cancer-de-base-populacional-rcbp.html
+1. **Registro de Cancer de Base Populacional (RCBP) -- IBGE** -- https://ces.ibge.gov.br/base-de-dados/metadados/ministerio-da-saude/registro-de--cancer--de-base-populacional-rcbp.html
    Official metadata page for Brazil's population-based cancer registries, operational since 1967 with over 20 registries across the country.
 
 2. **Deteccao Precoce do Cancer -- INCA** -- https://www.inca.gov.br/sites/ufu.sti.inca.local/files/media/document/deteccao-precoce-do-cancer.pdf
@@ -764,7 +764,7 @@ Burkina Faso has confirmed use of DHIS2 Tracker for cervical cancer screening pr
 ### Search Results
 
 #### French query results
-1. **Accelerer l'elimination du cancer du col de l'uterus au Burkina Faso** -- https://www.uicc.org/news/acc%C3%A9l%C3%A9rer-l%C3%A9limination-du-cancer-du-col-de-lut%C3%A9rus-au-burkina-faso
+1. **Accelerer l'elimination du cancer du col de l'uterus au Burkina Faso** -- https://www.uicc.org/news/acc%C3%A9l%C3%A9rer-l%C3%A9limination-du--cancer--du-col-de-lut%C3%A9rus-au-burkina-faso
    UICC article on the SUCCESS project using DHIS2 Tracker for cervical cancer elimination in Burkina Faso.
 
 2. **Strategie nationale de lutte contre le cancer 2021-2025** -- https://www.iccp-portal.org/sites/default/files/plans/BFA_B5_Strat%C3%A9gie%20nationale%20de%20lutte%20contre%20le%20cancer%202021-2025_VF%2022-10-2020.pdf
@@ -773,10 +773,10 @@ Burkina Faso has confirmed use of DHIS2 Tracker for cervical cancer screening pr
 3. **Implementation du depistage du cancer du col -- Medecins du Monde** -- https://www.medecinsdumonde.org/app/uploads/2024/04/MDM-Rapport-CCU-BurkinaFaso_version-online-1.pdf
    Report on cervical cancer screening implementation in Burkina Faso.
 
-4. **Renforcer la prevention secondaire du cancer du col de l'uterus (SUCCESS/Expertise France)** -- https://linitiative.expertisefrance.fr/app/uploads/2025/01/capitalisation-success-renforcer-la-prevention-secondaire-du-cancer-du-col-de-luterus.pdf
+4. **Renforcer la prevention secondaire du cancer du col de l'uterus (SUCCESS/Expertise France)** -- https://linitiative.expertisefrance.fr/app/uploads/2025/01/capitalisation-success-renforcer-la-prevention-secondaire-du--cancer--du-col-de-luterus.pdf
    SUCCESS project capitalisation report describing use of DHIS2 Tracker for cervical cancer screening in Burkina Faso and Cote d'Ivoire.
 
-5. **Au Burkina Faso, ameliorer le depistage et la prevention du cancer du col de l'uterus (WHO AFRO)** -- https://www.afro.who.int/fr/news/au-burkina-faso-ameliorer-le-depistage-et-la-prevention-du-cancer-du-col-de-luterus
+5. **Au Burkina Faso, ameliorer le depistage et la prevention du cancer du col de l'uterus (WHO AFRO)** -- https://www.afro.who.int/fr/news/au-burkina-faso-ameliorer-le-depistage-et-la-prevention-du--cancer--du-col-de-luterus
    WHO AFRO article on improving cervical cancer screening and prevention in Burkina Faso.
 
 6. **Le Cancer du Sein a Bobo-Dioulasso: Resultats de la Prise en Charge** -- https://www.techscience.com/oncologie/v24n2/48737/html
@@ -1232,7 +1232,7 @@ Djibouti has some engagement with the DHIS2 ecosystem (participants attended a D
 ### Search Results
 
 #### French query results
-1. **Profil pour le cancer du col de l'uterus - Djibouti** — https://cdn.who.int/media/docs/default-source/country-profiles/cervical-cancer/cervical-cancer-dji-2021-country-profile-fr.pdf
+1. **Profil pour le cancer du col de l'uterus - Djibouti** — https://cdn.who.int/media/docs/default-source/country-profiles/cervical-cancer/cervical--cancer--dji-2021-country-profile-fr.pdf
    WHO cervical cancer country profile for Djibouti with morbidity and mortality data (2021).
 
 2. **An Overview of Cancer in Djibouti: Current Status, Therapeutic Approaches, and Promising Endeavors** — https://www.mdpi.com/1424-8247/16/11/1617
@@ -1787,7 +1787,7 @@ DHIS2 is used as the national HMIS for aggregate disease surveillance, but there
 1. **Analyse des resultats des campagnes de depistage du cancer du col de l'uterus a Conakry, Guinee** — https://www.em-consulte.com/article/1181723/analyse-des-resultats-des-campagnes-de-depistage-d
    Analysis of cervical cancer screening campaign results in Conakry, documenting VIA/VILI screening methods and case findings.
 
-2. **Guinee: Formation regionale au depistage du cancer de col de l'uterus par IVA/cryotherapie** — https://staging.afro.who.int/fr/countries/guinea/news/guinee-formation-regionale-au-depistage-du-cancer-de-col-de-luterus-par-iva-cryotherapie
+2. **Guinee: Formation regionale au depistage du cancer de col de l'uterus par IVA/cryotherapie** — https://staging.afro.who.int/fr/countries/guinea/news/guinee-formation-regionale-au-depistage-du--cancer--de-col-de-luterus-par-iva-cryotherapie
    WHO regional training programme on cervical cancer screening using visual inspection and cryotherapy treatment methods.
 
 #### English query results
@@ -1925,7 +1925,7 @@ India was an early DHIS2 adopter (2006) with implementations across multiple sta
 ### Search Results
 
 #### Hindi query results
-1. **National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)** — https://main.mohfw.gov.in/Major-Programmes/non-communicable-diseases-injury-trauma/Non-Communicable-Disease-II/National-Programme-for-Prevention-and-Control-of-Cancer-Diabetes-Cardiovascular-diseases-and-Stroke-NPCDCS
+1. **National Programme for Prevention and Control of Cancer, Diabetes, Cardiovascular Diseases & Stroke (NPCDCS)** — https://main.mohfw.gov.in/Major-Programmes/non-communicable-diseases-injury-trauma/Non-Communicable-Disease-II/National-Programme-for-Prevention-and-Control-of--cancer--diabetes-Cardiovascular-diseases-and-Stroke-NPCDCS
    Ministry of Health and Family Welfare page on India's national NCD program covering oral, breast, and cervical cancer screening through primary health centers.
 
 2. **ICMR-NCDIR National Cancer Registry Programme** — https://www.icmr.gov.in/icmrobject/custom_data/1702893085_icmr_press_release_ncrp_18082020.pdf
@@ -2054,19 +2054,19 @@ Jamaica has implemented DHIS2 Tracker for its National Cancer Registry, making i
 ### Search Results
 
 #### English query results
-1. **Jamaica to Enhance Cancer Data Tracking with New Software (Ministry of Health and Wellness, Jamaica)** — https://www.moh.gov.jm/jamaica-to-enhance-cancer-data-tracking-with-new-software/
+1. **Jamaica to Enhance Cancer Data Tracking with New Software (Ministry of Health and Wellness, Jamaica)** — https://www.moh.gov.jm/jamaica-to-enhance--cancer--data-tracking-with-new-software/
    Official government announcement of Jamaica as the first Caribbean country and second in the world to use DHIS2 for population-wide cancer reporting.
 
 2. **Cancer Registration Data Systems Being Strengthened (Jamaica Information Service)** — https://jis.gov.jm/cancer-registration-data-systems-being-strengthened/
    Jamaica Information Service report on the strengthening of cancer registration data systems through DHIS2 implementation.
 
-3. **CARPHA and Vital Strategies Sign New Agreement to Strengthen Cancer Data Collection Systems in Jamaica** — https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen-cancer-data-collection-systems-in-jamaica/
+3. **CARPHA and Vital Strategies Sign New Agreement to Strengthen Cancer Data Collection Systems in Jamaica** — https://antiguaobserver.com/carpha-and-vital-strategies-sign-new-agreement-to-strengthen--cancer--data-collection-systems-in-jamaica/
    Report on the CARPHA-Vital Strategies agreement for the US$100,000 Bloomberg D4H grant supporting Jamaica's DHIS2 cancer registry.
 
 4. **Cancer registration data systems being strengthened (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231025/cancer-registration-data-systems-being-strengthened
    Jamaica Gleaner coverage of the cancer registration data system strengthening initiative.
 
-5. **Jamaica to enhance cancer data tracking with new software (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231027/jamaica-enhance-cancer-data-tracking-new-software
+5. **Jamaica to enhance cancer data tracking with new software (Jamaica Gleaner)** — https://jamaica-gleaner.com/article/news/20231027/jamaica-enhance--cancer--data-tracking-new-software
    Jamaica Gleaner report on the new DHIS2-based cancer data tracking software implementation.
 
 6. **Cancer registration data system being introduced to better monitor disease (Jamaica Observer)** — https://www.jamaicaobserver.com/latest-news/cancer-registration-data-system-being-introduced-to-better-monitor-disease-dr-tufton/
@@ -2419,7 +2419,7 @@ Malawi has comprehensive national DHIS2 implementation for health data reporting
 1. **Cervical cancer screening uptake and challenges in Malawi from 2011 to 2015: retrospective cohort study (BMC Public Health)** — https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y
    Retrospective analysis of cervical cancer VIA screening programme scale-up across Malawi from 2011 to 2015, documenting expansion from 75 to 130 sites.
 
-2. **Bridging gaps in lung cancer diagnosis and surveillance: Gap analysis and development of new registers and algorithms for lung cancer identification and care in Malawi (CIOC 2026)** — https://cancer-conferences.magnusgroup.org/program/scientific-program/2026/bridging-gaps-in-lung-cancer-diagnosis-and-surveillance-gap-analysis-and-development-of-new-registers-and-algorithms-for-lung-cancer-identification-and-care-in-malawi
+2. **Bridging gaps in lung cancer diagnosis and surveillance: Gap analysis and development of new registers and algorithms for lung cancer identification and care in Malawi (CIOC 2026)** — https://cancer-conferences.magnusgroup.org/program/scientific-program/2026/bridging-gaps-in-lung--cancer--diagnosis-and-surveillance-gap-analysis-and-development-of-new-registers-and-algorithms-for-lung-cancer-identification-and-care-in-malawi
    2025 gap analysis of cancer registry tools across Malawi's central hospitals identifying "limited integration with DHIS2" and "underutilization of CanReg5" as key deficiencies, with 17 standardized tools developed.
 
 3. **Malawi National Cancer Control Strategic Plan 2019-2029 (ICCP Portal)** — https://www.iccp-portal.org/sites/default/files/plans/MALAWI%20NATIONAL%20CANCER%20CONTROL%20STRATEGIC%20PLAN-%202019-2029.pdf
@@ -3818,7 +3818,7 @@ For my first experience with Claude Code, I was overall surprised by the quality
 
 The search results uncovered cancer implementations in Kenya and Bhutan that were not on my radar from HISP discussions and Google Alert.
 
-However, it missed a few countries. [Mozambique](https://www.iaea.org/sites/default/files/2025-07/impact-review-mozambique-110524.pdf), [Tanzania](https://dhis2.udsm.ac.tz/strengthening-cancer-data-management-canreg5-dhis2-integration/) and [Malawi](https://www.iccp-portal.org/sites/default/files/plans/Malawi%20Cervical%20Cancer%20Strategic%20Plan_2022-2026-%20Final%20Print%20Ready%20Version%2016.12.2021%5B1796%5D.pdf) for example, have online sources that cite DHIS2 use for cancer data, which are not *deep* search results, but were marked "no evidence".
+However, it missed a few countries. [Mozambique](https://www.iaea.org/sites/default/files/2025-07/impact-review-mozambique-110524.pdf), [Tanzania](https://dhis2.udsm.ac.tz/strengthening--cancer--data-management-canreg5-dhis2-integration/) and [Malawi](https://www.iccp-portal.org/sites/default/files/plans/Malawi%20Cervical%20Cancer%20Strategic%20Plan_2022-2026-%20Final%20Print%20Ready%20Version%2016.12.2021%5B1796%5D.pdf) for example, have online sources that cite DHIS2 use for cancer data, which are not *deep* search results, but were marked "no evidence".
 
 Its general assessments of evidence for DHIS2 country use were mixed. I was expecting more insights into actual (printed) HMIS forms for monthly NCD reports, many of which are available online. Some links appear to no longer work.
 
