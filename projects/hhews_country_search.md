@@ -38,6 +38,7 @@ No evidence was found of an operational heat-health early warning system in Rwan
 Uganda launched Africa's first Health National Adaptation Plan (H-NAP) in August 2024, a significant milestone. However, the H-NAP currently lacks climate-triggered heat surveillance systems. Current gaps include missing ministerial coordination mechanisms, undefined heat-specific health targets, and no operational HHEWS. Uganda is a DHIS2 pilot country for the Climate & Health project, which may provide a pathway for integrating heat surveillance into existing HMIS infrastructure. No heat action plan or temperature-threshold-based alert system was found in public documents.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 6 | Climate change, population, and poverty: vulnerability and exposure to heat stress in countries bordering the Great Lakes of Africa | [dx.doi.org](https://dx.doi.org/10.1007/s10584-018-2211-5) |
@@ -75,6 +76,7 @@ Ethiopia is the most advanced of the English-speaking African countries reviewed
 Nigeria faces an acute and growing heat crisis — over 60% of the population is regularly exposed to dangerous heat indices, and heat-related illness increased by 30% between 2023 and 2024 with over 2,000 deaths attributed to extreme heat. The Nigerian Meteorological Agency (NiMet) issues heat forecast warnings, and the Nigeria Medical Association has disseminated public health messaging. However, no formal national heat action plan or operational HHEWS has been established. A 2025 academic paper outlines a roadmap for a Nigerian heat health plan, and the TECA Heat Action Wave initiative (2025) is funding innovative early warning tools. Nigeria is at an early but active stage.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 8 | Exposure to air pollutants and heat stress among resource-poor women entrepreneurs in informal work environments in Nigeria | [dx.doi.org](https://dx.doi.org/10.1007/s10661-019-7811-7) |
@@ -99,6 +101,7 @@ Nigeria faces an acute and growing heat crisis — over 60% of the population is
 No evidence of an operational HHEWS or heat action plan in Ghana was found. A 2025 study identifies significant heat-health risk — particularly for outdoor workers in farming, construction, and fishing — and explicitly calls for Ghana Health Service to develop heat early warning systems with time-specific advisories. The Ghana Meteorological Agency has not published heat-health specific thresholds or alert protocols in publicly accessible sources. Ghana is notably absent from regional HHEWS development initiatives documented in the literature, representing a clear gap for a country with a large agricultural workforce.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 10 | Perceptions of climate change and occupational heat stress risks and adaptation strategies among workers in Ghana | [dx.doi.org](https://dx.doi.org/10.1016/j.scitotenv.2018.11.480) |
@@ -139,6 +142,7 @@ Malawi has made substantive progress. Through the "Adaptation for Africa" projec
 Tanzania is among the most active countries reviewed. Under WHO's "Beat the Heat" initiative (January 2025–June 2026), Tanzania is developing national heat-health action plans, deploying early warning systems and emergency heat protocols, and training health responders and event organisers. The initiative is led by the Ministries of Health in Mainland and Zanzibar in collaboration with Tanzania Meteorological Services and the Emergency Department at Muhimbili National Hospital. Tanzania is one of the first countries globally to roll out this initiative. As a DHIS2 pilot country, integration with existing HMIS infrastructure is feasible.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 6 | Thermal exposure and heat illness symptoms among workers in Mara Gold Mine, Tanzania | [dx.doi.org](https://dx.doi.org/10.29024/aogh.2318) |
@@ -207,6 +211,7 @@ No country-specific HHEWS or heat action plan for Niger was found. However, Nige
 Senegal is the most advanced country in this review — the only one with a documented, operational HHEWS. Since 2022, ANACIM (National Agency of Civil Aviation and Meteorology) and the Ministry of Health's Directorate General of Public Health (DGSP) have co-produced weekly heatwave bulletins during peak season (March–June), with 35 bulletins issued by the time of case study publication. The system provides 1–3 week predictive forecasts with colour-coded zone maps and targeted health guidance. In the Fatick pilot, medical staff and emergency workers were better prepared for increased patient load and could more effectively reach vulnerable populations. Senegal provides the clearest model for other DHIS2 countries to adapt.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 10 | A Health Early Warning System to Reduce Extreme Heat Impacts in Senegal (USAID/CASA Case Study) | *(in evidence base — internal)* |
@@ -260,6 +265,7 @@ No heat-specific HHEWS was found for DRC. The country launched the "Early Warnin
 Nepal has the most developed subnational HHEWS among the Asian countries reviewed. DHM issues heat and cold wave bulletins and has deployed real-time LED displays in cities. City-level heat action plans exist for Nepalgunj (2023) and Dhangadhi (2025), developed with Red Cross support; additional cities are in progress. The Ministry of Health prepared a comprehensive H-NAP in 2024 including heat wave response protocols and healthcare facility readiness standards (cooling blankets, IV fluids, air conditioning). Gaps remain at the national level — the Mercy Corps 2025 policy brief calls for a national HHEWS coordinating local-level plans. Nepal offers a strong model for subnational approaches.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 8 | Heat stress impacts on cardiac mortality in Nepali migrant workers in Qatar | [dx.doi.org](https://dx.doi.org/10.1159/000500853) |
@@ -281,6 +287,7 @@ Nepal has the most developed subnational HHEWS among the Asian countries reviewe
 Sri Lanka has active government-issued heat alerts (most recently March 2026), issued by the Natural Hazards Early Warning Centre with Department of Meteorology support and co-prepared with the Ministry of Health. GHHIN has documented Sri Lanka's exploration of formal heat-health action planning. Sri Lanka is also the country with the deepest existing DHIS2 Climate & Health engagement in this review — the Ministry of Health Sri Lanka, NBRO, CICERO Norway, HISP Centre UiO, and HISP Sri Lanka are actively collaborating on air quality and heat risk integration into DHIS2. This makes Sri Lanka the strongest candidate for a pilot DHIS2-integrated HHEWS among SEARO countries.
 
 ### From the evidence base (DHIS2 Relevance > 5)
+
 | Score | Title | DOI |
 |-------|-------|-----|
 | 7 | Air Quality & Health Risk — Sri Lanka (DAC 2025 presentation, MoH Sri Lanka / HISP / CICERO) | *(internal project document)* |
@@ -307,24 +314,25 @@ Laos does not have a heat action plan and lacks a dedicated HHEWS, despite exper
 ## Cross-Country Observations
 
 ### Evidence of operational HHEWS (strongest to weakest)
+
 | Country | Status | Key system |
 |---------|--------|------------|
-| **Senegal** | ✅ Operational | ANACIM/DGSP weekly heatwave bulletins since 2022; 35 bulletins issued; 1–3 week forecasts |
-| **Tanzania** | 🔄 In development | WHO "Beat the Heat" (2025–2026): national HHAP + EWS deployment underway |
-| **Nepal** | 🔄 Subnational only | City-level heat action plans (Nepalgunj, Dhangadhi); DHM bulletins; no national HHEWS |
-| **Sri Lanka** | 🔄 Alert system active | Government heat alerts issued; GHHIN-documented HHAP exploration; DHIS2 integration underway |
-| **Ethiopia** | 🔄 Partial | EWARS for climate-sensitive diseases (including heat) since 2017; multi-sector Climate & Health Working Group |
-| **Malawi** | 🔄 Partial | EWARS capacity in 4 districts; HNAP with heatwave advisories in local languages |
-| **Nigeria** | ⚠️ Emerging | NiMet forecast warnings; TECA Heat Action Wave initiative (2025); roadmap proposed but no formal plan |
-| **DRC** | ⚠️ Emerging | EW4All launched Jan 2026; MettelSat strengthening underway; not heat-specific |
-| **Rwanda** | ❌ Absent | Climate & Health TWG (2024); no HHEWS or heat action plan |
-| **Uganda** | ❌ Absent | H-NAP launched 2024; no heat-specific protocols |
-| **Ghana** | ❌ Absent | Research highlights urgent need; no formal system |
-| **Togo** | ❌ Absent | Public messaging exists; no formal plan |
-| **Niger** | ❌ Absent | AGRHYMET forecasting capacity relevant; no health linkage |
-| **Mozambique** | ❌ Absent | Climate data in HMIS; heat not yet recognised as health priority |
-| **Laos** | ❌ Absent | WHO-supported climate HMIS in development; not heat-specific |
-| **Guinea Bissau** | ❌ Absent | No system, minimal institutional capacity |
+| Senegal | ✅ Operational | ANACIM/DGSP weekly heatwave bulletins since 2022; 35 bulletins issued; 1–3 week forecasts |
+| Tanzania | 🔄 In development | WHO "Beat the Heat" (2025–2026): national HHAP + EWS deployment underway |
+| Nepal | 🔄 Subnational only | City-level heat action plans (Nepalgunj, Dhangadhi); DHM bulletins; no national HHEWS |
+| Sri Lanka | 🔄 Alert system active | Government heat alerts issued; GHHIN-documented HHAP exploration; DHIS2 integration underway |
+| Ethiopia | 🔄 Partial | EWARS for climate-sensitive diseases (including heat) since 2017; multi-sector Climate & Health Working Group |
+| Malawi | 🔄 Partial | EWARS capacity in 4 districts; HNAP with heatwave advisories in local languages |
+| Nigeria | ⚠️ Emerging | NiMet forecast warnings; TECA Heat Action Wave initiative (2025); roadmap proposed but no formal plan |
+| DRC | ⚠️ Emerging | EW4All launched Jan 2026; MettelSat strengthening underway; not heat-specific |
+| Rwanda | ❌ Absent | Climate & Health TWG (2024); no HHEWS or heat action plan |
+| Uganda | ❌ Absent | H-NAP launched 2024; no heat-specific protocols |
+| Ghana | ❌ Absent | Research highlights urgent need; no formal system |
+| Togo | ❌ Absent | Public messaging exists; no formal plan |
+| Niger | ❌ Absent | AGRHYMET forecasting capacity relevant; no health linkage |
+| Mozambique | ❌ Absent | Climate data in HMIS; heat not yet recognised as health priority |
+| Laos | ❌ Absent | WHO-supported climate HMIS in development; not heat-specific |
+| Guinea Bissau | ❌ Absent | No system, minimal institutional capacity |
 
 ### Key patterns
 * **Senegal is the clear regional model** — its ANACIM/MoH partnership and bulletin system is the only fully operational HHEWS among the countries reviewed. It should anchor any advocacy or replication work.
