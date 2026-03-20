@@ -333,13 +333,13 @@ layout: default
     <div class="blog-sidebar">
       <p class="blog-sidebar-title">Posts</p>
       {% for post in site.posts %}
-      <a class="blog-post-item" href="{{ post.url | relative_url }}">
+      <a class="blog-post-item" href="{{ post.url | relative_url }}" data-post-url="{{ post.url | relative_url }}">
         <p class="blog-post-date">{{ post.date | date: "%b %Y" }}</p>
         <p class="blog-post-title">{{ post.title }}</p>
       </a>
       {% endfor %}
     </div>
-    <div class="blog-reader">
+    <div class="blog-reader" id="blog-reader">
       <div class="blog-reader-empty">
         <span>← Select a post to read</span>
       </div>
@@ -398,6 +398,36 @@ layout: default
 </script>
 
 <script>
+// Blog inline reader
+(function() {
+  const reader = document.getElementById('blog-reader');
+  document.querySelectorAll('.blog-post-item[data-post-url]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = this.getAttribute('data-post-url');
+      document.querySelectorAll('.blog-post-item').forEach(el => el.classList.remove('active'));
+      this.classList.add('active');
+      reader.innerHTML = '<div class="blog-reader-empty"><span>Loading…</span></div>';
+      fetch(url)
+        .then(r => r.text())
+        .then(html => {
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const article = doc.querySelector('.post-article') || doc.querySelector('article') || doc.querySelector('main');
+          if (article) {
+            reader.innerHTML = '';
+            reader.appendChild(document.adoptNode(article));
+          } else {
+            reader.innerHTML = '<div class="blog-reader-empty"><span>Could not load post.</span></div>';
+          }
+          reader.scrollTop = 0;
+        })
+        .catch(() => {
+          reader.innerHTML = '<div class="blog-reader-empty"><span>Error loading post.</span></div>';
+        });
+    });
+  });
+})();
+
 document.querySelectorAll('.cards-scroll').forEach(function(scroll) {
   const wrapper = document.createElement('div');
   wrapper.className = 'carousel-wrapper';
