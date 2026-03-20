@@ -8,7 +8,7 @@ email: # your email
 description: DHIS2 implementation adviser, data scientist, and public health researcher.
 
 url: https://iambodo.github.io
-baseurl:
+baseurl: ""
 
 # Social links
 github_username: iambodo
@@ -18,10 +18,9 @@ linkedin_username: # your LinkedIn handle
 og_image: assets/img/profile.jpg
 
 # -----------------------------------------------------------------------------
-# Theme
+# Theme — loaded remotely, no gem install needed
 # -----------------------------------------------------------------------------
 remote_theme: alshedivat/al-folio
-# OR if using Gemfile local install: theme: al-folio
 
 # -----------------------------------------------------------------------------
 # Jekyll
@@ -44,8 +43,6 @@ kramdown:
 # -----------------------------------------------------------------------------
 collections:
   news:
-    defaults:
-      layout: post
     output: false
     permalink: /news/:path/
   projects:
@@ -69,10 +66,14 @@ defaults:
 # Plugins
 # -----------------------------------------------------------------------------
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-scholar
   - jekyll-paginate-v2
+  - jekyll-seo-tag
+  - jekyll-email-protect
+  - jekyll-link-attributes
+  - jemoji
 
 # Pagination
 pagination:
@@ -80,14 +81,6 @@ pagination:
   per_page: 10
   permalink: /page/:num/
   sort_reverse: true
-
-# -----------------------------------------------------------------------------
-# Navigation (al-folio uses _pages with nav_order)
-# -----------------------------------------------------------------------------
-nav_order:
-  - about
-  - projects
-  - blog
 
 # -----------------------------------------------------------------------------
 # al-folio appearance
@@ -101,6 +94,3 @@ enable_medium_zoom: true
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with
   <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-
-# Google Analytics (optional)
-# google_analytics: G-XXXXXXXXXX
