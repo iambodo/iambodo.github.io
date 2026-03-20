@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<section class="section blog-page">
+  <div class="section-header">
+    <p class="section-number">Blog</p>
+    <h1 class="section-title">Writing &amp; Research</h1>
+  </div>
+  <div class="blog-layout">
+    <div class="blog-sidebar">
+      <p class="blog-sidebar-title">Posts</p>
+      {% for post in site.posts %}
+        <a class="blog-post-item" href="{{ post.url | relative_url }}">
+          <p class="blog-post-date">{{ post.date | date: "%b %Y" }}</p>
+          <p class="blog-post-title">{{ post.title }}</p>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="blog-reader">
+      {{ content }}
+    </div>
+  </div>
+</section>

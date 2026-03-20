@@ -4,26 +4,15 @@
 title: iambodo
 first_name: Bodo
 last_name: Lang
-email: # your email
 description: DHIS2 implementation adviser, data scientist, and public health researcher.
 
 url: https://iambodo.github.io
 baseurl: ""
 
-# Social links
 github_username: iambodo
-linkedin_username: # your LinkedIn handle
-
-# Open Graph / SEO
-og_image: assets/img/profile.jpg
 
 # -----------------------------------------------------------------------------
-# Theme — loaded remotely, no gem install needed
-# -----------------------------------------------------------------------------
-remote_theme: alshedivat/al-folio
-
-# -----------------------------------------------------------------------------
-# Jekyll
+# Jekyll — no remote_theme, plain Jekyll with custom layouts
 # -----------------------------------------------------------------------------
 markdown: kramdown
 highlighter: rouge
@@ -31,20 +20,11 @@ permalink: /blog/:year/:title/
 
 kramdown:
   input: GFM
-  syntax_highlighter_opts:
-    css_class: highlight
-    span:
-      line_numbers: false
-    block:
-      line_numbers: false
 
 # -----------------------------------------------------------------------------
 # Collections
 # -----------------------------------------------------------------------------
 collections:
-  news:
-    output: false
-    permalink: /news/:path/
   projects:
     output: true
     permalink: /projects/:path/
@@ -55,42 +35,26 @@ defaults:
       type: posts
     values:
       layout: post
-      comments: false
   - scope:
       path: ""
       type: projects
     values:
-      layout: page
+      layout: project
 
 # -----------------------------------------------------------------------------
-# Plugins
+# Plugins — minimal set, all GitHub Pages compatible
 # -----------------------------------------------------------------------------
 plugins:
-  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-paginate-v2
   - jekyll-seo-tag
-  - jekyll-email-protect
-  - jekyll-link-attributes
-  - jemoji
+  - jekyll-paginate
 
-# Pagination
-pagination:
-  enabled: true
-  per_page: 10
-  permalink: /page/:num/
-  sort_reverse: true
+paginate: 10
+paginate_path: /blog/page:num/
 
-# -----------------------------------------------------------------------------
-# al-folio appearance
-# -----------------------------------------------------------------------------
-enable_darkmode: false
-enable_navbar_social: true
-enable_project_categories: true
-enable_medium_zoom: true
-
-# Footer
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with
-  <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - index-preview.html
