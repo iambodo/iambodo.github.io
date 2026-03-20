@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brian ODonnell">
+<meta name="dcterms.date" content="2024-08-27">
+<meta name="keywords" content="Hypertension, Prediction model, Nigeria">
+
+<title>Predictors of attrition from hypertension control programs in Kano and Ogun, Nigeria: A survival analysis from electronic health records</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="manuscript_20aug_files/libs/clipboard/clipboard.min.js"></script>
+<script src="manuscript_20aug_files/libs/quarto-html/quarto.js"></script>
+<script src="manuscript_20aug_files/libs/quarto-html/popper.min.js"></script>
+<script src="manuscript_20aug_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="manuscript_20aug_files/libs/quarto-html/anchor.min.js"></script>
+<link href="manuscript_20aug_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="manuscript_20aug_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="manuscript_20aug_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="manuscript_20aug_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="manuscript_20aug_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="manuscript_20aug_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="manuscript_20aug_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1.1</span> Background</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives"><span class="header-section-number">1.2</span> Objectives</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">2</span> Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-source-and-preparation" id="toc-data-source-and-preparation" class="nav-link" data-scroll-target="#data-source-and-preparation"><span class="header-section-number">2.1</span> Data source and preparation</a></li>
+  <li><a href="#description-of-study-population" id="toc-description-of-study-population" class="nav-link" data-scroll-target="#description-of-study-population"><span class="header-section-number">2.2</span> Description of study population</a></li>
+  <li><a href="#definition-of-dropout-outcome-and-attrition-rate" id="toc-definition-of-dropout-outcome-and-attrition-rate" class="nav-link" data-scroll-target="#definition-of-dropout-outcome-and-attrition-rate"><span class="header-section-number">2.3</span> Definition of dropout outcome and attrition rate</a></li>
+  <li><a href="#candidate-predictors" id="toc-candidate-predictors" class="nav-link" data-scroll-target="#candidate-predictors"><span class="header-section-number">2.4</span> Candidate predictors</a></li>
+  <li><a href="#analytic-approach" id="toc-analytic-approach" class="nav-link" data-scroll-target="#analytic-approach"><span class="header-section-number">2.5</span> Analytic approach</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">3</span> Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="manuscript_20aug.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="manuscript_20aug.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="https://iambodo.github.io/projects/nhci_analyses/msc_thesis_pt1_desc.html"><i class="bi bi-clipboard2-data"></i>Appendix_1</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Predictors of attrition from hypertension control programs in Kano and Ogun, Nigeria: A survival analysis from electronic health records</h1>
+<p class="subtitle lead">Masters thesis manuscript, August-September 2024</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Brian ODonnell <a href="mailto:brian-frank.odonnell@charite.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-3259-0765" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Charité – Universitätsmedizin Berlin
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 27, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>Patient attrition from routine treatment limits the effectiveness of hypertension control programs. This paper describes attrition from a hypertension control program in Nigeria with over 30,000 patients and 160,000 patient visits to treatment centres. A prediction model is then developed with registry data to predict 90-day dropout after each monthly visit, with discrimination of 0.74 AUROC but low sensitivity and precision. The value of employing this full model at different exchange rates versus different specifications or target outcome is discussed.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Hypertension, Prediction model, Nigeria</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<section id="background" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="background"><span class="header-section-number">1.1</span> Background</h3>
+<p>Hypertension is generally considered to be the leading modifiable risk factor for death and disability worldwide, causing an estimated 25,000 deaths per day.[<span class="citation" data-cites="pickersgill2022">[<a href="#ref-pickersgill2022" role="doc-biblioref">1</a>]</span>]<span class="citation" data-cites="frieden2018">[<a href="#ref-frieden2018" role="doc-biblioref">2</a>]</span> According to the WHO, about 1.28 billion adults aged 30-79 years worldwide have hypertension, with most (78%) living in low- and middle-income countries (LMICs). <span class="citation" data-cites="GlobalReportHTN2023">[<a href="#ref-GlobalReportHTN2023" role="doc-biblioref">3</a>]</span> Although uncontrolled hypertension significantly increases risk for heart, brain, and kidney diseases, only 1 in 5 hypertensive adults (21%) have their blood pressure under control globally. Effective treatment coverage remains particularly elusive in LMICs, where only 1 in 10 hypertensive adults have achieved hypertension control.<span class="citation" data-cites="GlobalReportHTN2023">[<a href="#ref-GlobalReportHTN2023" role="doc-biblioref">3</a>]</span></p>
+<p>One of the main barriers to hypertension control is lack of adherence to prescribed treatment, including irregular attendance at antihypertensive services as well as long-term patient attrition.[<span class="citation" data-cites="khatib2014">[<a href="#ref-khatib2014" role="doc-biblioref">4</a>]</span>]<span class="citation" data-cites="kaur2021">[<a href="#ref-kaur2021" role="doc-biblioref">5</a>]</span><span class="citation" data-cites="mahmood2020">[<a href="#ref-mahmood2020" role="doc-biblioref">6</a>]</span> There is a well-documented positive association between patient attendance regularity and blood pressure control.<span class="citation" data-cites="guthmann2005">[<a href="#ref-guthmann2005" role="doc-biblioref">7</a>]</span> Previous studies have shown gender, age, education, treatment duration, number of medications, presence of comorbidity, and medication adherence to be significantly associated with regularity in hypertension follow-up appointments in LMIC settings.[<span class="citation" data-cites="mahmood2020">[<a href="#ref-mahmood2020" role="doc-biblioref">6</a>]</span>]<span class="citation" data-cites="asgedom2018">[<a href="#ref-asgedom2018" role="doc-biblioref">8</a>]</span> More broadly, a number of factors are known to generally influence primary health care access and utilization in LMICs, including (but not limited to) socioeconomic status, healthcare affordability, geographic proximity, social norms, health knowledge, and emergency contexts such as conflict or extreme weather events.[<span class="citation" data-cites="ebi2021">[<a href="#ref-ebi2021" role="doc-biblioref">9</a>]</span>]<span class="citation" data-cites="dawkins2021">[<a href="#ref-dawkins2021" role="doc-biblioref">10</a>]</span><span class="citation" data-cites="garry2020">[<a href="#ref-garry2020" role="doc-biblioref">11</a>]</span></p>
+<p>In Nigeria, about 29% of 19.1 million hypertensive adults between 30-79 years are currently under treatment, while only 11% have their hypertension under control.<span class="citation" data-cites="WHOHypNG2023">[<a href="#ref-WHOHypNG2023" role="doc-biblioref">12</a>]</span> In 2020, the Federal Ministry of Health Nigeria, along with the WHO and an NGO called Resolve to Save Lives, announced the Nigeria Hypertension Control Initiative (NHCI) to integrate hypertension care and treatment into primary health care facilities in Ogun and Kano states<span class="citation" data-cites="nhciAfro2024">[<a href="#ref-nhciAfro2024" role="doc-biblioref">13</a>]</span> Since then, NHCI has registered more than 27,000 hypertensive adults at over 100 health facilities, where health workers provide routine low-cost antihypertensive services following a standardized treatment protocol.<span class="citation" data-cites="chikwado2022">[<a href="#ref-chikwado2022" role="doc-biblioref">14</a>]</span> Key patient data, such as blood pressure and hypertension medications, are documented at monthly follow up appointments by the care provider during each patient visit in an electronic hypertension registry. This registry is implemented as a mobile application connected to a District Health Information Software 2 (DHIS2) database. Although systematic studies have not yet been conducted to clarify barriers to care within NHCI, the hypertension registry has been used operationally to analyze patient status trends via facility-level DHIS2 dashboards, and to generate call sheets of patients who are “lost to follow up”. As of December 2023, DHIS2 dashboards showed national “lost to follow up” rates at about 70%, meaning most enrolled NHCI patients had not attended a follow-up appointment in the previous three months.</p>
+<p>The NHCI hypertension registry is designed as a “minimal” electronic health record, primarily used for program monitoring rather than patient care management. However, the registry dataset comprises many patient-level variables previously associated with treatment regularity (e.g.&nbsp;gender, age, medications), and could be supplemented by other sources (e.g.&nbsp;indicators of environmental or economic stress) to provide an overview of individual- and population-level predictors of hypertension care attrition.</p>
+<p>Previous studies have shown that PHCs across Nigeria are often manned by community extension workers, and relatively few are equipped with adequate training and medication supplies to provide antihypertensive services.<span class="citation" data-cites="adejumo2023">[<a href="#ref-adejumo2023" role="doc-biblioref">15</a>]</span> Other programs like NHCI have sought to purposefully expand anti-hypertensive services at PHCs, but have similarly suffered from lost to follow up. For example, the Hypertension Treatment in Nigeria Program (HTNP) in Federal Capital Territory of Nigeria found the three-month rolling average of the 37-day retention rate to be 40%, with gender, age, and new diagnosis of hypertension to be associated with patient retention.<span class="citation" data-cites="ye2022">[<a href="#ref-ye2022" role="doc-biblioref">16</a>]</span> Building on the HTNP findings, this study will investigate predictors of attrition from long term hypertension treatment in Nigeria.</p>
+</section>
+<section id="objectives" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="objectives"><span class="header-section-number">1.2</span> Objectives</h3>
+<ol type="1">
+<li><p>Objective 1: To describe the patient population at NHCI treatment sites, in terms of baseline characteristics, total visits, and attrition rates.</p></li>
+<li><p>Objective 2: To develop and internally validate a risk prediction model for per-opportunity risk of patient attrition (90 days with no previous visit).</p></li>
+</ol>
+</section>
+</section>
+<section id="methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
+<section id="data-source-and-preparation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="data-source-and-preparation"><span class="header-section-number">2.1</span> Data source and preparation</h3>
+<p>All data for hypertension visits between January 1 2021 to June 30 2024 were exported from the Line List app of the NHCI’s DHIS2 instance in July 2024. The initial export of 172,689 visits included sensitive information like patient date of birth, phone number, and the DHIS2 enrollment ID. For data protection, before sharing with analysts, the date of birth was transformed into an Age at Registration variable, phone number was converted into a dummy variable, and enrollment ID was transformed into an internal export ID.</p>
+<p>Visits meeting any of the following criteria were immediately removed from analysis set: Age at Registration below 18 or above 130; confirmed patient consent to record data not reported; hypertension was not confirmed; visits occurring outside of Ogun or Kano states. Visits for identical patients on the same date, totaling 3.7% of visit records, were deduplicated systematically (see supporting material).</p>
+<p>The resulting dataset covers 30,712 patients and 163,694 hypertension service visits. Visits were recorded at 105 health facilities in 22 of 64 Local Governance Authorities (LGAs) of Kano and Ogun states. All analyses were conducted in R, with prediction models using the <em>tidymodels</em> framework. <span class="citation" data-cites="kuhn2020">[<a href="#ref-kuhn2020" role="doc-biblioref">17</a>]</span></p>
+</section>
+<section id="description-of-study-population" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="description-of-study-population"><span class="header-section-number">2.2</span> Description of study population</h3>
+<p>Before assessing attrition rates, the total number of visits per patient in this dataset gives a quick overview of delivery trends. By protocol, patients should be attending hypertension treatment on a continual monthly basis to receive medicine unless they are referred for more specialized care. However, 25% of all registered patients fail to attend any followup after the baseline visit. When plotting patients by total appointment count as in <a href="#fig-1" class="quarto-xref">Figure&nbsp;1</a>, the trend continues monotonically, and can be approximated with an exponential decay <em>y ~</em> <em>a * x^-1</em>, where <em>a</em> is the total registered patients with only one visit.</p>
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig1_visitcounts.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Patient counts by total visit count per patient
+</figcaption>
+</figure>
+</div>
+<p>Baseline patient characteristics are presented in <strong>Table 1</strong>. Three quarters of patients are female, and 57% registered in Kano state. The mean number of visits per patient is 5.40.</p>
+<p>Compared to patients who make at least one followup visit, patients who dropout after baseline are much more likely to come from Ogun State. They are slightly more likely to be Male and previously diagnosed, and less likely to have a phone number or a systolic blood pressure under 180 mm/hg.</p>
+<p><strong>Table 1</strong> excludes those 2,485 patients from the dataset who registered before January 1, 2021 as their baseline visit data were not exported.</p>
+<div id="tbl-tableone" class="cell anchored">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">&nbsp;</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">&gt;=1 Visits Post Baseline</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">0 Visits Post Baseline</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Overall</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">(N=21183)</td>
+<td style="text-align: left;">(N=7044)</td>
+<td style="text-align: left;">(N=28227)</td>
+</tr>
+<tr class="even" data-grouplength="3">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>sex</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Female</td>
+<td style="text-align: left;">16005 (75.6%)</td>
+<td style="text-align: left;">5032 (71.4%)</td>
+<td style="text-align: left;">21037 (74.5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Male</td>
+<td style="text-align: left;">5171 (24.4%)</td>
+<td style="text-align: left;">2008 (28.5%)</td>
+<td style="text-align: left;">7179 (25.4%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Missing</td>
+<td style="text-align: left;">7 (0.0%)</td>
+<td style="text-align: left;">4 (0.1%)</td>
+<td style="text-align: left;">11 (0.0%)</td>
+</tr>
+<tr class="even" data-grouplength="2">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>State</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">kn Kano State</td>
+<td style="text-align: left;">13042 (61.6%)</td>
+<td style="text-align: left;">2910 (41.3%)</td>
+<td style="text-align: left;">15952 (56.5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">og Ogun State</td>
+<td style="text-align: left;">8141 (38.4%)</td>
+<td style="text-align: left;">4134 (58.7%)</td>
+<td style="text-align: left;">12275 (43.5%)</td>
+</tr>
+<tr class="odd" data-grouplength="2">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>age</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Mean (SD)</td>
+<td style="text-align: left;">53.7 (14.6)</td>
+<td style="text-align: left;">53.9 (15.6)</td>
+<td style="text-align: left;">53.8 (14.8)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Median [Min, Max]</td>
+<td style="text-align: left;">53.0 [18.0, 124]</td>
+<td style="text-align: left;">53.0 [18.0, 122]</td>
+<td style="text-align: left;">53.0 [18.0, 124]</td>
+</tr>
+<tr class="even" data-grouplength="3">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>previous_htn_treated</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">First time</td>
+<td style="text-align: left;">17400 (82.1%)</td>
+<td style="text-align: left;">5632 (80.0%)</td>
+<td style="text-align: left;">23032 (81.6%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Was treated in the past</td>
+<td style="text-align: left;">3632 (17.1%)</td>
+<td style="text-align: left;">1323 (18.8%)</td>
+<td style="text-align: left;">4955 (17.6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Missing</td>
+<td style="text-align: left;">151 (0.7%)</td>
+<td style="text-align: left;">89 (1.3%)</td>
+<td style="text-align: left;">240 (0.9%)</td>
+</tr>
+<tr class="even" data-grouplength="6">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>sbp_baseline</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">normal</td>
+<td style="text-align: left;">182 (0.9%)</td>
+<td style="text-align: left;">43 (0.6%)</td>
+<td style="text-align: left;">225 (0.8%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">high or elevated (120-140)</td>
+<td style="text-align: left;">1293 (6.1%)</td>
+<td style="text-align: left;">302 (4.3%)</td>
+<td style="text-align: left;">1595 (5.7%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">very high [140-180)</td>
+<td style="text-align: left;">17547 (82.8%)</td>
+<td style="text-align: left;">5701 (80.9%)</td>
+<td style="text-align: left;">23248 (82.4%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">emergency [180-300)</td>
+<td style="text-align: left;">2082 (9.8%)</td>
+<td style="text-align: left;">951 (13.5%)</td>
+<td style="text-align: left;">3033 (10.7%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">error (&gt;300 or &lt; 50)</td>
+<td style="text-align: left;">13 (0.1%)</td>
+<td style="text-align: left;">5 (0.1%)</td>
+<td style="text-align: left;">18 (0.1%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Missing</td>
+<td style="text-align: left;">66 (0.3%)</td>
+<td style="text-align: left;">42 (0.6%)</td>
+<td style="text-align: left;">108 (0.4%)</td>
+</tr>
+<tr class="odd" data-grouplength="3">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>bp_systole_mmhg</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Mean (SD)</td>
+<td style="text-align: left;">158 (17.9)</td>
+<td style="text-align: left;">161 (18.8)</td>
+<td style="text-align: left;">159 (18.1)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Median [Min, Max]</td>
+<td style="text-align: left;">158 [14.0, 400]</td>
+<td style="text-align: left;">160 [14.0, 400]</td>
+<td style="text-align: left;">159 [14.0, 400]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Missing</td>
+<td style="text-align: left;">66 (0.3%)</td>
+<td style="text-align: left;">42 (0.6%)</td>
+<td style="text-align: left;">108 (0.4%)</td>
+</tr>
+<tr class="odd" data-grouplength="4">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>amlodipine_baseline</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Amlodipine 10mg OD</td>
+<td style="text-align: left;">1802 (8.5%)</td>
+<td style="text-align: left;">802 (11.4%)</td>
+<td style="text-align: left;">2604 (9.2%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Amlodipine 5mg OD</td>
+<td style="text-align: left;">19175 (90.5%)</td>
+<td style="text-align: left;">6158 (87.4%)</td>
+<td style="text-align: left;">25333 (89.7%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Other drug</td>
+<td style="text-align: left;">3 (0.0%)</td>
+<td style="text-align: left;">0 (0%)</td>
+<td style="text-align: left;">3 (0.0%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Missing</td>
+<td style="text-align: left;">203 (1.0%)</td>
+<td style="text-align: left;">84 (1.2%)</td>
+<td style="text-align: left;">287 (1.0%)</td>
+</tr>
+<tr class="even" data-grouplength="2">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>has_phone</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">0</td>
+<td style="text-align: left;">3994 (18.9%)</td>
+<td style="text-align: left;">1359 (19.3%)</td>
+<td style="text-align: left;">5353 (19.0%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">1</td>
+<td style="text-align: left;">17189 (81.1%)</td>
+<td style="text-align: left;">5685 (80.7%)</td>
+<td style="text-align: left;">22874 (81.0%)</td>
+</tr>
+<tr class="odd" data-grouplength="2">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>has_supporter</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">0</td>
+<td style="text-align: left;">4217 (19.9%)</td>
+<td style="text-align: left;">1593 (22.6%)</td>
+<td style="text-align: left;">5810 (20.6%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">1</td>
+<td style="text-align: left;">16966 (80.1%)</td>
+<td style="text-align: left;">5451 (77.4%)</td>
+<td style="text-align: left;">22417 (79.4%)</td>
+</tr>
+<tr class="even" data-grouplength="2">
+<td colspan="4" style="text-align: left; border-bottom: 1px solid;"><strong>total_patient_visits</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Mean (SD)</td>
+<td style="text-align: left;">6.87 (5.72)</td>
+<td style="text-align: left;">1.00 (0)</td>
+<td style="text-align: left;">5.40 (5.57)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Median [Min, Max]</td>
+<td style="text-align: left;">5.00 [2.00, 45.0]</td>
+<td style="text-align: left;">1.00 [1.00, 1.00]</td>
+<td style="text-align: left;">3.00 [1.00, 45.0]</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="definition-of-dropout-outcome-and-attrition-rate" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="definition-of-dropout-outcome-and-attrition-rate"><span class="header-section-number">2.3</span> Definition of dropout outcome and attrition rate</h3>
+<p>As seen above, 25% of patients fail to return to their first follow up visit, but the attendance failure rate diminishes with each subsequent visit. The literature provides an abundance of terms to describe this phenomenon, including attendance nonadherence, treatment discontinuity (TD), lost to follow up (LTFU), dropout, and attrition. This paper refers to <strong>dropout</strong> as an endline outcome event, and <strong>attrition</strong> as the rate of dropout events per eligible patients.</p>
+<p>A dropout event occurs for a patient on the date that 90 days have passed since their latest visit. The 90 day window is an operational norm used for routine program monitoring of blood pressure control and attendance on dashboards, and is thus practical as a cutoff for attrition rates and prediction. Dropout is also a one-time occurrence in this definition, although it should be noted that 17% of visits occur <em>after</em> 90 days of the previous visit. The odds of dropout at each appointment are 1.94 fold for patients who have previously been delayed more than 90 days and later returned, compared to those who never experienced a first dropout event.</p>
+<p>Each followup visit also has a scheduled date, which is the next appointment date set by the healthcare provider at the previous visit. As seen in <a href="#fig-2" class="quarto-xref">Figure&nbsp;2</a> , 53% of followup visits are scheduled to occur 27-36 days after the previous visit, with 38% falling precisely 28 days later (the system default setting). As defined by the event (visit) date, 44% of followup visits actually occur within that window.</p>
+<p>The 27-36 day window is an optimal “timely return” as it would best support monthly blood pressure readings and transferring 30 days of medication per protocol. Thirty seven days is also the timely return deadline employed by <em>Ye et al</em> for their assessment of NHTP followup vistis post-baseline. <span class="citation" data-cites="ye2022">[<a href="#ref-ye2022" role="doc-biblioref">16</a>]</span></p>
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig2_incidence_after_previous.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Cumulative incidence of followup visits by days after previous
+</figcaption>
+</figure>
+</div>
+<p>Attrition rate is defined as the number of dropout events for a given time period divided by the number of “expected visits” from dropout-eligible patients within that time period. “Expected visits” includes all patients who had a non-censored visit 90 days before any day within the time period, and “dropout-eligible patients” who have not yet experienced a dropout event. Censored visits include visits when a patient was reported as died or transferred, as well as any visit after April 1 2024.</p>
+<p>Defined this way, monthly attrition rates varied nationally, between 15-38%. Trends followed implementation landmarks. Producing LTFU call sheets for health facilities led to a reduction in attrition in early 2021 from 35% to 20%. Importing legacy data from paper based systems in February 2022 corresponded with an increase in attrition, while increasing registrations later in the year, along with performance dashboards, gradually lowered attrition. A 14-point spike in attrition is seen during second half of 2023. This aligns with an abrupt end of Nigeria’s oil subsidy and USD currency peg in May 2023, which together tripled petrol prices year on year, reportedly had cascading effects for healthcare access.[<span class="citation" data-cites="maclean2024">[<a href="#ref-maclean2024" role="doc-biblioref">18</a>]</span>]<span class="citation" data-cites="princewill2023">[<a href="#ref-princewill2023" role="doc-biblioref">19</a>]</span> Lower registrations were also observed during this time period.</p>
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig3_attritionRegs_full.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: NHCI Monthly Attrition Rate and New Registrations
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="candidate-predictors" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="candidate-predictors"><span class="header-section-number">2.4</span> Candidate predictors</h3>
+<section id="clinical-data" class="level4" data-number="2.4.1">
+<h4 data-number="2.4.1" class="anchored" data-anchor-id="clinical-data"><span class="header-section-number">2.4.1</span> Clinical data</h4>
+<p>Demographic data were static for each patient, and included age at registration, sex, and supporter’s relationship to patient. Phone number on record, diabetes co-morbidity, previous hypertension treatment, and consent to send SMS reminders were each binary dummy variables. The basic clinical data were dynamic for each event, and included year and month of visit, LGA and State of visit, systolic blood pressure (SBP) in mmhg, diastolic blood pressure (DBP) in mmhg, and medications provided (one or more of hydrochlorothiazide, telmisartan, amlodipine, losartan, or “other”, a free text box).</p>
+<p>Days of medication provided were imputed to be 30 days, except 804 visits where a multimonth dispensing pilot provided medication for 60 or 90 days.</p>
+<p>Further, a set of calculated variables were added as candidate predictors. These included current appointment tally, age group, days since first visit, days from previous visit to current visit, mean and standard deviation of days between visits, any medication at visit (binary), and the monthly visit load (throughput) at the health facility. Change in SBP and DBP since baseline was calculated, as was a flag variable if SBP and DBP measures were blank.</p>
+<p>Finally, variables were calculated to assess the patient’s step level within the hypertension protocol, and if the HCW provided the proper treatment.<span class="citation" data-cites="chikwado2022">[<a href="#ref-chikwado2022" role="doc-biblioref">14</a>]</span> For example, if this was the patient’s first visit, and blood pressure was &gt;= 140/90, then <code>step_1_need</code> =1, and if they also received 5 mg of amlodipine at that visit, then <code>step_1_met</code> =1. Treatment was provided correctly at this first level more often for patients who return within 90 days (96%) than those who dropout after first visit (94%).</p>
+</section>
+<section id="weather-data" class="level4" data-number="2.4.2">
+<h4 data-number="2.4.2" class="anchored" data-anchor-id="weather-data"><span class="header-section-number">2.4.2</span> Weather data</h4>
+<p>Slight seasonal patterns can be detected in attrition, with increases during dry season (October to April) and decreases in rainy season (April to September). Further, heat, rain, and extreme weather events have been found associated with attendance at primary healthcare, [<span class="citation" data-cites="ebi2021">[<a href="#ref-ebi2021" role="doc-biblioref">9</a>]</span>]<span class="citation" data-cites="fitzpatrick2024">[<a href="#ref-fitzpatrick2024" role="doc-biblioref">20</a>]</span> and incorporating weather data improves appointment no-show prediction models.<span class="citation" data-cites="liu2022">[<a href="#ref-liu2022" role="doc-biblioref">21</a>]</span> Weather could also play a role in NHCI attendance during the timely window.</p>
+<p>Centroid coordinates for each LGA were downloaded from grid3.org. <span class="citation" data-cites="grid3">[<a href="#ref-grid3" role="doc-biblioref">22</a>]</span> For each coordinate set, daily weather was pulled from the open-meteo.com API for January 1, 2021 to July 1, 2024. Variables included maximum temperature (C), maximum apparent temperature (with humidity), rainfall total (mm), and rainfall hours, which were all transformed into trailing 10-day averages.</p>
+<p>Weather data was merged with the NHCI visit dataset based on the LGA of clinic and the visit date plus 37 days.</p>
+</section>
+<section id="market-data" class="level4" data-number="2.4.3">
+<h4 data-number="2.4.3" class="anchored" data-anchor-id="market-data"><span class="header-section-number">2.4.3</span> Market data</h4>
+<p>The price of fuel, both globally and domestically, affects the entire national economy in Nigeria, including the price of transportation, staple foods, healthcare, and in general the cost of living. As shown in <a href="#fig-3" class="quarto-xref">Figure&nbsp;3</a>, registrations lowered and attrition coincided with a sharp increase in fuel and food prices in June 2023. Prices could therefore be an instrumental proxy for ability to access hypertension services.</p>
+<p>The Famine Early Warning Systems Network (FEWS NET), sponsored by the US Agency for International Development, collects and shares data on food and staple good prices at local markets in Africa, which are used to assess food security. Weekly market price data for Kano and Lagos states were pulled from the FEWSNET API for January 1 2021 to April 1 2024 and reconfigured as a 10-day trailing average.<span class="citation" data-cites="fewsnet">[<a href="#ref-fewsnet" role="doc-biblioref">23</a>]</span> Market data were not available for Ogun State, but Lagos borders Ogun to the South, and has market data more consistent with national rates than other bordering states. The data cover prices in Naira of seven foods described as Nigerian staple foods by the Food and Agriculture Organization (millet, rice broken and milled, yellow and white maize, brown and white sorghum, yams). <span class="citation" data-cites="faoeur2022">[<a href="#ref-faoeur2022" role="doc-biblioref">24</a>]</span> The local pump price of diesel and gasoline, as well as the USD-Naira exchange rate were also included.</p>
+<p>Market price data was merged with the NHCI dataset based on the State of clinic and the visit date plus 37 days.</p>
+<p>Thus, these population-level indicators approximate local economic and weather conditions during the “timely return” window for each visit opportunity, and represent plausible acute risks for missing a monthly appointment. T-tests were conducted on each weather and market variable against 37-day attendance. Only six variables had a Cohen’s D effect size over 0.11, indicating a very weak effect: max daily temperature, rain hours, rain in millimeters, millet price, milled rice price, sorghum price. These six were selected as candidate predictors for 90 day dropout.</p>
+</section>
+</section>
+<section id="analytic-approach" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="analytic-approach"><span class="header-section-number">2.5</span> Analytic approach</h3>
+<p>The goal is to predict dropout event within the 90 day window after each visit, given patient clinical history, plus weather and economic conditions during the timely visit window (27-36 days). As a binary outcome variable, a “90 day dropout” occurs at the latest visit observation before dropout incidence (i.e.&nbsp;dropout per-opportunity).</p>
+<section id="missing-and-censored-data" class="level4" data-number="2.5.1">
+<h4 data-number="2.5.1" class="anchored" data-anchor-id="missing-and-censored-data"><span class="header-section-number">2.5.1</span> Missing and censored data</h4>
+<p>Before model training, the visit data received additional processing. All patients who registered prior to January 1, 2021 were removed, as were all patient visits occurring after a dropout event. Censored visits (where patient was reported as death or transfer, and any visits after May 1, 2024) were removed, while previous visits from patients with a censored visit were retained. Calendar month replaced the event date. For balance, both the patient tally of previous visits and monthly facility patient load were log transformed. All nominal predictors were transformed into dummy variables. All numeric variables with null values (e.g.&nbsp;SBP) were imputed with the global median. Age at registration was transformed into two natural splines. Finally, all predictors were centred to a mean of zero and scaled to have a standard deviation of one.</p>
+</section>
+<section id="model-development-and-specification" class="level4" data-number="2.5.2">
+<h4 data-number="2.5.2" class="anchored" data-anchor-id="model-development-and-specification"><span class="header-section-number">2.5.2</span> Model development and specification</h4>
+<p>We employed logistic regression with LASSO regularization, assessed by 5-fold cross-validation.</p>
+<p>First, a random sample of 20% of patients were partitioned and held out as a testing dataset.</p>
+<p>The remaining data was then divided into five folds semi-randomly, as observations were grouped by patient ID and stratified by patient’s eventual dropout outcome. When a visit was sampled at random into Fold 1 Training Split 1, all visits for this patient went into Fold 1 Training Split 1. Grouping sampled observations by patient prevents train-test contamination whereby a patient’s baseline visit is used in a assessment split and followup visits are used in remaining training splits. For balance across the folds, sampling was stratified, so the same number of patients with a dropout event would go into each fold. While the folds are equally sized, grouped resampling by patient results in some differences in size for each fold’s assessment split (max 16156, min 15567).</p>
+<p>Folds were trained with logistic regression using the <em>glmnet</em> package. The LASSO <em>lambda</em> hyperparameter was tuned with a sequence of twenty possible penalty values from 0.0001 to 0.1 ( <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> A). The highest training AUROC was 0.7373394 averaged across each fold, with a 0.000428 penalty. ROC curve is presented in <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> B.</p>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig6_roc_penalty.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Penalty Grid and ROC Curve
+</figcaption>
+</figure>
+</div>
+<p>The model was then refit on the training data with this penalty score, and tested with the testing set. The model outputs probabilities of 90-day dropout event following the observed visit.</p>
+</section>
+<section id="model-performance" class="level4" data-number="2.5.3">
+<h4 data-number="2.5.3" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">2.5.3</span> Model performance</h4>
+<p>While discrimination is acceptable at 0.74 AUROC, the general performance is not exceptional. At a 0.5 probability cutoff, the precision is 0.56 and sensitivity (recall) is extremely low at 0.2.</p>
+<p>The is may due to a class imbalance of the dropout outcome, which skewed predicted probabilities towards zero. While 25% percent of all visits experience dropout event, only 9.5% of predicted probabilities were above 0.5. As seen in <strong>Table 2</strong>, lowering the threshold to .38 produces more balance between precision and sensitivity to 0.5 and 0.48, respectively, at a slight expense of accuracy (0.75 to 0.74).</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cutoff</th>
+<th style="text-align: right;">accuracy</th>
+<th style="text-align: right;">precision</th>
+<th style="text-align: right;">sensitivity</th>
+<th style="text-align: right;">f_meas</th>
+<th style="text-align: right;">j_index</th>
+<th style="text-align: right;">roc_auc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.741</td>
+<td style="text-align: right;">0.504</td>
+<td style="text-align: right;">0.477</td>
+<td style="text-align: right;">0.491</td>
+<td style="text-align: right;">0.311</td>
+<td style="text-align: right;">0.742</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.751</td>
+<td style="text-align: right;">0.564</td>
+<td style="text-align: right;">0.204</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">0.148</td>
+<td style="text-align: right;">0.742</td>
+</tr>
+</tbody>
+</table>
+<p>Table 2: Model Performance Metrics</p>
+</div>
+</div>
+<p>A calibration plot in <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a> shows the distribution of predicted probabilities and observed proportion of dropout events for 0.5 cutoff, segmenting probability levels into 20 groups. The model is fairly well calibrated up to 0.8 probability, but probabilities over 0.7 should be interpreted with caution, as 0.06% of predictions are above that level.</p>
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig4_model_calplot_latest.png" id="fig-5" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="model-key-features" class="level4" data-number="2.5.4">
+<h4 data-number="2.5.4" class="anchored" data-anchor-id="model-key-features"><span class="header-section-number">2.5.4</span> Model key features</h4>
+<p>We earlier observed a clear descending pattern in the frequency of patients with <em>x</em> total visits. Examining coefficients of the per-opportunity dropout model underscores that appointment tally (count of total patient visits to date) is by far the most critical asset to predict dropout. The variable importance plot in <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a> shows the absolute value of coefficients after LASSO regularization. The coefficient for log of appointment tally is -0.8, four times higher than the next predictors, and aligns with the finding that rates of dropout decline with subsequent visits. This is balanced by the positive coefficients for days since previous visit and days since the first visit: all other predictors being equal, a longer gap between previous visits leads to a higher predicted probability of dropout.</p>
+<p>Geographic location, defined by the LGA of visit, plays a key predictive role in this model (9/30 top predictors are LGAs), as well as characteristics of the health centre. Higher monthly throughput at the health centre was associated with fewer dropouts in this model. Higher temperatures and higher sorghum prices during the “timely visit” window (27-36 days after last) also had higher coefficients, potentially as they are correlated with seasons and health centre locations.</p>
+<p>Interestingly, clinical variables are of more limited importance, with several being eliminated through LASSO regularization. Overall 14 out of 114 coefficients were shrunk to zero.</p>
+<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig5_top_predictors_latest.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Variable Importance in dropout model
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="model-fairness" class="level4" data-number="2.5.5">
+<h4 data-number="2.5.5" class="anchored" data-anchor-id="model-fairness"><span class="header-section-number">2.5.5</span> Model fairness</h4>
+<p>As shown in <strong>Table 1</strong> , the patient population is unevenly distributed by Sex and State of clinic. Three quarters of patients are females, but males are more likely to dropout after first visit. Further, while 57% of all patients are registered in Kano state, 59% of patients who fail to return after baseline are from Ogun State. More dropout events thus occur in the minority groups, Ogun and Males.</p>
+<p>To assess model performance by subgroups, the above metrics were recalculated for each combination of Patient State, Patient Sex, and Decision Threshold (<a href="#fig-7" class="quarto-xref">Figure&nbsp;7</a>, full table in Appendix A). In line with the state-level imbalance, we see that accuracy in Ogun is generally lower, with males specifically below 0.70 accuracy at both thresholds, but above 0.78 for Kano females at 0.38 threshold. The gap in precision between 0.38 and 0.50 thresholds for Males in Kano is roughly twice as large as for other subgroups. We can thus infer that there are disproportionately more true positive dropout predictions for Kano males between the 0.38 and 0.50 probability thresholds than other subgroups. Furthermore, the gap in sensitivity (recall) between thresholds is twice as great in Ogun as in Kano, meaning that proportionally more true positives in Ogun are found within this range than in Kano.</p>
+<div id="fig-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/fig7_subgroup_analyses.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Performance Metrics by Subgroups
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="discussion" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="discussion"><span class="header-section-number">3</span> Discussion</h2>
+<p>This paper has demonstrated development of a dropout risk prediction model with adequate discrimination in the large (AUROC=0.74) based on a slim clinical record, supplemented by data on external conditions at the time and location of each patient visit. As a longitudinal model predicting probability of dropout-per-opportunity, the training, validation, and test data were segmented based on patient ID, rather than date of visit. This presents a high likelihood of over-fitting in particular on time-variant data, such as temperature and sorghum prices, but controlling for repeated patient characteristics was considered more important. We note all climate and economic candidate predictors had modest effect sizes on 38 day dropout. Nonetheless, the size of the coefficients remaining through LASSO is surprising, and suggests over-fitting.</p>
+<p>Ultimately this model should be judged by its utility and applicability in an implementation context. <em>Vickers et al</em> have described net benefit (NB) as a “simple type of decision analysis, with benefits and harms put on the same scale so that they can be compared directly”. <span class="citation" data-cites="vickers2016">[<a href="#ref-vickers2016" role="doc-biblioref">25</a>]</span> NB is defined as a function of true positives over <em>n</em>, minus false positives over <em>n</em> multiplied by the probability threshold used for the treat/not-treat decision (which is equivalent to a subjective “exchange rate” of the benefits of true positive vis-a-vis harms of false positive).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.bmj.com/content/352/bmj.i6"><img src="figs/nb_vickers.jpg" class="img-fluid figure-img" alt="Net benefit formula"></a></p>
+<figcaption>Net benefit formula</figcaption>
+</figure>
+</div>
+<p>In this context, an intervention to support a patient when their latest visit was a “high risk” might be given priority for an outreach phone call or an automated SMS reminder. Such treatments have relatively low costs, so a low threshold may therefore be preferred. On test dataset, at p<sub>t</sub>=0.38, the NB value is 0.05. At p<sub>t</sub>=0.2 (where there are 1.5 times as many false positives as true positives) the NB is 0.12.</p>
+<p>This model requires substantial processing of input data in order to output predicted value. As a model with marginal net benefit and likely over-fitting, the value of this model should be compared to relatively simple formulations that are also more generalizable. In a sensitivity analysis, we followed the same steps as developing the Full Model above, but with two separate pathways. First, only baseline level variables were included, and the outcome was reformulated as “Return Failure” after first visit. In addition, we tested a “miniature model” for dropout-per-opportunity which only included inputs derived from patient ID and visit dates (appointment tally, days between visits, days since entry, month of visit).</p>
+<p>These models are compared by ROC curve in <a href="#fig-8" class="quarto-xref">Figure&nbsp;8</a> and by performance metrics in <strong>Table 3</strong>.</p>
+<div id="fig-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figs/roc_curve_compare.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Model Comparison: ROC Curves
+</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">model</th>
+<th style="text-align: right;">accuracy</th>
+<th style="text-align: right;">precision</th>
+<th style="text-align: right;">sensitivity</th>
+<th style="text-align: right;">f_meas</th>
+<th style="text-align: right;">j_index</th>
+<th style="text-align: right;">roc_auc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Model 1: Return Failure At Baseline</td>
+<td style="text-align: right;">0.756</td>
+<td style="text-align: right;">0.494</td>
+<td style="text-align: right;">0.313</td>
+<td style="text-align: right;">0.383</td>
+<td style="text-align: right;">0.211</td>
+<td style="text-align: right;">0.735</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Model 2: Full Spec</td>
+<td style="text-align: right;">0.741</td>
+<td style="text-align: right;">0.504</td>
+<td style="text-align: right;">0.477</td>
+<td style="text-align: right;">0.491</td>
+<td style="text-align: right;">0.311</td>
+<td style="text-align: right;">0.742</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Model 3: Minimal Spec</td>
+<td style="text-align: right;">0.703</td>
+<td style="text-align: right;">0.438</td>
+<td style="text-align: right;">0.487</td>
+<td style="text-align: right;">0.461</td>
+<td style="text-align: right;">0.266</td>
+<td style="text-align: right;">0.704</td>
+</tr>
+</tbody>
+</table>
+<p>Table 3: Sensitivity Comparison Metrics, Decision Threshold=0.38</p>
+</div>
+</div>
+<p>At a 0.38 decision threshold, the full model (Model 2) generally outperforms the others, except for Accuracy against Model 1 and Sensitivity against Model 3. From here, the optimization approach depends on problem formulation, target outcome, and feature specification. But the closeness of key metrics across models suggests that subtracting variables would improve generalizability without much expense to accuracy, precision, or discrimination.</p>
+<p>There may also be an argument for more advanced machine learning techniques often performed on high-dimensional EMR data, such as random forest or k-nearest neighbors. In particular, the logistic regression model did not account for patterns in repeated measures across a patient’s visits, such as medications or blood pressure, which may be better assessed with such techniques. We note however that a systematic review of clinical risk prediction models found zero gain in AUROC for machine learning methods compared to logistic regression. <span class="citation" data-cites="christodoulou2019">[<a href="#ref-christodoulou2019" role="doc-biblioref">26</a>]</span> The plausible gains from a machine learning approach must be weighed against the low Net Benefit of a baseline logistic regression, the dangers of additional over-fitting, and the challenges of maintaining such computationally expensive models in this context.</p>
+<p>Subsequent studies should undertake a causal investigation of factors with high coefficients in this model, such as days of medication, supporter role, consent to SMS, and clinic characteristics (e.g.&nbsp;its LGA or monthly throughput) . They should also study other variables which were not available for this analysis but have previously been found to affect patient dropout, such as patient distance to clinic, socioeconomic status, price of treatment, comorbidities, and attitude towards health. Causal factors could be then incorporated into the EMR to support more precise dropout prediction models.</p>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-pickersgill2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Pickersgill SJ, Msemburi WT, Cobb L, Ide N, Moran AE, Su Y, et al. Modeling global 80-80-80 blood pressure targets and cardiovascular outcomes. Nature Medicine [Internet]. 2022 Aug;28(8):1693–9. Available from: <a href="https://www.nature.com/articles/s41591-022-01890-4">https://www.nature.com/articles/s41591-022-01890-4</a></div>
+</div>
+<div id="ref-frieden2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Frieden TR, Jaffe MG. Saving 100 million lives by improving global treatment of hypertension and reducing cardiovascular disease risk factors. The Journal of Clinical Hypertension [Internet]. 2018;20(2):208–11. Available from: <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jch.13195">https://onlinelibrary.wiley.com/doi/abs/10.1111/jch.13195</a></div>
+</div>
+<div id="ref-GlobalReportHTN2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Global report on hypertension: the race against a silent killer [Internet]. Available from: <a href="https://www.who.int/publications-detail-redirect/9789240081062">https://www.who.int/publications-detail-redirect/9789240081062</a></div>
+</div>
+<div id="ref-khatib2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Khatib R, Schwalm JD, Yusuf S, Haynes RB, McKee M, Khan M, et al. Patient and Healthcare Provider Barriers to Hypertension Awareness, Treatment and Follow Up: A Systematic Review and Meta-Analysis of Qualitative and Quantitative Studies. PLOS ONE [Internet]. 2014 Jan 15;9(1):e84238. Available from: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0084238">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0084238</a></div>
+</div>
+<div id="ref-kaur2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Kaur P, Kunwar A, Sharma M, Mitra J, Das C, Swasticharan L, et al. India Hypertension Control Initiative<span></span>Hypertension treatment and blood pressure control in a cohort in 24 sentinel site clinics. The Journal of Clinical Hypertension [Internet]. 2021;23(4):720–9. Available from: <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jch.14141">https://onlinelibrary.wiley.com/doi/abs/10.1111/jch.14141</a></div>
+</div>
+<div id="ref-mahmood2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Mahmood S, Jalal Z, Hadi MA, Shah KU. Association between attendance at outpatient follow-up appointments and blood pressure control among patients with hypertension. BMC Cardiovascular Disorders [Internet]. 2020 Oct 21;20(1):458. Available from: <a href="https://doi.org/10.1186/s12872-020-01741-5">https://doi.org/10.1186/s12872-020-01741-5</a></div>
+</div>
+<div id="ref-guthmann2005" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Guthmann R, Davis N, Brown M, Elizondo J. Visit Frequency and Hypertension. The Journal of Clinical Hypertension [Internet]. 2005;7(6):327–32. Available from: <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1524-6175.2005.04371.x">https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1524-6175.2005.04371.x</a></div>
+</div>
+<div id="ref-asgedom2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Asgedom SW, Atey TM, Desse TA. Antihypertensive medication adherence and associated factors among adult hypertensive patients at Jimma University Specialized Hospital, southwest Ethiopia. BMC Research Notes [Internet]. 2018 Dec;11(1):27. Available from: <a href="https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-018-3139-6">https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-018-3139-6</a></div>
+</div>
+<div id="ref-ebi2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Ebi KL, Vanos J, Baldwin JW, Bell JE, Hondula DM, Errett NA, et al. Extreme weather and climate change: Population health and health system implications. Annual review of public health [Internet]. 2021 Apr 1;42:293–315. Available from: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9013542/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9013542/</a></div>
+</div>
+<div id="ref-dawkins2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Dawkins B, Renwick C, Ensor T, Shinkins B, Jayne D, Meads D. What factors affect patients<span>’</span> ability to access healthcare? An overview of systematic reviews. Tropical Medicine &amp; International Health [Internet]. 2021;26(10):1177–88. Available from: <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/tmi.13651">https://onlinelibrary.wiley.com/doi/abs/10.1111/tmi.13651</a></div>
+</div>
+<div id="ref-garry2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Garry S, Checchi F. Armed conflict and public health: into the 21st century. Journal of Public Health [Internet]. 2020 Aug 18;42(3):e287–98. Available from: <a href="https://academic.oup.com/jpubhealth/article/42/3/e287/5672679">https://academic.oup.com/jpubhealth/article/42/3/e287/5672679</a></div>
+</div>
+<div id="ref-WHOHypNG2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">World Health Organization <span></span> Hypertension profiles, 2023: Nigeria. [Internet]. Available from: <a href="https://www.who.int/teams/noncommunicable-diseases/surveillance/data/hypertension-profiles">https://www.who.int/teams/noncommunicable-diseases/surveillance/data/hypertension-profiles</a></div>
+</div>
+<div id="ref-nhciAfro2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Nigeria collaborates with WHO to curb hypertension, introduces control initiative [Internet]. 2024. Available from: <a href="https://www.afro.who.int/news/nigeria-collaborates-who-curb-hypertension-introduces-control-initiative">https://www.afro.who.int/news/nigeria-collaborates-who-curb-hypertension-introduces-control-initiative</a></div>
+</div>
+<div id="ref-chikwado2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Chikwado. Combating hypertension in nigeria with decentralized testing, real-time data analytics and a standardized patient-centered treatment protocol [Internet]. 2022. Available from: <a href="https://dhis2.org/nigeria-hypertension-control/">https://dhis2.org/nigeria-hypertension-control/</a></div>
+</div>
+<div id="ref-adejumo2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Adejumo O, Ogundele O, Mamven M, Oyedepo D, Ntaji M, Mohammed A, et al. Assessment of hypertension service availability in some primary health centres in Nigeria: a mixed-methods study. BMJ Open [Internet]. 2023 Aug 1;13(8):e073833. Available from: <a href="https://bmjopen.bmj.com/content/13/8/e073833">https://bmjopen.bmj.com/content/13/8/e073833</a></div>
+</div>
+<div id="ref-ye2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Ye J, Orji IA, Baldridge AS, Ojo TM, Shedul G, Ugwuneji EN, et al. Characteristics and patterns of retention in hypertension care in primary care settings from the hypertension treatment in nigeria program. JAMA Network Open [Internet]. 2022 Sep 6;5(9):e2230025. Available from: <a href="https://doi.org/10.1001/jamanetworkopen.2022.30025">https://doi.org/10.1001/jamanetworkopen.2022.30025</a></div>
+</div>
+<div id="ref-kuhn2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Kuhn M, Wickham H. Tidymodels: A collection of packages for modeling and machine learning using tidyverse principles. [Internet]. 2020. Available from: <a href="https://www.tidymodels.org">https://www.tidymodels.org</a></div>
+</div>
+<div id="ref-maclean2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Maclean R, Auwal I, Aina T. Nigeria confronts its worst economic crisis in a generation. The New York Times [Internet]. 2024 Jun 11; Available from: <a href="https://www.nytimes.com/2024/06/11/world/africa/nigeria-economy-strike.html">https://www.nytimes.com/2024/06/11/world/africa/nigeria-economy-strike.html</a></div>
+</div>
+<div id="ref-princewill2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Princewill N. <span>‘</span>The masses are suffering,<span>’</span> Nigerians lament high cost of living as fuel price hikes bite [Internet]. 2023. Available from: <a href="https://www.cnn.com/2023/07/07/africa/nigeria-cost-of-living-crisis-lgs-cmd/index.html">https://www.cnn.com/2023/07/07/africa/nigeria-cost-of-living-crisis-lgs-cmd/index.html</a></div>
+</div>
+<div id="ref-fitzpatrick2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Fitzpatrick JH, Willard A, Edwards JR, Harhay MN, Schinasi LH, Matthews J, et al. Time series analysis: Associations between temperature and primary care utilization in philadelphia, pennsylvania. American Journal of Preventive Medicine [Internet]. 2024 Jun 20; Available from: <a href="https://www.sciencedirect.com/science/article/pii/S0749379724002083">https://www.sciencedirect.com/science/article/pii/S0749379724002083</a></div>
+</div>
+<div id="ref-liu2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Liu D, Shin WY, Sprecher E, Conroy K, Santiago O, Wachtel G, et al. Machine learning approaches to predicting no-shows in pediatric medical appointment. npj Digital Medicine [Internet]. 2022 Apr 20;5(1):1–11. Available from: <a href="https://www.nature.com/articles/s41746-022-00594-w">https://www.nature.com/articles/s41746-022-00594-w</a></div>
+</div>
+<div id="ref-grid3" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">GRID3 [Internet]. Available from: <a href="https://grid3.org/">https://grid3.org/</a></div>
+</div>
+<div id="ref-fewsnet" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">FEWS NET data explorer [Internet]. Available from: <a href="https://fdw.fews.net/data-explorer/">https://fdw.fews.net/data-explorer/</a></div>
+</div>
+<div id="ref-faoeur2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">FAO, European Union, CIRAD. FAO, european union and CIRAD. 2022. Food systems profile <span></span> nigeria. Catalysing the sustainable and inclusive transformation of food systems. [Internet]. Rome, Brussels, Montpelier, France; 2022. Available from: <a href="https://openknowledge.fao.org/handle/20.500.14283/cc3380en">https://openknowledge.fao.org/handle/20.500.14283/cc3380en</a></div>
+</div>
+<div id="ref-vickers2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Vickers AJ, Calster BV, Steyerberg EW. Net benefit approaches to the evaluation of prediction models, molecular markers, and diagnostic tests. BMJ [Internet]. 2016 Jan 25;352:i6. Available from: <a href="https://www.bmj.com/content/352/bmj.i6">https://www.bmj.com/content/352/bmj.i6</a></div>
+</div>
+<div id="ref-christodoulou2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Christodoulou E, Ma J, Collins GS, Steyerberg EW, Verbakel JY, Van Calster B. A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models. Journal of Clinical Epidemiology [Internet]. 2019 Jun 1;110:12–22. Available from: <a href="https://www.sciencedirect.com/science/article/pii/S0895435618310813">https://www.sciencedirect.com/science/article/pii/S0895435618310813</a></div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
