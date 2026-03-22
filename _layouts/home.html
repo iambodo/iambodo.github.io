@@ -8,7 +8,7 @@ layout: default
   <div class="hero-overlay"></div>
   <div class="about-text">
     <p class="about-eyebrow">DHIS2 Implementation Adviser &amp; Data Scientist</p>
-    <h1 class="about-name">Bodo<br><em>Lang</em></h1>
+    <h1 class="about-name">Brian<br><em>O'Donnell</em></h1>
     <p class="about-bio">
       Ten years building health information systems across global health programs.
       I write code to make data useful — from DHIS2 apps to epidemiological analysis in R.
@@ -27,7 +27,7 @@ layout: default
   </div>
   <div class="about-photo">
     <div class="photo-frame">
-      <img src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Bodo Lang">
+      <img src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="Brian O'Donnell">
       <div class="photo-corner tl"></div>
       <div class="photo-corner br"></div>
     </div>
@@ -331,21 +331,14 @@ layout: default
     <h2 class="section-title">Writing &amp; Research</h2>
     <p class="section-desc">Long-form pieces on public health data, heat-health early warning systems, and cancer registry infrastructure.</p>
   </div>
-  <div class="blog-layout">
-    <div class="blog-sidebar">
-      <p class="blog-sidebar-title">Posts</p>
-      {% for post in site.posts %}
-      <a class="blog-post-item" href="{{ post.url | relative_url }}" data-post-url="{{ post.url | relative_url }}">
-        <p class="blog-post-date">{{ post.date | date: "%b %Y" }}</p>
-        <p class="blog-post-title">{{ post.title }}</p>
-      </a>
-      {% endfor %}
-    </div>
-    <div class="blog-reader" id="blog-reader">
-      <div class="blog-reader-empty">
-        <span>← Select a post to read</span>
-      </div>
-    </div>
+  <div class="blog-post-list">
+    {% for post in site.posts %}
+    <a class="blog-list-item" href="{{ post.url | relative_url }}">
+      <span class="blog-list-date">{{ post.date | date: "%b %Y" }}</span>
+      <span class="blog-list-title">{{ post.title }}</span>
+      <span class="blog-list-arrow">→</span>
+    </a>
+    {% endfor %}
   </div>
 </section>
 

@@ -336,8 +336,17 @@ footer p { font-size: 0.78rem; color: var(--text-muted); }
 .post-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
 .project-img { width: 100%; border-radius: 4px; margin-bottom: 2rem; border: 1px solid var(--border); }
 
+/* ── HOME BLOG LIST ── */
+.blog-post-list { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+.blog-list-item { display: grid; grid-template-columns: 70px 1fr auto; align-items: baseline; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); text-decoration: none; transition: color 0.15s; }
+.blog-list-date { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; }
+.blog-list-title { font-size: 0.95rem; color: var(--cream); line-height: 1.4; transition: color 0.15s; }
+.blog-list-arrow { font-size: 0.8rem; color: var(--text-muted); opacity: 0; transition: opacity 0.15s; }
+.blog-list-item:hover .blog-list-title { color: var(--teal); }
+.blog-list-item:hover .blog-list-arrow { opacity: 1; color: var(--teal); }
+
 /* ── BLOG PAGE ── */
-.blog-page .blog-reader { padding: 0; }
+.blog-main { min-height: 300px; }
 .blog-reader-empty { display: flex; align-items: center; justify-content: center; height: 300px; color: var(--text-muted); font-size: 0.85rem; border: 1px dashed var(--border); border-radius: 4px; }
 
 /* ── MD BODY ── */
