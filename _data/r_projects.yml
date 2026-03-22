@@ -1,0 +1,26 @@
+# R with DHIS2 API cards
+# Fields: title, tag, desc, url, img (optional)
+
+- title: "Covid Networks"
+  tag: "R · igraph"
+  desc: "Mapping COVID-19 transmission networks via DHIS2 case surveillance data."
+  url: "https://community.dhis2.org/t/contact-tracing-covid-19-cases-r-shiny-app-available-for-download/39101"
+  img: ""
+
+- title: "Program Indicator Generator"
+  tag: "R · DHIS2 API"
+  desc: "Automate DHIS2 program indicator creation at scale using the metadata API."
+  url: "https://github.com/iambodo/dhis2_pi_generator"
+  img: ""
+
+- title: "User Activity in Tracker"
+  tag: "R · RMarkdown"
+  desc: "Analysing DHIS2 user login patterns and dashboard engagement via the API."
+  url: "projects/dhis2_users_rmarkdown.html"
+  img: ""
+
+- title: "Visualizing Patient Movement"
+  tag: "R · ggplot2"
+  desc: "Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs."
+  url: "https://github.com/iambodo/tutorials/ereg_migration_viz_types.html"
+  img: ""

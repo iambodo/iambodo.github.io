@@ -1,0 +1,20 @@
+# Epidemiology cards
+# Fields: title, tag, desc, url, img (optional)
+
+- title: "Masters Thesis"
+  tag: "MSc Thesis"
+  desc: "Predicting dropout from care among 40,000 hypertension patients in Nigeria."
+  url: "projects/nhci_analyses/manuscript_20aug.html"
+  img: "projects/roc_curve_compare.png"
+
+- title: "Palestine Chart"
+  tag: "Epidemiology · eRegistry"
+  desc: "Reproductive health indicators from Palestinian eRegistry. Linked to published papers."
+  url: "https://academic.oup.com/oodh/article/doi/10.1093/oodh/oqad010/7241429"
+  img: "projects/pal_anc_chart.png"
+
+- title: "Survival Curves"
+  tag: "R · Survival Analysis"
+  desc: "Kaplan-Meier and Cox regression models for time-to-event outcomes in health data."
+  url: "#"
+  img: ""

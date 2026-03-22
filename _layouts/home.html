@@ -11,9 +11,9 @@ layout: default
     <h1 class="about-name">Brian<br><em>O'Donnell</em></h1>
     <p class="about-bio">
       Hi!
-      I have 10+ years building durable national health information systems with DHIS2.
+      I'm a public health data specialist with 10+ years of experience building durable national health information systems.
       I also write code to help unlock these data for deeper exploration.
-      This is a portfolio of all my projects in public health data and software development.
+      This is a portfolio of all my projects in health data analysis and software development.
     </p>
     <div class="about-links">
       <a href="https://www.linkedin.com/in/iambodo" target="_blank" class="btn btn-primary">
@@ -54,8 +54,12 @@ layout: default
     <p class="section-desc">React applications built on the DHIS2 App Platform for visualizing health data, exploring tracker events, and surfacing program insights.</p>
   </div>
   <div class="cards-scroll">
-    <a href="https://github.com/iambodo/dhis2-trend-sketch" target="_blank" class="card">
+    {% for item in site.data.dhis2 %}
+    <a href="{{ item.url }}" target="_blank" class="card">
       <div class="card-bg card-bg-dhis2"></div>
+      {% if item.img %}
+      <div class="card-illustration" style="background-image: url('{{ item.img | relative_url }}'); background-size: cover; background-position: center;"></div>
+      {% else %}
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
           <line x1="40" y1="30" x2="260" y2="30" stroke="rgba(78,205,196,0.1)" stroke-width="1"/>
@@ -70,36 +74,15 @@ layout: default
           <circle cx="235" cy="40" r="4" fill="#4ecdc4"/>
         </svg>
       </div>
+      {% endif %}
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
-        <p class="card-tag">DHIS2 App</p>
-        <h3 class="card-title">Trend Sketch</h3>
-        <p class="card-desc">Interactive trend visualizations for DHIS2 aggregate data with comparative overlays.</p>
+        <p class="card-tag">{{ item.tag }}</p>
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-desc">{{ item.desc }}</p>
       </div>
     </a>
-    <a href="#" class="card">
-      <div class="card-bg card-bg-dhis2"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <circle cx="140" cy="80" r="18" fill="rgba(78,205,196,0.15)" stroke="#4ecdc4" stroke-width="1.5"/>
-          <circle cx="75" cy="50" r="10" fill="rgba(78,205,196,0.1)" stroke="rgba(78,205,196,0.5)" stroke-width="1"/>
-          <circle cx="80" cy="130" r="10" fill="rgba(78,205,196,0.1)" stroke="rgba(78,205,196,0.5)" stroke-width="1"/>
-          <circle cx="205" cy="45" r="10" fill="rgba(232,149,109,0.15)" stroke="rgba(232,149,109,0.5)" stroke-width="1"/>
-          <circle cx="210" cy="125" r="10" fill="rgba(232,149,109,0.15)" stroke="rgba(232,149,109,0.5)" stroke-width="1"/>
-          <line x1="140" y1="80" x2="75" y2="50" stroke="rgba(78,205,196,0.3)" stroke-width="1"/>
-          <line x1="140" y1="80" x2="80" y2="130" stroke="rgba(78,205,196,0.3)" stroke-width="1"/>
-          <line x1="140" y1="80" x2="205" y2="45" stroke="rgba(232,149,109,0.3)" stroke-width="1"/>
-          <line x1="140" y1="80" x2="210" y2="125" stroke="rgba(232,149,109,0.3)" stroke-width="1"/>
-          <text x="131" y="84" font-size="9" fill="rgba(78,205,196,0.8)" font-family="monospace">TEI</text>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">DHIS2 App</p>
-        <h3 class="card-title">Event Relationships</h3>
-        <p class="card-desc">Network visualization of tracked entity relationships across DHIS2 programs.</p>
-      </div>
-    </a>
+    {% endfor %}
   </div>
 </section>
 
@@ -113,8 +96,12 @@ layout: default
     <p class="section-desc">Using R to connect, extract, and analyse data from DHIS2 — from network graphs of COVID surveillance to tracker data workflows.</p>
   </div>
   <div class="cards-scroll">
-    <a href="https://community.dhis2.org/t/contact-tracing-covid-19-cases-r-shiny-app-available-for-download/39101" target="_blank" class="card">
+    {% for item in site.data.r_projects %}
+    <a href="{{ item.url }}" target="_blank" class="card">
       <div class="card-bg card-bg-r"></div>
+      {% if item.img %}
+      <div class="card-illustration" style="background-image: url('{{ item.img | relative_url }}'); background-size: cover; background-position: center;"></div>
+      {% else %}
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
           <circle cx="140" cy="90" r="22" fill="rgba(100,149,237,0.15)" stroke="rgba(100,149,237,0.5)" stroke-width="1.5"/>
@@ -129,83 +116,15 @@ layout: default
           <text x="130" y="94" font-size="8" fill="rgba(100,149,237,0.8)" font-family="monospace">hub</text>
         </svg>
       </div>
+      {% endif %}
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
-        <p class="card-tag">R · igraph</p>
-        <h3 class="card-title">Covid Networks</h3>
-        <p class="card-desc">Mapping COVID-19 transmission networks via DHIS2 case surveillance data.</p>
+        <p class="card-tag">{{ item.tag }}</p>
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-desc">{{ item.desc }}</p>
       </div>
     </a>
-    <a href="https://github.com/iambodo/dhis2_pi_generator" class="card">
-      <div class="card-bg card-bg-r"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <rect x="30" y="25" width="220" height="130" rx="4" fill="rgba(26,47,71,0.8)" stroke="rgba(100,149,237,0.2)" stroke-width="1"/>
-          <rect x="30" y="25" width="220" height="18" rx="4" fill="rgba(100,149,237,0.1)"/>
-          <circle cx="46" cy="34" r="4" fill="rgba(232,149,109,0.6)"/>
-          <circle cx="60" cy="34" r="4" fill="rgba(212,168,83,0.6)"/>
-          <circle cx="74" cy="34" r="4" fill="rgba(78,205,196,0.6)"/>
-          <rect x="45" y="55" width="60" height="5" rx="1" fill="rgba(100,149,237,0.5)"/>
-          <rect x="115" y="55" width="40" height="5" rx="1" fill="rgba(212,168,83,0.4)"/>
-          <rect x="55" y="68" width="80" height="5" rx="1" fill="rgba(78,205,196,0.4)"/>
-          <rect x="45" y="81" width="50" height="5" rx="1" fill="rgba(232,149,109,0.4)"/>
-          <rect x="55" y="94" width="40" height="5" rx="1" fill="rgba(78,205,196,0.5)"/>
-          <rect x="45" y="107" width="100" height="5" rx="1" fill="rgba(212,168,83,0.3)"/>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">R · DHIS2 API</p>
-        <h3 class="card-title">Program Indicator Generator</h3>
-        <p class="card-desc">Automate DHIS2 program indicator creation at scale using the metadata API.</p>
-      </div>
-    </a>
-    <a href="projects/dhis2_users_rmarkdown.html" target="_blank" class="card">
-      <div class="card-bg card-bg-r"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <g transform="translate(30, 30)">
-            <rect x="30" y="0" width="180" height="14" rx="1" fill="rgba(26,47,71,0.5)" stroke="rgba(78,205,196,0.1)" stroke-width="0.5"/>
-            <rect x="30" y="18" width="180" height="14" rx="1" fill="rgba(26,47,71,0.5)" stroke="rgba(78,205,196,0.1)" stroke-width="0.5"/>
-            <rect x="30" y="36" width="180" height="14" rx="1" fill="rgba(26,47,71,0.5)" stroke="rgba(78,205,196,0.1)" stroke-width="0.5"/>
-            <rect x="32" y="2" width="14" height="10" rx="1" fill="rgba(78,205,196,0.7)"/>
-            <rect x="86" y="2" width="14" height="10" rx="1" fill="rgba(78,205,196,0.8)"/>
-            <rect x="68" y="20" width="14" height="10" rx="1" fill="rgba(232,149,109,0.7)"/>
-            <rect x="104" y="20" width="14" height="10" rx="1" fill="rgba(78,205,196,0.6)"/>
-            <rect x="50" y="38" width="14" height="10" rx="1" fill="rgba(78,205,196,0.5)"/>
-            <rect x="122" y="38" width="14" height="10" rx="1" fill="rgba(232,149,109,0.8)"/>
-          </g>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">R · RMarkdown</p>
-        <h3 class="card-title">User Activity in Tracker</h3>
-        <p class="card-desc">Analysing DHIS2 user login patterns and dashboard engagement via the API.</p>
-      </div>
-    </a>
-    <a href="https://github.com/iambodo/tutorials/ereg_migration_viz_types" class="card">
-      <div class="card-bg card-bg-r"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <circle cx="60" cy="90" r="20" fill="rgba(100,149,237,0.1)" stroke="rgba(100,149,237,0.4)" stroke-width="1.5"/>
-          <circle cx="220" cy="90" r="20" fill="rgba(78,205,196,0.1)" stroke="rgba(78,205,196,0.4)" stroke-width="1.5"/>
-          <circle cx="140" cy="50" r="15" fill="rgba(212,168,83,0.1)" stroke="rgba(212,168,83,0.4)" stroke-width="1.5"/>
-          <circle cx="140" cy="135" r="12" fill="rgba(232,149,109,0.1)" stroke="rgba(232,149,109,0.4)" stroke-width="1.5"/>
-          <path d="M 80 85 Q 110 55 125 55" stroke="rgba(100,149,237,0.5)" stroke-width="1.5" fill="none"/>
-          <path d="M 155 55 Q 185 55 200 80" stroke="rgba(78,205,196,0.5)" stroke-width="1.5" fill="none"/>
-          <text x="48" y="94" font-size="7" fill="rgba(100,149,237,0.8)" font-family="monospace">ANC</text>
-          <text x="208" y="94" font-size="7" fill="rgba(78,205,196,0.8)" font-family="monospace">DEL</text>
-          <text x="127" y="53" font-size="7" fill="rgba(212,168,83,0.8)" font-family="monospace">PNC</text>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">R · ggplot2</p>
-        <h3 class="card-title">Visualizing Patient Movement</h3>
-        <p class="card-desc">Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs.</p>
-      </div>
-    </a>
+    {% endfor %}
   </div>
 </section>
 
@@ -219,8 +138,12 @@ layout: default
     <p class="section-desc">Academic and applied epidemiology: from my MSc thesis to survival analysis and reproductive health surveillance in Palestine.</p>
   </div>
   <div class="cards-scroll">
-    <a href="projects/msc_thesis.html" target="_blank" class="card">
+    {% for item in site.data.epidemiology %}
+    <a href="{{ item.url }}" target="_blank" class="card">
       <div class="card-bg card-bg-epi"></div>
+      {% if item.img %}
+      <div class="card-illustration" style="background-image: url('{{ item.img | relative_url }}'); background-size: cover; background-position: center;"></div>
+      {% else %}
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
           <rect x="60" y="20" width="160" height="130" rx="3" fill="rgba(26,47,71,0.8)" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
@@ -232,51 +155,15 @@ layout: default
           <polyline points="80,127 90,118 100,121 110,108 120,100 130,103" stroke="#d4a853" stroke-width="1.5" fill="none"/>
         </svg>
       </div>
+      {% endif %}
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
-        <p class="card-tag">MSc Thesis</p>
-        <h3 class="card-title">Masters Thesis</h3>
-        <p class="card-desc">Epidemiological research presented as an interactive report with embedded analysis.</p>
+        <p class="card-tag">{{ item.tag }}</p>
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-desc">{{ item.desc }}</p>
       </div>
     </a>
-    <a href="#" class="card">
-      <div class="card-bg card-bg-epi"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <line x1="40" y1="150" x2="240" y2="150" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
-          <line x1="40" y1="150" x2="40" y2="25" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
-          <rect x="55" y="80" width="22" height="70" rx="1" fill="rgba(212,168,83,0.5)"/>
-          <rect x="90" y="60" width="22" height="90" rx="1" fill="rgba(212,168,83,0.7)"/>
-          <rect x="125" y="40" width="22" height="110" rx="1" fill="rgba(212,168,83,0.9)"/>
-          <rect x="160" y="55" width="22" height="95" rx="1" fill="rgba(212,168,83,0.6)"/>
-          <polyline points="66,55 101,42 136,28 171,38" stroke="#4ecdc4" stroke-width="2" fill="none" stroke-dasharray="4 2"/>
-          <circle cx="136" cy="28" r="4" fill="#4ecdc4"/>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">Epidemiology · eRegistry</p>
-        <h3 class="card-title">Palestine Chart</h3>
-        <p class="card-desc">Reproductive health indicators from Palestinian eRegistry. Linked to published papers.</p>
-      </div>
-    </a>
-    <a href="#" class="card">
-      <div class="card-bg card-bg-epi"></div>
-      <div class="card-illustration">
-        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
-          <line x1="40" y1="150" x2="240" y2="150" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
-          <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(212,168,83,0.3)" stroke-width="1"/>
-          <polyline points="40,35 70,35 70,45 100,45 100,60 130,60 130,80 155,80 155,95 180,95 180,115 205,115 205,130 230,130" stroke="#4ecdc4" stroke-width="2.5" fill="none" stroke-linecap="square"/>
-          <polyline points="40,35 60,35 60,50 85,50 85,68 110,68 110,90 140,90 140,110 165,110 165,130 195,130 195,142 230,142" stroke="#e8956d" stroke-width="2" fill="none" stroke-linecap="square" stroke-dasharray="5 2"/>
-        </svg>
-      </div>
-      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="card-content">
-        <p class="card-tag">R · Survival Analysis</p>
-        <h3 class="card-title">Survival Curves</h3>
-        <p class="card-desc">Kaplan-Meier and Cox regression models for time-to-event outcomes in health data.</p>
-      </div>
-    </a>
+    {% endfor %}
   </div>
 </section>
 

@@ -1,0 +1,14 @@
+# DHIS2 Apps cards
+# Fields: title, tag, desc, url, img (optional)
+
+- title: "Trend Sketch"
+  tag: "DHIS2 App"
+  desc: "Interactive trend visualizations for DHIS2 aggregate data with comparative overlays."
+  url: "https://github.com/iambodo/dhis2-trend-sketch"
+  img: ""
+
+- title: "Event Relationships"
+  tag: "DHIS2 App"
+  desc: "Network visualization of tracked entity relationships across DHIS2 programs."
+  url: "https://github.com/iambodo/dhis2-event-relationships-plugin"
+  img: ""
