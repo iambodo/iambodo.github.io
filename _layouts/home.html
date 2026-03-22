@@ -10,9 +10,10 @@ layout: default
     <p class="about-eyebrow">DHIS2 Implementation Adviser &amp; Data Scientist</p>
     <h1 class="about-name">Brian<br><em>O'Donnell</em></h1>
     <p class="about-bio">
-      Ten years building health information systems across global health programs.
-      I write code to make data useful — from DHIS2 apps to epidemiological analysis in R.
-      Based in Geneva, working everywhere.
+      Hi!
+      I have 10+ years building durable national health information systems with DHIS2.
+      I also write code to help unlock these data for deeper exploration.
+      This is a portfolio of all my projects in public health data and software development.
     </p>
     <div class="about-links">
       <a href="https://www.linkedin.com/in/iambodo" target="_blank" class="btn btn-primary">
@@ -112,7 +113,7 @@ layout: default
     <p class="section-desc">Using R to connect, extract, and analyse data from DHIS2 — from network graphs of COVID surveillance to tracker data workflows.</p>
   </div>
   <div class="cards-scroll">
-    <a href="projects/malaria_networkNodes1.html" target="_blank" class="card">
+    <a href="https://community.dhis2.org/t/contact-tracing-covid-19-cases-r-shiny-app-available-for-download/39101" target="_blank" class="card">
       <div class="card-bg card-bg-r"></div>
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
@@ -135,7 +136,7 @@ layout: default
         <p class="card-desc">Mapping COVID-19 transmission networks via DHIS2 case surveillance data.</p>
       </div>
     </a>
-    <a href="#" class="card">
+    <a href="https://github.com/iambodo/dhis2_pi_generator" class="card">
       <div class="card-bg card-bg-r"></div>
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
@@ -183,7 +184,7 @@ layout: default
         <p class="card-desc">Analysing DHIS2 user login patterns and dashboard engagement via the API.</p>
       </div>
     </a>
-    <a href="#" class="card">
+    <a href="https://github.com/iambodo/tutorials/ereg_migration_viz_types" class="card">
       <div class="card-bg card-bg-r"></div>
       <div class="card-illustration">
         <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
@@ -289,36 +290,26 @@ layout: default
     <p class="section-desc">Weekly data visualization challenges in R. A growing collection of #TidyTuesday submissions exploring ggplot2, data storytelling, and visual design.</p>
   </div>
   <div class="cards-scroll">
-    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
+    {% for tt in site.data.tidytuesday %}
+    <a href="{{ tt.url }}" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
       <div class="card-bg card-bg-tidy"></div>
+      {% if tt.img %}
+      <div class="card-illustration" style="height:150px; background-image: url('{{ tt.img | relative_url }}'); background-size: cover; background-position: center;"></div>
+      {% else %}
       <div class="card-illustration" style="height:150px;">
         <svg viewBox="0 0 220 150" fill="none" style="width:100%;height:100%;">
           <circle cx="110" cy="75" r="55" fill="none" stroke="rgba(232,149,109,0.3)" stroke-width="15"/>
           <circle cx="110" cy="75" r="55" fill="none" stroke="rgba(78,205,196,0.5)" stroke-width="15" stroke-dasharray="155 190" transform="rotate(-90 110 75)"/>
-          <circle cx="110" cy="75" r="35" fill="none" stroke="rgba(212,168,83,0.6)" stroke-width="10" stroke-dasharray="80 120" transform="rotate(-90 110 75)"/>
         </svg>
       </div>
+      {% endif %}
       <div class="card-content">
-        <p class="card-tag">TidyTuesday</p>
-        <h3 class="card-title" style="font-size:0.95rem;">2024 Highlights</h3>
-        <p class="card-desc" style="font-size:0.72rem;">Selected favorites from weekly challenges.</p>
+        <p class="card-tag">{{ tt.date }}</p>
+        <h3 class="card-title" style="font-size:0.95rem;">{{ tt.title }}</h3>
+        {% if tt.desc %}<p class="card-desc" style="font-size:0.72rem;">{{ tt.desc }}</p>{% endif %}
       </div>
     </a>
-    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
-      <div class="card-bg card-bg-tidy"></div>
-      <div class="card-illustration" style="height:150px;">
-        <svg viewBox="0 0 220 150" fill="none" style="width:100%;height:100%;">
-          <path d="M 20 120 Q 50 120 60 100 Q 70 80 90 70 Q 110 60 120 75 Q 130 90 145 105 Q 155 115 170 118 Q 185 120 200 120" stroke="#4ecdc4" stroke-width="2" fill="rgba(78,205,196,0.08)"/>
-          <path d="M 20 100 Q 50 100 65 78 Q 80 58 100 48 Q 120 38 135 55 Q 150 70 165 88 Q 180 100 200 100" stroke="#e8956d" stroke-width="2" fill="rgba(232,149,109,0.07)" transform="translate(0,15)"/>
-          <path d="M 20 80 Q 45 80 58 58 Q 70 38 95 30 Q 120 22 138 42 Q 156 60 170 72 Q 185 80 200 80" stroke="#d4a853" stroke-width="2" fill="rgba(212,168,83,0.07)" transform="translate(0,30)"/>
-        </svg>
-      </div>
-      <div class="card-content">
-        <p class="card-tag">TidyTuesday</p>
-        <h3 class="card-title" style="font-size:0.95rem;">Ridgeline Plots</h3>
-        <p class="card-desc" style="font-size:0.72rem;">Density distributions across groups using ggridges.</p>
-      </div>
-    </a>
+    {% endfor %}
   </div>
 </section>
 

@@ -1,0 +1,12 @@
+# Add entries here — one block per card.
+# Fields: title, date, img (URL or local path), url (link), desc (optional caption)
+
+- title: "Avengers and the Bechdel Test"
+  date: "2020-06"
+  img: "https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/xmen_2020June30/avengers.jpg"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/xmen_2020June30"
+
+- title: "Cocktails Prices in Norway"
+  date: "2020-05"
+  img: "https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/cocktails_26may2020/shots.svg"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/cocktails_26may2020"
