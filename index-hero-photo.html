@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bodo — DHIS2 & Data Science</title>
+<title>Bodo — Hero Photo Variant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -79,34 +79,57 @@
 
   /* ── HERO / ABOUT ── */
   #about {
-    min-height: 100vh;
+    min-height: 75vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 80px 6rem 4rem;
+    padding: 80px 6rem 6rem;
     position: relative;
     overflow: hidden;
   }
 
-  #about::before {
-    content: '';
+  /* Photo background layer */
+  #about .hero-bg {
     position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(78,205,196,0.07) 0%, transparent 70%);
-    pointer-events: none;
+    inset: 0;
+    background-image: url('assets/img/pokhara3.jpg');
+    background-size: cover;
+    background-position: center 20%;
+    z-index: 0;
   }
 
-  #about::after {
-    content: '';
+  /* Overlay: left text protection + bottom fade dissolves into navy */
+  #about .hero-overlay {
     position: absolute;
-    bottom: 0;
-    left: 40%;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
+    inset: 0;
+    background:
+      linear-gradient(to right, rgba(13,27,42,0.92) 0%, rgba(13,27,42,0.65) 45%, rgba(13,27,42,0.2) 100%),
+      linear-gradient(to bottom, rgba(13,27,42,0.3) 0%, transparent 25%, transparent 55%, var(--navy) 100%);
+    z-index: 1;
+  }
+
+  /* All direct children of #about sit above the bg layers */
+  #about > *:not(.hero-bg):not(.hero-overlay) {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Profile photo frame on right */
+  .about-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-frame {
+    border-color: rgba(78,205,196,0.4);
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .about-text { padding-right: 4rem; }
@@ -682,6 +705,8 @@
 
 <!-- ABOUT -->
 <section id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="about-text">
     <p class="about-eyebrow">DHIS2 Implementation Adviser &amp; Data Scientist</p>
     <h1 class="about-name">Bodo<br><em>Lang</em></h1>
@@ -704,7 +729,7 @@
   </div>
   <div class="about-photo">
     <div class="photo-frame">
-      <span class="photo-placeholder-text">B</span>
+      <img src="assets/img/profile.jpg" alt="Bodo Lang">
       <div class="photo-corner tl"></div>
       <div class="photo-corner br"></div>
     </div>
@@ -712,39 +737,12 @@
 </section>
 
 <!-- PORTFOLIO TIMELINE -->
-<section id="timeline" class="section" style="padding-top: 0; padding-bottom: 5rem; position: relative; overflow: hidden;">
-  <!-- Background photo -->
-  <div style="
-    position: absolute;
-    inset: 0;
-    background-image: url('assets/img/pokhara3.jpg');
-    background-size: cover;
-    background-position: center 30%;
-    opacity: 0.3;
-    mix-blend-mode: luminosity;
-    pointer-events: none;
-  "></div>
-  <!-- Edge fade overlays -->
-  <div style="
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--navy) 0%, transparent 18%, transparent 82%, var(--navy) 100%);
-    pointer-events: none;
-  "></div>
-  <div style="
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, var(--navy) 0%, transparent 20%, transparent 80%, var(--navy) 100%);
-    pointer-events: none;
-  "></div>
-  <!-- Content -->
-  <div style="position: relative;">
-    <div class="section-header" style="margin-bottom: 2rem;">
-      <p class="section-number">00 — Portfolio Timeline</p>
-      <h2 class="section-title">Eras of Work</h2>
-    </div>
-    <div id="timeline-container"></div>
+<section id="timeline" class="section" style="padding-top: 0; padding-bottom: 5rem;">
+  <div class="section-header" style="margin-bottom: 2rem;">
+    <p class="section-number">00 — Portfolio Timeline</p>
+    <h2 class="section-title">Eras of Work</h2>
   </div>
+  <div id="timeline-container"></div>
 </section>
 
 <div class="section-divider"></div>
