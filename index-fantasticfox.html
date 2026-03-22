@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodo — DHIS2 & Data Science (Fantastic Fox)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #f5efe0;
+    --navy-light: #ede5ce;
+    --navy-mid: #e8ddc4;
+    --cream: #2c1a06;
+    --warm-white: #1a0f00;
+    --accent: #E58601;
+    --accent-light: #f0a030;
+    --teal: #46ACC8;
+    --gold: #DD8D29;
+    --text-muted: #7a5c30;
+    --border: rgba(70, 172, 200, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(245, 239, 224, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── HERO / ABOUT ── */
+  #about {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #about::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(70,172,200,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .about-text { padding-right: 4rem; }
+
+  .about-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--warm-white);
+  }
+
+  .about-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-bio {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* Photo placeholder */
+  .about-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-frame {
+    width: 360px;
+    height: 420px;
+    border-radius: 4px;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(70,172,200,0.05) 0%, transparent 60%),
+      linear-gradient(to bottom, transparent 60%, rgba(232,221,196,0.8) 100%);
+  }
+
+  .photo-placeholder-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(70,172,200,0.4);
+    z-index: 1;
+  }
+
+  .photo-corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--teal);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .photo-corner.tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
+  .photo-corner.br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 6rem 6rem 4rem;
+    position: relative;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--teal);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--warm-white);
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* ── CARDS ── */
+  .cards-scroll {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cards-scroll::-webkit-scrollbar { height: 4px; }
+  .cards-scroll::-webkit-scrollbar-track { background: transparent; }
+  .cards-scroll::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .card {
+    flex: 0 0 280px;
+    height: 340px;
+    border-radius: 4px;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(70,172,200,0.4);
+  }
+
+  /* Card background patterns — unique per type */
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
+  }
+
+  .card-bg-dhis2 {
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(70,172,200,0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(229,134,1,0.2) 0%, transparent 40%);
+  }
+
+  .card-bg-r {
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(100,149,237,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(70,172,200,0.2) 0%, transparent 40%);
+  }
+
+  .card-bg-epi {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(221,141,41,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(229,134,1,0.2) 0%, transparent 40%);
+  }
+
+  .card-bg-tidy {
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(229,134,1,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 0% 50%, rgba(70,172,200,0.15) 0%, transparent 40%);
+  }
+
+  .card-bg-blog {
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(221,141,41,0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 70%, rgba(70,172,200,0.15) 0%, transparent 40%);
+  }
+
+  /* SVG illustration area */
+  .card-illustration {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Card overlay gradient */
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 220px;
+    background: linear-gradient(to top, rgba(232,221,196,0.98) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .card-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.25rem 1.25rem 1.4rem;
+    z-index: 2;
+  }
+
+  .card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm-white);
+    line-height: 1.3;
+    margin-bottom: 0.45rem;
+  }
+
+  .card-desc {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .card-arrow {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(70,172,200,0.1);
+    border: 1px solid rgba(70,172,200,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 3;
+  }
+
+  .card:hover .card-arrow { opacity: 1; }
+
+  .card-arrow svg { width: 14px; height: 14px; stroke: var(--teal); }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-divider {
+    margin: 0 6rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* ── INLINE SVG ILLUSTRATIONS ── */
+  .illu-network {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .about-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+  .about-name    { animation: fadeUp 0.6s ease 0.2s both; }
+  .about-bio     { animation: fadeUp 0.6s ease 0.3s both; }
+  .about-links   { animation: fadeUp 0.6s ease 0.4s both; }
+  .about-photo   { animation: fadeUp 0.7s ease 0.3s both; }
+
+  /* ── CAROUSEL WRAPPER ── */
+  .carousel-wrapper {
+    position: relative;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(245,239,224,0.92);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, opacity 0.2s;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .carousel-wrapper:hover .carousel-btn { opacity: 1; pointer-events: auto; }
+  .carousel-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .carousel-btn.hidden { opacity: 0 !important; pointer-events: none !important; }
+
+  .carousel-btn-prev { left: -18px; }
+  .carousel-btn-next { right: -18px; }
+
+  .carousel-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+  /* ── BLOG LAYOUT ── */
+  .blog-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .blog-sidebar {
+    border-right: 1px solid var(--border);
+    padding-right: 1.5rem;
+  }
+
+  .blog-sidebar-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .blog-post-item {
+    display: block;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(70,172,200,0.15);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .blog-post-item:hover .blog-post-title,
+  .blog-post-item.active .blog-post-title { color: var(--teal); }
+
+  .blog-post-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .blog-post-title {
+    font-size: 0.82rem;
+    color: var(--cream);
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+
+  .blog-post-item.active .blog-post-title { color: var(--teal); }
+
+  /* ── MARKDOWN READER ── */
+  .blog-reader {
+    min-height: 400px;
+  }
+
+  .blog-reader-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .blog-reader-content {
+    display: none;
+  }
+
+  .blog-reader-content.active {
+    display: block;
+  }
+
+  .md-body {
+    color: var(--cream);
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .md-body h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--warm-white);
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .md-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--warm-white);
+    margin: 2rem 0 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .md-body h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin: 1.4rem 0 0.4rem;
+  }
+
+  .md-body p { margin-bottom: 1rem; color: rgba(44,26,6,0.85); }
+
+  .md-body a { color: var(--teal); text-decoration: none; }
+  .md-body a:hover { text-decoration: underline; }
+
+  .md-body ul, .md-body ol {
+    margin: 0.5rem 0 1rem 1.5rem;
+    color: rgba(44,26,6,0.85);
+  }
+
+  .md-body li { margin-bottom: 0.3rem; }
+
+  .md-body hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  .md-body code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82em;
+    background: rgba(70,172,200,0.1);
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    color: var(--teal);
+  }
+
+  .md-body pre {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .md-body pre code {
+    background: none;
+    padding: 0;
+    color: var(--cream);
+  }
+
+  .md-body blockquote {
+    border-left: 3px solid var(--teal);
+    padding-left: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 1rem 0;
+  }
+
+  .md-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    #about { grid-template-columns: 1fr; padding: 100px 2rem 4rem; }
+    .about-text { padding-right: 0; }
+    .about-photo { display: none; }
+    .section { padding: 4rem 2rem 3rem; }
+    .section-divider { margin: 0 2rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+    .card { flex: 0 0 240px; }
+    .blog-layout { grid-template-columns: 1fr; }
+    .blog-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 1rem; margin-bottom: 1rem; }
+    .carousel-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#about" class="nav-logo">iambodo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#dhis2">DHIS2</a></li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#epi">Epidemiology</a></li>
+    <li><a href="#tidy">TidyTuesday</a></li>
+    <li><a href="#blog">Blog</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <p class="about-eyebrow">DHIS2 Implementation Adviser &amp; Data Scientist</p>
+    <h1 class="about-name">Bodo<br><em>Lang</em></h1>
+    <p class="about-bio">
+      Ten years building health information systems across global health programs.
+      I write code to make data useful — from DHIS2 apps to epidemiological analysis in R.
+      Based in Geneva, working everywhere.
+    </p>
+    <div class="about-links">
+      <a href="#" class="btn btn-primary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="#" class="btn btn-ghost">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="#" class="btn btn-ghost">CV</a>
+    </div>
+  </div>
+  <div class="about-photo">
+    <div class="photo-frame">
+      <span class="photo-placeholder-text">B</span>
+      <div class="photo-corner tl"></div>
+      <div class="photo-corner br"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO TIMELINE -->
+<section id="timeline" class="section" style="padding-top: 0; padding-bottom: 5rem; position: relative; overflow: hidden;">
+  <!-- Background photo -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/img/pokhara3.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.15;
+    mix-blend-mode: luminosity;
+    pointer-events: none;
+  "></div>
+  <!-- Edge fade overlays -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #f5efe0 0%, transparent 18%, transparent 82%, #f5efe0 100%);
+    pointer-events: none;
+  "></div>
+  <div style="
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #f5efe0 0%, transparent 20%, transparent 80%, #f5efe0 100%);
+    pointer-events: none;
+  "></div>
+  <!-- Content -->
+  <div style="position: relative;">
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <p class="section-number">00 — Portfolio Timeline</p>
+      <h2 class="section-title">Eras of Work</h2>
+    </div>
+    <div id="timeline-container"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- DHIS2 APPS -->
+<section id="dhis2" class="section">
+  <div class="section-header">
+    <p class="section-number">01 — DHIS2 Apps</p>
+    <h2 class="section-title">Custom Applications</h2>
+    <p class="section-desc">
+      React applications built on the DHIS2 App Platform for visualizing health data, exploring tracker events, and surfacing program insights.
+    </p>
+  </div>
+  <div class="cards-scroll">
+
+    <!-- Card: Trend Sketch -->
+    <a href="https://iambodo.github.io/dhis2-trend-sketch" target="_blank" class="card">
+      <div class="card-bg card-bg-dhis2"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Trend line chart illustration -->
+          <rect width="280" height="180" fill="transparent"/>
+          <!-- Grid lines -->
+          <line x1="40" y1="30" x2="260" y2="30" stroke="rgba(70,172,200,0.1)" stroke-width="1"/>
+          <line x1="40" y1="70" x2="260" y2="70" stroke="rgba(70,172,200,0.1)" stroke-width="1"/>
+          <line x1="40" y1="110" x2="260" y2="110" stroke="rgba(70,172,200,0.1)" stroke-width="1"/>
+          <line x1="40" y1="150" x2="260" y2="150" stroke="rgba(70,172,200,0.1)" stroke-width="1"/>
+          <!-- Axes -->
+          <line x1="40" y1="150" x2="260" y2="150" stroke="rgba(70,172,200,0.3)" stroke-width="1.5"/>
+          <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(70,172,200,0.3)" stroke-width="1.5"/>
+          <!-- Line 1 -->
+          <polyline points="60,120 95,95 130,105 165,60 200,45 235,40" stroke="#46ACC8" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Area under line 1 -->
+          <polygon points="60,120 95,95 130,105 165,60 200,45 235,40 235,150 60,150" fill="rgba(70,172,200,0.06)"/>
+          <!-- Line 2 -->
+          <polyline points="60,135 95,120 130,130 165,115 200,105 235,85" stroke="#E58601" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
+          <!-- Dots on line 1 -->
+          <circle cx="165" cy="60" r="4" fill="#46ACC8"/>
+          <circle cx="235" cy="40" r="4" fill="#46ACC8"/>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">DHIS2 App</p>
+        <h3 class="card-title">Trend Sketch</h3>
+        <p class="card-desc">Interactive trend visualizations for DHIS2 aggregate data with comparative overlays.</p>
+      </div>
+    </a>
+
+    <!-- Card: Event Relationships -->
+    <a href="#" class="card">
+      <div class="card-bg card-bg-dhis2"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Network graph -->
+          <circle cx="140" cy="80" r="18" fill="rgba(70,172,200,0.15)" stroke="#46ACC8" stroke-width="1.5"/>
+          <circle cx="75" cy="50" r="10" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.5)" stroke-width="1"/>
+          <circle cx="80" cy="130" r="10" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.5)" stroke-width="1"/>
+          <circle cx="205" cy="45" r="10" fill="rgba(229,134,1,0.15)" stroke="rgba(229,134,1,0.5)" stroke-width="1"/>
+          <circle cx="210" cy="125" r="10" fill="rgba(229,134,1,0.15)" stroke="rgba(229,134,1,0.5)" stroke-width="1"/>
+          <circle cx="50" cy="90" r="7" fill="rgba(70,172,200,0.08)" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <circle cx="230" cy="85" r="7" fill="rgba(229,134,1,0.1)" stroke="rgba(229,134,1,0.3)" stroke-width="1"/>
+          <!-- Connections -->
+          <line x1="140" y1="80" x2="75" y2="50" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <line x1="140" y1="80" x2="80" y2="130" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <line x1="140" y1="80" x2="205" y2="45" stroke="rgba(229,134,1,0.3)" stroke-width="1"/>
+          <line x1="140" y1="80" x2="210" y2="125" stroke="rgba(229,134,1,0.3)" stroke-width="1"/>
+          <line x1="75" y1="50" x2="50" y2="90" stroke="rgba(70,172,200,0.2)" stroke-width="1"/>
+          <line x1="205" y1="45" x2="230" y2="85" stroke="rgba(229,134,1,0.2)" stroke-width="1"/>
+          <text x="131" y="84" font-size="9" fill="rgba(70,172,200,0.8)" font-family="monospace">TEI</text>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">DHIS2 App</p>
+        <h3 class="card-title">Event Relationships</h3>
+        <p class="card-desc">Network visualization of tracked entity relationships across DHIS2 programs.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- R WITH DHIS2 API -->
+<section id="r" class="section">
+  <div class="section-header">
+    <p class="section-number">02 — R with the DHIS2 API</p>
+    <h2 class="section-title">Analysis &amp; Visualization in R</h2>
+    <p class="section-desc">
+      Using R to connect, extract, and analyse data from DHIS2 — from network graphs of COVID surveillance to tracker data workflows.
+    </p>
+  </div>
+  <div class="cards-scroll">
+
+    <a href="projects/malaria_networkNodes1.html" target="_blank" class="card">
+      <div class="card-bg card-bg-r"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- COVID network graph -->
+          <circle cx="140" cy="90" r="22" fill="rgba(100,149,237,0.15)" stroke="rgba(100,149,237,0.5)" stroke-width="1.5"/>
+          <circle cx="65" cy="55" r="12" fill="rgba(100,149,237,0.1)" stroke="rgba(100,149,237,0.4)" stroke-width="1"/>
+          <circle cx="215" cy="55" r="12" fill="rgba(100,149,237,0.1)" stroke="rgba(100,149,237,0.4)" stroke-width="1"/>
+          <circle cx="55" cy="135" r="8" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.4)" stroke-width="1"/>
+          <circle cx="225" cy="135" r="8" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.4)" stroke-width="1"/>
+          <circle cx="140" cy="148" r="8" fill="rgba(100,149,237,0.1)" stroke="rgba(100,149,237,0.3)" stroke-width="1"/>
+          <circle cx="95" cy="150" r="5" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <circle cx="185" cy="150" r="5" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <!-- Edges -->
+          <line x1="140" y1="90" x2="65" y2="55" stroke="rgba(100,149,237,0.3)" stroke-width="1.5"/>
+          <line x1="140" y1="90" x2="215" y2="55" stroke="rgba(100,149,237,0.3)" stroke-width="1.5"/>
+          <line x1="140" y1="90" x2="55" y2="135" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <line x1="140" y1="90" x2="225" y2="135" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <line x1="140" y1="90" x2="140" y2="148" stroke="rgba(100,149,237,0.2)" stroke-width="1"/>
+          <line x1="65" y1="55" x2="95" y2="150" stroke="rgba(70,172,200,0.15)" stroke-width="1"/>
+          <line x1="215" y1="55" x2="185" y2="150" stroke="rgba(70,172,200,0.15)" stroke-width="1"/>
+          <text x="130" y="94" font-size="8" fill="rgba(100,149,237,0.8)" font-family="monospace">hub</text>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">R · igraph</p>
+        <h3 class="card-title">Covid Networks</h3>
+        <p class="card-desc">Mapping COVID-19 transmission networks via DHIS2 case surveillance data.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <div class="card-bg card-bg-r"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Code/indicator illustration -->
+          <rect x="30" y="25" width="220" height="130" rx="4" fill="rgba(232,221,196,0.8)" stroke="rgba(100,149,237,0.2)" stroke-width="1"/>
+          <rect x="30" y="25" width="220" height="18" rx="4" fill="rgba(100,149,237,0.1)"/>
+          <circle cx="46" cy="34" r="4" fill="rgba(229,134,1,0.6)"/>
+          <circle cx="60" cy="34" r="4" fill="rgba(221,141,41,0.6)"/>
+          <circle cx="74" cy="34" r="4" fill="rgba(70,172,200,0.6)"/>
+          <!-- Code lines -->
+          <rect x="45" y="55" width="60" height="5" rx="1" fill="rgba(100,149,237,0.5)"/>
+          <rect x="115" y="55" width="40" height="5" rx="1" fill="rgba(221,141,41,0.4)"/>
+          <rect x="55" y="68" width="80" height="5" rx="1" fill="rgba(70,172,200,0.4)"/>
+          <rect x="45" y="81" width="50" height="5" rx="1" fill="rgba(229,134,1,0.4)"/>
+          <rect x="105" y="81" width="70" height="5" rx="1" fill="rgba(100,149,237,0.3)"/>
+          <rect x="55" y="94" width="40" height="5" rx="1" fill="rgba(70,172,200,0.5)"/>
+          <rect x="45" y="107" width="100" height="5" rx="1" fill="rgba(221,141,41,0.3)"/>
+          <rect x="55" y="120" width="60" height="5" rx="1" fill="rgba(100,149,237,0.4)"/>
+          <rect x="125" y="120" width="50" height="5" rx="1" fill="rgba(229,134,1,0.3)"/>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">R · DHIS2 API</p>
+        <h3 class="card-title">Program Indicator Generator</h3>
+        <p class="card-desc">Automate DHIS2 program indicator creation at scale using the metadata API.</p>
+      </div>
+    </a>
+
+    <a href="projects/dhis2_users_rmarkdown.html" target="_blank" class="card">
+      <div class="card-bg card-bg-r"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- User activity heatmap -->
+          <g transform="translate(30, 30)">
+            <!-- Heatmap grid -->
+            <rect x="30" y="0" width="180" height="14" rx="1" fill="rgba(232,221,196,0.5)" stroke="rgba(70,172,200,0.1)" stroke-width="0.5"/>
+            <rect x="30" y="18" width="180" height="14" rx="1" fill="rgba(232,221,196,0.5)" stroke="rgba(70,172,200,0.1)" stroke-width="0.5"/>
+            <rect x="30" y="36" width="180" height="14" rx="1" fill="rgba(232,221,196,0.5)" stroke="rgba(70,172,200,0.1)" stroke-width="0.5"/>
+            <rect x="30" y="54" width="180" height="14" rx="1" fill="rgba(232,221,196,0.5)" stroke="rgba(70,172,200,0.1)" stroke-width="0.5"/>
+            <rect x="30" y="72" width="180" height="14" rx="1" fill="rgba(232,221,196,0.5)" stroke="rgba(70,172,200,0.1)" stroke-width="0.5"/>
+            <!-- Colored cells indicating activity -->
+            <rect x="32" y="2" width="14" height="10" rx="1" fill="rgba(70,172,200,0.7)"/>
+            <rect x="50" y="2" width="14" height="10" rx="1" fill="rgba(70,172,200,0.4)"/>
+            <rect x="86" y="2" width="14" height="10" rx="1" fill="rgba(70,172,200,0.8)"/>
+            <rect x="140" y="2" width="14" height="10" rx="1" fill="rgba(70,172,200,0.3)"/>
+            <rect x="68" y="20" width="14" height="10" rx="1" fill="rgba(229,134,1,0.7)"/>
+            <rect x="104" y="20" width="14" height="10" rx="1" fill="rgba(70,172,200,0.6)"/>
+            <rect x="158" y="20" width="14" height="10" rx="1" fill="rgba(70,172,200,0.4)"/>
+            <rect x="50" y="38" width="14" height="10" rx="1" fill="rgba(70,172,200,0.5)"/>
+            <rect x="122" y="38" width="14" height="10" rx="1" fill="rgba(229,134,1,0.8)"/>
+            <rect x="176" y="38" width="14" height="10" rx="1" fill="rgba(70,172,200,0.3)"/>
+            <rect x="32" y="56" width="14" height="10" rx="1" fill="rgba(70,172,200,0.3)"/>
+            <rect x="86" y="56" width="14" height="10" rx="1" fill="rgba(70,172,200,0.9)"/>
+            <rect x="140" y="56" width="14" height="10" rx="1" fill="rgba(229,134,1,0.5)"/>
+            <rect x="68" y="74" width="14" height="10" rx="1" fill="rgba(70,172,200,0.6)"/>
+            <rect x="104" y="74" width="14" height="10" rx="1" fill="rgba(70,172,200,0.3)"/>
+            <rect x="176" y="74" width="14" height="10" rx="1" fill="rgba(229,134,1,0.6)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">R · RMarkdown</p>
+        <h3 class="card-title">User Activity in Tracker</h3>
+        <p class="card-desc">Analysing DHIS2 user login patterns and dashboard engagement via the API.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <div class="card-bg card-bg-r"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Patient movement / flow illustration -->
+          <circle cx="60" cy="90" r="20" fill="rgba(100,149,237,0.1)" stroke="rgba(100,149,237,0.4)" stroke-width="1.5"/>
+          <circle cx="220" cy="90" r="20" fill="rgba(70,172,200,0.1)" stroke="rgba(70,172,200,0.4)" stroke-width="1.5"/>
+          <circle cx="140" cy="50" r="15" fill="rgba(221,141,41,0.1)" stroke="rgba(221,141,41,0.4)" stroke-width="1.5"/>
+          <circle cx="140" cy="135" r="12" fill="rgba(229,134,1,0.1)" stroke="rgba(229,134,1,0.4)" stroke-width="1.5"/>
+          <!-- Curved arrows for flow -->
+          <path d="M 80 85 Q 110 55 125 55" stroke="rgba(100,149,237,0.5)" stroke-width="1.5" fill="none" marker-end="url(#arrowBlue)"/>
+          <path d="M 155 55 Q 185 55 200 80" stroke="rgba(70,172,200,0.5)" stroke-width="1.5" fill="none"/>
+          <path d="M 75 100 Q 100 130 130 133" stroke="rgba(221,141,41,0.4)" stroke-width="1.5" fill="none"/>
+          <path d="M 152 138 Q 185 135 200 105" stroke="rgba(229,134,1,0.4)" stroke-width="1.5" fill="none"/>
+          <!-- Labels -->
+          <text x="48" y="94" font-size="7" fill="rgba(100,149,237,0.8)" font-family="monospace">ANC</text>
+          <text x="208" y="94" font-size="7" fill="rgba(70,172,200,0.8)" font-family="monospace">DEL</text>
+          <text x="127" y="53" font-size="7" fill="rgba(221,141,41,0.8)" font-family="monospace">PNC</text>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">R · ggplot2</p>
+        <h3 class="card-title">Visualizing Patient Movement</h3>
+        <p class="card-desc">Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EPIDEMIOLOGY -->
+<section id="epi" class="section">
+  <div class="section-header">
+    <p class="section-number">03 — Epidemiology</p>
+    <h2 class="section-title">Research &amp; Analysis</h2>
+    <p class="section-desc">
+      Academic and applied epidemiology: from my MSc thesis to survival analysis and reproductive health surveillance in Palestine.
+    </p>
+  </div>
+  <div class="cards-scroll">
+
+    <a href="projects/msc_thesis.html" target="_blank" class="card">
+      <div class="card-bg card-bg-epi"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Academic / thesis illustration - geometric -->
+          <rect x="60" y="20" width="160" height="130" rx="3" fill="rgba(232,221,196,0.8)" stroke="rgba(221,141,41,0.3)" stroke-width="1"/>
+          <rect x="60" y="20" width="160" height="25" rx="3" fill="rgba(221,141,41,0.1)"/>
+          <line x1="75" y1="35" x2="185" y2="35" stroke="rgba(221,141,41,0.4)" stroke-width="4" stroke-linecap="round"/>
+          <!-- Body text lines -->
+          <rect x="75" y="60" width="130" height="4" rx="1" fill="rgba(44,26,6,0.15)"/>
+          <rect x="75" y="70" width="110" height="4" rx="1" fill="rgba(44,26,6,0.15)"/>
+          <rect x="75" y="80" width="120" height="4" rx="1" fill="rgba(44,26,6,0.15)"/>
+          <!-- Small chart inside -->
+          <rect x="75" y="95" width="70" height="40" rx="2" fill="rgba(221,141,41,0.05)" stroke="rgba(221,141,41,0.2)" stroke-width="1"/>
+          <polyline points="80,127 90,118 100,121 110,108 120,100 130,103" stroke="#DD8D29" stroke-width="1.5" fill="none"/>
+          <rect x="155" y="95" width="50" height="40" rx="2" fill="rgba(70,172,200,0.05)" stroke="rgba(70,172,200,0.2)" stroke-width="1"/>
+          <polyline points="160,127 168,115 176,120 184,108 192,112" stroke="#46ACC8" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">MSc Thesis</p>
+        <h3 class="card-title">Masters Thesis</h3>
+        <p class="card-desc">Epidemiological research presented as an interactive report with embedded analysis.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <div class="card-bg card-bg-epi"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Palestine chart - bar chart-like -->
+          <line x1="40" y1="150" x2="240" y2="150" stroke="rgba(221,141,41,0.3)" stroke-width="1"/>
+          <line x1="40" y1="150" x2="40" y2="25" stroke="rgba(221,141,41,0.3)" stroke-width="1"/>
+          <!-- Bars -->
+          <rect x="55" y="80" width="22" height="70" rx="1" fill="rgba(221,141,41,0.5)"/>
+          <rect x="90" y="60" width="22" height="90" rx="1" fill="rgba(221,141,41,0.7)"/>
+          <rect x="125" y="40" width="22" height="110" rx="1" fill="rgba(221,141,41,0.9)"/>
+          <rect x="160" y="55" width="22" height="95" rx="1" fill="rgba(221,141,41,0.6)"/>
+          <rect x="195" y="70" width="22" height="80" rx="1" fill="rgba(229,134,1,0.5)"/>
+          <!-- Overlay line -->
+          <polyline points="66,55 101,42 136,28 171,38 206,52" stroke="#46ACC8" stroke-width="2" fill="none" stroke-dasharray="4 2"/>
+          <circle cx="136" cy="28" r="4" fill="#46ACC8"/>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">Epidemiology · eRegistry</p>
+        <h3 class="card-title">Palestine Chart</h3>
+        <p class="card-desc">Reproductive health indicators from Palestinian eRegistry. Linked to published papers.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card">
+      <div class="card-bg card-bg-epi"></div>
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <!-- Kaplan-Meier survival curves -->
+          <line x1="40" y1="150" x2="240" y2="150" stroke="rgba(221,141,41,0.3)" stroke-width="1"/>
+          <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(221,141,41,0.3)" stroke-width="1"/>
+          <!-- KM Step curve 1 -->
+          <polyline points="40,35 70,35 70,45 100,45 100,60 130,60 130,80 155,80 155,95 180,95 180,115 205,115 205,130 230,130"
+            stroke="#46ACC8" stroke-width="2.5" fill="none" stroke-linecap="square"/>
+          <!-- KM Step curve 2 -->
+          <polyline points="40,35 60,35 60,50 85,50 85,68 110,68 110,90 140,90 140,110 165,110 165,130 195,130 195,142 230,142"
+            stroke="#E58601" stroke-width="2" fill="none" stroke-linecap="square" stroke-dasharray="5 2"/>
+          <!-- CI bands -->
+          <polygon points="40,25 70,25 70,40 100,40 100,55 130,55 130,75 155,75 155,90 180,90 180,110 205,110 205,125 230,125 230,135 205,135 205,120 180,120 180,100 155,100 155,85 130,85 130,65 100,65 100,50 70,50 70,40 40,40"
+            fill="rgba(70,172,200,0.06)"/>
+          <!-- Axis labels -->
+          <text x="42" y="163" font-size="7" fill="rgba(122,92,48,0.6)" font-family="monospace">0</text>
+          <text x="125" y="163" font-size="7" fill="rgba(122,92,48,0.6)" font-family="monospace">50</text>
+          <text x="218" y="163" font-size="7" fill="rgba(122,92,48,0.6)" font-family="monospace">100</text>
+        </svg>
+      </div>
+      <div class="card-arrow">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">R · Survival Analysis</p>
+        <h3 class="card-title">Survival Curves</h3>
+        <p class="card-desc">Kaplan-Meier and Cox regression models for time-to-event outcomes in health data.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- TIDYTUESDAY -->
+<section id="tidy" class="section">
+  <div class="section-header">
+    <p class="section-number">04 — TidyTuesday</p>
+    <h2 class="section-title">Data Visualization Portfolio</h2>
+    <p class="section-desc">
+      Weekly data visualization challenges in R. A growing collection of #TidyTuesday submissions exploring ggplot2, data storytelling, and visual design.
+    </p>
+  </div>
+  <div class="cards-scroll">
+
+    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      <div class="card-illustration" style="height: 150px;">
+        <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <circle cx="110" cy="75" r="55" fill="none" stroke="rgba(229,134,1,0.3)" stroke-width="15"/>
+          <circle cx="110" cy="75" r="55" fill="none" stroke="rgba(70,172,200,0.5)" stroke-width="15" stroke-dasharray="155 190" stroke-dashoffset="0" transform="rotate(-90 110 75)"/>
+          <circle cx="110" cy="75" r="35" fill="none" stroke="rgba(221,141,41,0.3)" stroke-width="10"/>
+          <circle cx="110" cy="75" r="35" fill="none" stroke="rgba(221,141,41,0.6)" stroke-width="10" stroke-dasharray="80 120" stroke-dashoffset="0" transform="rotate(-90 110 75)"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">TidyTuesday</p>
+        <h3 class="card-title" style="font-size:0.95rem;">2024 Highlights</h3>
+        <p class="card-desc" style="font-size:0.72rem;">Selected favorites from weekly challenges.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      <div class="card-illustration" style="height: 150px;">
+        <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <!-- Waffle chart style -->
+          <g transform="translate(35, 20)">
+            <rect x="0" y="0" width="12" height="12" rx="1" fill="rgba(229,134,1,0.8)"/>
+            <rect x="16" y="0" width="12" height="12" rx="1" fill="rgba(229,134,1,0.8)"/>
+            <rect x="32" y="0" width="12" height="12" rx="1" fill="rgba(229,134,1,0.6)"/>
+            <rect x="48" y="0" width="12" height="12" rx="1" fill="rgba(70,172,200,0.6)"/>
+            <rect x="64" y="0" width="12" height="12" rx="1" fill="rgba(70,172,200,0.6)"/>
+            <rect x="80" y="0" width="12" height="12" rx="1" fill="rgba(70,172,200,0.4)"/>
+            <rect x="96" y="0" width="12" height="12" rx="1" fill="rgba(70,172,200,0.4)"/>
+            <rect x="112" y="0" width="12" height="12" rx="1" fill="rgba(221,141,41,0.5)"/>
+            <rect x="128" y="0" width="12" height="12" rx="1" fill="rgba(221,141,41,0.5)"/>
+
+            <rect x="0" y="16" width="12" height="12" rx="1" fill="rgba(229,134,1,0.7)"/>
+            <rect x="16" y="16" width="12" height="12" rx="1" fill="rgba(229,134,1,0.5)"/>
+            <rect x="32" y="16" width="12" height="12" rx="1" fill="rgba(70,172,200,0.7)"/>
+            <rect x="48" y="16" width="12" height="12" rx="1" fill="rgba(70,172,200,0.7)"/>
+            <rect x="64" y="16" width="12" height="12" rx="1" fill="rgba(70,172,200,0.5)"/>
+            <rect x="80" y="16" width="12" height="12" rx="1" fill="rgba(70,172,200,0.3)"/>
+            <rect x="96" y="16" width="12" height="12" rx="1" fill="rgba(221,141,41,0.6)"/>
+            <rect x="112" y="16" width="12" height="12" rx="1" fill="rgba(221,141,41,0.4)"/>
+            <rect x="128" y="16" width="12" height="12" rx="1" fill="rgba(232,221,196,0.5)"/>
+
+            <rect x="0" y="32" width="12" height="12" rx="1" fill="rgba(229,134,1,0.4)"/>
+            <rect x="16" y="32" width="12" height="12" rx="1" fill="rgba(70,172,200,0.8)"/>
+            <rect x="32" y="32" width="12" height="12" rx="1" fill="rgba(70,172,200,0.6)"/>
+            <rect x="48" y="32" width="12" height="12" rx="1" fill="rgba(70,172,200,0.4)"/>
+            <rect x="64" y="32" width="12" height="12" rx="1" fill="rgba(221,141,41,0.7)"/>
+            <rect x="80" y="32" width="12" height="12" rx="1" fill="rgba(221,141,41,0.5)"/>
+            <rect x="96" y="32" width="12" height="12" rx="1" fill="rgba(221,141,41,0.3)"/>
+            <rect x="112" y="32" width="12" height="12" rx="1" fill="rgba(232,221,196,0.6)"/>
+            <rect x="128" y="32" width="12" height="12" rx="1" fill="rgba(232,221,196,0.4)"/>
+
+            <rect x="0" y="48" width="12" height="12" rx="1" fill="rgba(70,172,200,0.9)"/>
+            <rect x="16" y="48" width="12" height="12" rx="1" fill="rgba(70,172,200,0.7)"/>
+            <rect x="32" y="48" width="12" height="12" rx="1" fill="rgba(70,172,200,0.5)"/>
+            <rect x="48" y="48" width="12" height="12" rx="1" fill="rgba(221,141,41,0.6)"/>
+            <rect x="64" y="48" width="12" height="12" rx="1" fill="rgba(221,141,41,0.4)"/>
+            <rect x="80" y="48" width="12" height="12" rx="1" fill="rgba(232,221,196,0.7)"/>
+            <rect x="96" y="48" width="12" height="12" rx="1" fill="rgba(232,221,196,0.5)"/>
+            <rect x="112" y="48" width="12" height="12" rx="1" fill="rgba(232,221,196,0.4)"/>
+            <rect x="128" y="48" width="12" height="12" rx="1" fill="rgba(232,221,196,0.3)"/>
+
+            <rect x="0" y="64" width="12" height="12" rx="1" fill="rgba(70,172,200,0.5)"/>
+            <rect x="16" y="64" width="12" height="12" rx="1" fill="rgba(221,141,41,0.5)"/>
+            <rect x="32" y="64" width="12" height="12" rx="1" fill="rgba(221,141,41,0.3)"/>
+            <rect x="48" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.8)"/>
+            <rect x="64" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.6)"/>
+            <rect x="80" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.4)"/>
+            <rect x="96" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.3)"/>
+            <rect x="112" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.2)"/>
+            <rect x="128" y="64" width="12" height="12" rx="1" fill="rgba(232,221,196,0.1)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">TidyTuesday</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Waffle Charts</h3>
+        <p class="card-desc" style="font-size:0.72rem;">Proportional composition using waffle and mosaic plots.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      <div class="card-illustration" style="height: 150px;">
+        <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <!-- Ridgeline-style illustration -->
+          <path d="M 20 120 Q 50 120 60 100 Q 70 80 90 70 Q 110 60 120 75 Q 130 90 145 105 Q 155 115 170 118 Q 185 120 200 120" stroke="#46ACC8" stroke-width="2" fill="rgba(70,172,200,0.08)"/>
+          <path d="M 20 100 Q 50 100 65 78 Q 80 58 100 48 Q 120 38 135 55 Q 150 70 165 88 Q 180 100 200 100" stroke="#E58601" stroke-width="2" fill="rgba(229,134,1,0.07)" transform="translate(0, 15)"/>
+          <path d="M 20 80 Q 45 80 58 58 Q 70 38 95 30 Q 120 22 138 42 Q 156 60 170 72 Q 185 80 200 80" stroke="#DD8D29" stroke-width="2" fill="rgba(221,141,41,0.07)" transform="translate(0, 30)"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">TidyTuesday</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Ridgeline Plots</h3>
+        <p class="card-desc" style="font-size:0.72rem;">Density distributions across groups using ggridges.</p>
+      </div>
+    </a>
+
+    <a href="#" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      <div class="card-illustration" style="height: 150px;">
+        <svg viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+          <!-- Map / choropleth-like illustration -->
+          <path d="M30 40 L80 35 L100 50 L120 40 L160 50 L190 40 L195 90 L170 100 L140 95 L120 110 L90 100 L60 110 L30 90 Z" fill="rgba(70,172,200,0.08)" stroke="rgba(70,172,200,0.3)" stroke-width="1"/>
+          <path d="M60 55 L90 50 L95 70 L70 75 Z" fill="rgba(70,172,200,0.3)"/>
+          <path d="M100 55 L130 52 L135 72 L105 70 Z" fill="rgba(221,141,41,0.4)"/>
+          <path d="M140 58 L165 55 L168 78 L142 75 Z" fill="rgba(229,134,1,0.5)"/>
+          <path d="M55 80 L80 78 L82 95 L55 92 Z" fill="rgba(70,172,200,0.15)"/>
+          <path d="M100 78 L128 76 L130 94 L100 92 Z" fill="rgba(221,141,41,0.25)"/>
+          <path d="M140 80 L162 78 L162 95 L140 94 Z" fill="rgba(229,134,1,0.2)"/>
+        </svg>
+      </div>
+      <div class="card-content">
+        <p class="card-tag">TidyTuesday</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Spatial Maps</h3>
+        <p class="card-desc" style="font-size:0.72rem;">Choropleth and point maps with sf and ggplot2.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- BLOG -->
+<section id="blog" class="section">
+  <div class="section-header">
+    <p class="section-number">05 — Blog</p>
+    <h2 class="section-title">Writing &amp; Research</h2>
+    <p class="section-desc">
+      Long-form pieces on public health data, heat-health early warning systems, and cancer registry infrastructure.
+    </p>
+  </div>
+  <div class="blog-layout">
+
+    <!-- Sidebar -->
+    <div class="blog-sidebar">
+      <p class="blog-sidebar-title">Posts</p>
+      <a class="blog-post-item" data-src="projects/dhis2_cancer_search.md" href="#">
+        <p class="blog-post-date">Feb 2026</p>
+        <p class="blog-post-title">DHIS2 use in cancer surveillance — a global landscape</p>
+      </a>
+      <a class="blog-post-item" data-src="projects/hhews_country_search.md" href="#">
+        <p class="blog-post-date">Mar 2026</p>
+        <p class="blog-post-title">Heat Health Early Warning Systems — country web search</p>
+      </a>
+    </div>
+
+    <!-- Reader -->
+    <div class="blog-reader">
+      <div class="blog-reader-empty" id="blog-empty">
+        <span>← Select a post to read</span>
+      </div>
+      <div class="blog-reader-content" id="blog-content">
+        <div class="md-body" id="blog-md"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>iambodo.github.io — Built with Jekyll &amp; hosted on GitHub Pages</p>
+  <p>© 2024 Bodo Lang</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+(function() {
+  const NOW = new Date().getFullYear();
+
+  const eras = [
+    {
+      label: "Public policy and ICT4D",
+      flag: "🇺🇸",
+      start: 2011,
+      end: NOW,
+      color: "#7eb8c9",
+    },
+    {
+      label: "DHIS2 and public health",
+      flag: "🇿🇲",
+      start: 2015,
+      end: NOW,
+      color: "#b5836e",
+    },
+    {
+      label: "Extending DHIS2 with R",
+      flag: "🇳🇴",
+      start: 2018,
+      end: NOW,
+      color: "#8aaa8f",
+    },
+    {
+      label: "Claude Hack-an-App Era",
+      flag: "🇩🇪",
+      start: 2024,
+      end: NOW,
+      color: "#a899c2",
+    }
+  ];
+
+  const container = document.getElementById("timeline-container");
+  const PADDING_LEFT = 72;
+  const PADDING_RIGHT = 24;
+  const ROW_HEIGHT = 42;
+  const LINE_THICKNESS = 4;
+  const LABEL_OFFSET = -10;
+
+  function render() {
+    container.innerHTML = "";
+
+    const W = container.offsetWidth || 800;
+    const H = eras.length * ROW_HEIGHT + 40;
+
+    const minYear = d3.min(eras, d => d.start);
+    const maxYear = NOW;
+
+    const xScale = d3.scaleLinear()
+      .domain([minYear, maxYear])
+      .range([PADDING_LEFT, W - PADDING_RIGHT]);
+
+    const svg = d3.select(container)
+      .append("svg")
+      .attr("width", W)
+      .attr("height", H);
+
+    // Bookend grid lines: 2011 and 2026 only
+    const bookends = [minYear, maxYear];
+    svg.selectAll(".grid-line")
+      .data(bookends)
+      .enter()
+      .append("line")
+        .attr("class", "grid-line")
+        .attr("x1", d => xScale(d))
+        .attr("x2", d => xScale(d))
+        .attr("y1", 10)
+        .attr("y2", H - 22)
+        .attr("stroke", "rgba(70,172,200,0.2)")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "3 3");
+
+    // Year labels only for bookends
+    svg.selectAll(".year-tick")
+      .data(bookends)
+      .enter()
+      .append("text")
+        .attr("class", "year-tick")
+        .attr("x", d => xScale(d))
+        .attr("y", H - 6)
+        .attr("text-anchor", "middle")
+        .attr("fill", "rgba(44,26,6,0.45)")
+        .attr("font-size", "10px")
+        .attr("font-family", "'DM Mono', monospace")
+        .text(d => d);
+
+    // Draw each era row
+    const rows = svg.selectAll(".era-row")
+      .data(eras)
+      .enter()
+      .append("g")
+        .attr("class", "era-row")
+        .attr("transform", (d, i) => `translate(0, ${20 + i * ROW_HEIGHT + ROW_HEIGHT / 2})`);
+
+    // The horizontal line
+    rows.append("line")
+      .attr("x1", d => xScale(d.start))
+      .attr("x2", W - PADDING_RIGHT)
+      .attr("y1", 0)
+      .attr("y2", 0)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", LINE_THICKNESS)
+      .attr("stroke-linecap", "round")
+      .attr("opacity", 0)
+      .transition()
+        .delay((d, i) => i * 120)
+        .duration(900)
+        .ease(d3.easeQuadOut)
+        .attr("opacity", 0.85)
+        .attr("x2", W - PADDING_RIGHT);
+
+    // Dot at start
+    rows.append("circle")
+      .attr("cx", d => xScale(d.start))
+      .attr("cy", 0)
+      .attr("r", 5)
+      .attr("fill", d => d.color)
+      .attr("opacity", 0)
+      .transition()
+        .delay((d, i) => i * 120 + 100)
+        .duration(400)
+        .attr("opacity", 1);
+
+    // "present" arrow tip at right
+    rows.append("polygon")
+      .attr("points", (d) => {
+        const x = W - PADDING_RIGHT;
+        return `${x},0 ${x - 10},-5 ${x - 10},5`;
+      })
+      .attr("fill", d => d.color)
+      .attr("opacity", 0)
+      .transition()
+        .delay((d, i) => i * 120 + 800)
+        .duration(300)
+        .attr("opacity", 0.85);
+
+    // Start year label (left of dot)
+    rows.append("text")
+      .attr("x", d => xScale(d.start) - 8)
+      .attr("y", 4)
+      .attr("text-anchor", "end")
+      .attr("fill", "rgba(44,26,6,0.45)")
+      .attr("font-size", "10px")
+      .attr("font-family", "'DM Mono', monospace")
+      .attr("opacity", 0.7)
+      .text(d => d.start);
+
+    // Italic label above the line
+    rows.append("text")
+      .attr("x", d => xScale(d.start) + 14)
+      .attr("y", LABEL_OFFSET)
+      .attr("text-anchor", "start")
+      .attr("fill", "#1a0f00")
+      .attr("font-size", "13px")
+      .attr("font-family", "'Playfair Display', serif")
+      .attr("font-style", "italic")
+      .attr("opacity", 0)
+      .text(d => `${d.label} ${d.flag}`)
+      .transition()
+        .delay((d, i) => i * 120 + 200)
+        .duration(500)
+        .attr("opacity", 0.95);
+  }
+
+  // Initial render
+  render();
+
+  // Re-render on resize
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(render, 150);
+  });
+})();
+</script>
+
+<script>
+// ── CAROUSEL ARROWS ──
+document.querySelectorAll('.cards-scroll').forEach(function(scroll) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'carousel-wrapper';
+  scroll.parentNode.insertBefore(wrapper, scroll);
+  wrapper.appendChild(scroll);
+
+  const arrowSVG = dir => `<svg viewBox="0 0 24 24"><path d="${dir === 'prev' ? 'M19 12H5M12 19l-7-7 7-7' : 'M5 12h14M12 5l7 7-7 7'}"/></svg>`;
+
+  const prev = document.createElement('button');
+  prev.className = 'carousel-btn carousel-btn-prev';
+  prev.innerHTML = arrowSVG('prev');
+  prev.setAttribute('aria-label', 'Scroll left');
+
+  const next = document.createElement('button');
+  next.className = 'carousel-btn carousel-btn-next';
+  next.innerHTML = arrowSVG('next');
+  next.setAttribute('aria-label', 'Scroll right');
+
+  wrapper.appendChild(prev);
+  wrapper.appendChild(next);
+
+  const SCROLL_BY = 320;
+
+  function updateButtons() {
+    prev.classList.toggle('hidden', scroll.scrollLeft <= 4);
+    next.classList.toggle('hidden', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+  }
+
+  prev.addEventListener('click', () => { scroll.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' }); });
+  next.addEventListener('click', () => { scroll.scrollBy({ left: SCROLL_BY, behavior: 'smooth' }); });
+  scroll.addEventListener('scroll', updateButtons);
+
+  updateButtons();
+  setTimeout(updateButtons, 300);
+});
+
+// ── BLOG MARKDOWN READER ──
+(function() {
+  const posts = document.querySelectorAll('.blog-post-item');
+  const empty = document.getElementById('blog-empty');
+  const content = document.getElementById('blog-content');
+  const mdBody = document.getElementById('blog-md');
+
+  posts.forEach(function(post) {
+    post.addEventListener('click', function(e) {
+      e.preventDefault();
+      const src = post.dataset.src;
+      if (!src) return;
+
+      posts.forEach(p => p.classList.remove('active'));
+      post.classList.add('active');
+
+      fetch(src)
+        .then(r => {
+          if (!r.ok) throw new Error('Could not load ' + src);
+          return r.text();
+        })
+        .then(md => {
+          mdBody.innerHTML = marked.parse(md);
+          empty.style.display = 'none';
+          content.classList.add('active');
+          if (window.innerWidth < 900) content.scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(() => {
+          mdBody.innerHTML = '<p style="color:var(--text-muted)">Could not load post. Make sure you\'re running a local server (e.g. <code>jekyll serve</code>).</p>';
+          empty.style.display = 'none';
+          content.classList.add('active');
+        });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
