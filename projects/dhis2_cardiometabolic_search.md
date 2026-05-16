@@ -1,4 +1,6 @@
-# DHIS2 for cardiometabolic diseases, a global evidence search
+# DHIS2 for cardiometabolic diseases: a global evidence search
+
+May 16, 2026
 
 ## Introduction
 
@@ -20,7 +22,7 @@ This work builds on my previous reports for more targeted searches with Claude f
 ## Methodology
 
 ### Country and language coverage
-A search term list was developed, tailored for every country with a known DHIS2 implementation: 116 unique countries x 56 languages x 236 country-language search rows. The country list is drawn from `country_langs.csv` (reused from the cancer pipeline, broadly aligned with WHO Member States in LMIC regions). National HMIS aliases (KHIS, DHIMS2, SNIGS, SISMA, SNIS, ENDOS-BF, MISPAS, BHMIS, SISPRO, etc.) are sourced from `hmis_aliases.csv` and appended to each country's query so that local DHIS2 brand names are matched alongside the generic "DHIS2" terms.
+A search term list was developed, tailored for every country with a known government-owned DHIS2 implementation: 116 unique countries x 56 languages x 236 country-language search rows. The country list is drawn from `country_langs.csv` (reused from the cancer pipeline, broadly aligned with WHO Member States in LMIC regions). National HMIS aliases (KHIS, DHIMS2, SNIGS, SISMA, SNIS, ENDOS-BF, MISPAS, BHMIS, SISPRO, etc.) are sourced from `hmis_aliases.csv` and appended to each country's query so that local DHIS2 brand names are matched alongside the generic "DHIS2" terms.
 
 ### English search terms (24)
 
