@@ -1,27 +1,26 @@
-# DHIS2 for cardiometabolic diseases: a global evidence search
-
-May 16, 2026
+# DHIS2 for cardiometabolic diseases, a global evidence search
 
 ## Introduction
 
-Noncommunicable diseases (NCDs) killed at least 43 million people in 2021, equivalent to 75% of non-pandemic-related deaths globally, [according to the WHO](https://www.who.int/news-room/fact-sheets/detail/noncommunicable-diseases). The largest category of these, *cardiometabolic NCDs*, refers to the interconnected cluster of conditions that includes insulin resistance, type 2 diabetes (T2DM), hypertension, and cardiovascular disease (CVD), accounting for roughly half of all global NCD deaths.
+Noncommunicable diseases (NCDs) killed at least 43 million people in 2021, equivalent to 75% of non-pandemic-related deaths globally, [according to the WHO](https://www.who.int/news-room/fact-sheets/detail/noncommunicable-diseases). The largest category of these, *cardiometabolic NCDs*, refers to an interconnected cluster of conditions that includes insulin resistance, type 2 diabetes (T2DM), hypertension, and cardiovascular disease (CVD), together accounting for roughly half of all global NCD deaths.
 
 As countries launch new programs to prevent and monitor NCDs, many need to adapt their routine health information systems to better plan and target scarce public health resources. The data gap is particularly pressing for many LMICs, which are facing the epidemiological transition to higher NCD burden with a constrained health workforce, limited digital infrastructure for patient-level data systems, and outdated surveys of population-level NCD prevalence--all while record decreases in foreign assistance for health exacerbate endemic infectious diseases such as HIV, TB, and malaria.
 
 DHIS2 is a digital public good used in over 120 countries and by 80+ national health authorities to manage routine health data. Most national DHIS2 implementations are in LMICs, where over 73% of deaths due to NCDs occur.
 
-While DHIS2 core software is maintained by the HISP Centre at the University of Oslo, DHIS2 implementers can define the contents of their own DHIS2 database without alerting DHIS2 developers or the wider HISP network. With a global and diverse user base, understanding the scope, depth, and complexity of specific use cases in the health domain presents a critical challenge for the HISP Centre’s global support team. The HISP Centre's intel on DHIS2 use cases typically relies on academic research, Google Alerts, the DHIS2 Community of Practice, and the collective wisdom of 23 HISP groups providing country and regional DHIS2 support in the field. The diversity of sources provides a reliable, if inconsistent and patchy, overview across all 100+ countries. AI agents can help fill the gaps through targeted and periodic search.
+While DHIS2 core software is maintained by the HISP Centre at the University of Oslo, any DHIS2 implementer can define the contents of their own DHIS2 database without alerting DHIS2 developers or the wider HISP network. Given this independent and diffuse user base, understanding the scope, depth, and complexity of use cases presents a critical challenge for the HISP Centre’s global support team. The HISP Centre's intel on DHIS2 use cases typically relies on academic research, Google Alerts, the DHIS2 Community of Practice, and the collective wisdom of 23 HISP groups providing country and regional DHIS2 support in the field. The diversity of sources provides a broad overview across all 100+ countries that is generally reliable, yet often delayed and incomplete. AI agents can help fill the gaps through targeted and periodic search to be followed up by HISP groups.
 
 This blog post describes an approach to identify use of **DHIS2 for cardiometabolic NCDS by governmental health authorities**, through an AI-assisted targeted websearch pipeline built with Claude Code's Opus 4.7 model.
 
 > __Results identified 42 countries with direct evidence of some data capture of hypertension, diabetes, *or* CVD in a government-owned DHIS2 system.__ A further 32 countries showed inconclusive or indirect evidence, and require further investigation.
 
-This work builds on my previous reports for more targeted searches with Claude for NCD-relevant DHIS2 usage: [heat health early warning systems](https://github.com/iambodo/iambodo.github.io/blob/master/projects/hhews_country_search.md) and [cancer registries](https://github.com/iambodo/iambodo.github.io/blob/master/projects/dhis2_cancer_search.md).
+This work builds on my previous reports for more targeted searches with Claude for NCD-relevant DHIS2 usage: [heat health early warning systems](https://github.com/iambodo/iambodo.github.io/blob/master/projects/hhews_country_search.md) and [cancer data](https://github.com/iambodo/iambodo.github.io/blob/master/projects/dhis2_cancer_search.md).
 
 ## Methodology
 
 ### Country and language coverage
-A search term list was developed, tailored for every country with a known government-owned DHIS2 implementation: 116 unique countries x 56 languages x 236 country-language search rows. The country list is drawn from `country_langs.csv` (reused from the cancer pipeline, broadly aligned with WHO Member States in LMIC regions). National HMIS aliases (KHIS, DHIMS2, SNIGS, SISMA, SNIS, ENDOS-BF, MISPAS, BHMIS, SISPRO, etc.) are sourced from `hmis_aliases.csv` and appended to each country's query so that local DHIS2 brand names are matched alongside the generic "DHIS2" terms.
+
+A search term list was developed, tailored for every country with a known DHIS2 implementation: 116 unique countries x 56 languages x 236 country-language search rows. The country list is drawn from `country_langs.csv` (reused from the cancer pipeline, broadly aligned with WHO Member States in LMIC regions). National HMIS aliases (KHIS, DHIMS2, SNIGS, SISMA, SNIS, ENDOS-BF, MISPAS, BHMIS, SISPRO, etc.) are sourced from `hmis_aliases.csv` and appended to each country's query so that local DHIS2 brand names are matched alongside the generic "DHIS2" terms.
 
 ### English search terms (24)
 
@@ -54,7 +53,7 @@ The following 24 English keywords were used for every country. Each was translat
 
 ### Translation strategy
 
-Each keyword was translated **once per language** (56 languages total) and reused across every country speaking that language. A French translation, for example, was reused for every Francophone country. Acronyms (HbA1c, PEN, HEARTS, STEPS, NCD, CVD, PSA, MI) were kept in Latin script across all languages, with the surrounding noun translated. Less-widely used African creoles and local languages (Bislama, Tok Pisin, Pidgin, Mende, Wolof, Tongan, etc.) retain clinical English terms with the surrounding words translated, which mirrors how those terms may actually appear in country HMIS documentation.
+Each keyword was translated **once per language** (56 languages total) and reused across every country speaking that language. A French translation, for example, was reused for every Francophone country. Acronyms (HbA1c, PEN, HEARTS, STEPS, NCD, CVD, PSA, MI) were kept in Latin script across all languages, with the surrounding noun translated. Low-resource African creoles and local languages (Bislama, Tok Pisin, Pidgin, Mende, Wolof, Tongan, etc.) retain clinical English terms with the surrounding words translated, which mirrors how those terms actually appear in country HMIS documentation.
 
 ### Query template
 
@@ -82,7 +81,7 @@ Each of the 236 country-language rows ran through Google WebSearch with `user_lo
 
 ### Result filtering rules
 
-1. **Drop any URL containing `dhis2.org`** - self-referential, inflates the DHIS2-use signal.
+1. **Drop any `dhis2.org` URL that is not a country-specific instance.** Country instances such as `senegal.dhis2.org`, `burkina.dhis2.org`, or `data.research.dhis2.org/<Country>` are kept as evidence of deployment. Generic `dhis2.org/...`, `community.dhis2.org/...`, `docs.dhis2.org/...`, and language variants (`/fr/`, `/es/`) are dropped because they are not country-specific evidence.
 2. **Drop pages primarily about gestational diabetes or hypertension** - these are ANC-related rather than chronic-NCD care.
 3. **Drop WHO / PAHO / Resolve-to-Save-Lives / linkscommunity.org links unless the country name appears in the URL or the page title.** A "relevant to <country>" mention only in the description does not qualify - that is boilerplate, not a country-specific source.
 4. **Prefer government / MoH / Public Health Institute / WHO / Lancet / PubMed / SciELO / `.gov` sources from the last 5 years.**
@@ -110,7 +109,7 @@ Where applicable, terms were translated into French, Spanish, or Portuguese. Pro
 
 ### Link verification
 
-All 860 cited URLs across the 116 profiles were checked with a HEAD-first / GET-fallback script with per-host rate limiting. 830 URLs resolved (96.5%). The 30 broken or unreachable URLs are annotated inline next to the URL as `[BROKEN: <code>]` (e.g. `[BROKEN: 404]`, `[BROKEN: 502]`, `[BROKEN: timeout]`).
+All cited URLs across the 116 profiles were checked with a HEAD-first / GET-fallback script with per-host rate limiting; 30 broken or unreachable URLs are annotated inline next to the URL as `[BROKEN: <code>]` (e.g. `[BROKEN: 404]`, `[BROKEN: 502]`, `[BROKEN: timeout]`).
 
 ### Known limitations
 
@@ -140,150 +139,149 @@ Verdict ordering (strongest → weakest evidence of DHIS2 use for cardiometaboli
 
 _Explicit named DHIS2 (or local alias) capture of at least one of diabetes, hypertension, or CVD data._
 
-- **[Antigua and Barbuda](#antigua-and-barbuda-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 since 2022 with planned HEARTS hypertension module across ten PAHO-supported primary care clinics
-- **[Bangladesh](#bangladesh-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — World's largest DHIS2 captures NCD Corner hypertension and diabetes outputs alongside Simple app longitudinal tracking
-- **[Benin](#benin-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SNIGS DHIS2 captures hypertension as the sole NCD risk factor; no diabetes or CVD indicators
-- **[Bhutan](#bhutan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — BHMIS on DHIS2 receives aggregate hypertension and diabetes flows from hospitals and Basic Health Units
-- **[Burundi](#burundi-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DSNIS DHIS2 records roughly 38000 diabetes and 98000 hypertension cases per WHO Africa
-- **[Cameroon](#cameroon-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MINSANTE DHIS2 instance captures NCD service indicators alongside newly launched PEN-Plus rollout
-- **[Central African Republic](#central-african-republic-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 registered 80407 hypertension and 19932 diabetes cases between 2021 and May 2024
-- **[Chile](#chile-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MINSAL DHIS2 expanded to HEARTS hypertension and diabetes indicators across 29 health services
-- **[Comores](#comores-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 HMIS reported rising type 2 diabetes cases for 2024-2025 per Comorian press
-- **[Dominican Republic](#dominican-republic-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MISPAS operationalising DHIS2 for HEARTS CVD data across 703 primary care centres
-- **[DRC](#drc-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SNIS DHIS2 routine monthly reports tracked hypertension and diabetes progression 2019-2023 in peer-reviewed study
-- **[Ecuador](#ecuador-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National HEARTS reporting on PAHO DHIS2 platform across 483 facilities targeting universal first-level coverage
-- **[El Salvador](#el-salvador-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — PAHO deployed HEARTS Monitoring and Evaluation System on DHIS2 with MINSAL since 2022
-- **[Ethiopia](#ethiopia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 underpins EHCI HEARTS hypertension rollout with 99% NCD reporting completeness
-- **[Gambia](#gambia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — WDF scale-up integrating standard NCD indicators into DHIS2 with HMIS and NCD clinic staff training
-- **[Ghana](#ghana-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIMS2 since 2012 captures aggregated NCD/CVD indicators; Ghana Heart Initiative addresses hypertension cascade gaps
-- **[Grenada](#grenada-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 instrumental in Caribbean HEARTS data collation; digital hypertension registries replaced paper in 2025
-- **[Guatemala](#guatemala-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 piloted at INCAP for HEARTS hypertension and diabetes monitoring across 11 primary care facilities
-- **[Iraq](#iraq-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — KRG-DHIS2 system in Kurdistan Region captures facility-based NCD data; federal deployment unconfirmed
-- **[Kenya](#kenya-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — KHIS captures hypertension and diabetes indicators; SPICE platform integrates primary care NCD data into DHIS2
-- **[Lebanon](#lebanon-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MoPH DHIS2 since 2014 supported MSF management of 2644 Syrian refugees with diabetes and hypertension
-- **[Liberia](#liberia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Project TREND distributing 900+ NCD registers feeding hypertension and diabetes data into national DHIS2
-- **[Malawi](#malawi-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Diabetes Compass added NCD module to DHIS2 in March 2024 with community screening algorithm and referral
-- **[Mali](#mali-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SNISS/SLIS DHIS2 since 2015 supports chronic-disease MADO reporting; HEARTS/PEN specific use less documented
-- **[Mozambique](#mozambique-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SISMA DHIS2 used across health programs alongside facility-based NCD pilots in Maputo; HEARTS metadata limited
-- **[Myanmar](#myanmar-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 Tracker deployed under SUNI-SEA identifying pre-diabetes diabetes and hypertension clusters across 75 villages
-- **[Nepal](#nepal-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — AMPATH Nepal adapting DHIS2 for hypertension and diabetes dashboards aligned with HEARTS technical package
-- **[Nicaragua](#nicaragua-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — PAHO HEARTS DHIS2 platform captures aggregate CVD outcome process and structural indicators for Nicaragua
-- **[Nigeria](#nigeria-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 Android Tracker manages Nigeria Hypertension Control Initiative with HEARTS360 dashboard across Kano Ogun FCT
-- **[Panama](#panama-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MoH and CSS enter aggregate hypertension and diabetes indicators into PAHO HEARTS DHIS2 platform at INCAP
-- **[Rwanda](#rwanda-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 HMIS captures NCD screening with all health centres trained on routine reporting
-- **[Saint Lucia](#saint-lucia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Active participant in PAHO HEARTS DHIS2 platform; hypertension registry grew 17.8% across six PHC facilities
-- **[Senegal](#senegal-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 integrated 45 NCD indicators with eTracker dashboard supporting longitudinal cardiometabolic follow-up
-- **[Sierra Leone](#sierra-leone-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 since 2012 captures hypertension records submitted by facility M&E officers to NCD Directorate
-- **[South Africa](#south-africa-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — WebDHIS captures NCD data elements with 85.1% reporting rate across Eastern Cape chronic-disease monitoring
-- **[Sri Lanka](#sri-lanka-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 anchors Diabetes Compass screening and HEARTS360 dashboards updated daily from DHIS2 and Simple
-- **[Tajikistan](#tajikistan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 referenced as source for oblast hypertensive case counts in WHO PEN/HEARTS PHC pilot evaluation
-- **[Tanzania](#tanzania-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 at dhis.moh.go.tz captures hypertension and diabetes data central to PEN Plus monitoring
-- **[Togo](#togo-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 collects monthly hypertension and diabetes WHO PEN surveillance with WhatsApp-based district focal point coordination
-- **[Uganda](#uganda-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 captures hypertension as routine OPD indicator; UNIPH published 2016-2021 trends from DHIS2
-- **[Vietnam](#vietnam-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 Tracker mobile app screened 6704 older adults for hypertension and diabetes via HelpAge ISHCs
-- **[Zimbabwe](#zimbabwe-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Customised DHIS2 Tracker Capture Android app captures integrated hypertension and diabetes screening within HIV program
+- **[Antigua and Barbuda](#antigua-and-barbuda--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Implemented DHIS2 nationally since 2022 in partnership with PAHO, with explicit plans to deploy HEARTS (NCD), cancer registry,
+- **[Bangladesh](#bangladesh--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The world's largest DHIS2 deployment, with ~98% reporting from over 13,000 community clinics and all government facilities under
+- **[Benin](#benin--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Used DHIS2 as the basis of its SNIGS (Système National d'Information et de Gestion Sanitaires) since at least
+- **[Bhutan](#bhutan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a major NCD epidemic (53% of deaths)
+- **[Burundi](#burundi--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — DHIS2 as its national health information system (DSNIS), with cardiometabolic data captured: WHO Africa reports ~38,000 people with
+- **[Cameroon](#cameroon--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S Ministry of Public Health (MINSANTE) operates a national DHIS2 instance (dhis-minsante-cm.org) and has run multiple DHIS2 dashboard
+- **[Central African Republic](#central-african-republic--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — CAR has high cardiometabolic burden: 2017 STEPS reported 34.5% adult hypertension and 9.5% diabetes, with poor diagnosis and
+- **[Chile](#chile--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S Ministry of Health (MINSAL) began implementing DHIS2 in 2022 for selected programs (RENCI childhood cancer registry, Paxlovid
+- **[Comores](#comores--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Comoros has documented NCD burden via STEPS, with national policies (Politique nationale de lutte contre les MNT, PCE
+- **[Dominican Republic](#dominican-republic--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The Dominican Republic launched HEARTS in 2019 with MISPAS, aligning with the PAHO HEARTS in the Americas M&E
+- **[DRC](#drc--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The DRC has nationally rolled out DHIS2 as the SNIS (Système National d'Information Sanitaire), with implementation expanding from
+- **[Ecuador](#ecuador--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — One of the most advanced HEARTS implementers in the Americas, with HEARTS scaled to 483 health facilities and
+- **[El Salvador](#el-salvador--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Joined HEARTS in the Americas in February 2022, and PAHO explicitly facilitated technical meetings with MINSAL to deploy
+- **[Ethiopia](#ethiopia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Implemented DHIS2 nationwide as the core HMIS for the Federal Ministry of Health and regional health bureaus, and
+- **[Gambia](#gambia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The Gambia is scaling up a national diabetes-hypertension programme launched under its 2022 NCD multisectoral action plan, supported
+- **[Ghana](#ghana--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Run DHIMS2 (the national DHIS2 instance) as its routine HMIS since 2012, including aggregated NCD/CVD indicators captured at
+- **[Grenada](#grenada--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The PAHO HEARTS Initiative in February 2025, with 231 health professionals trained and digital hypertension registries replacing paper
+- **[Guatemala](#guatemala--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Piloted DHIS2 as the electronic monitoring tool for an integrated WHO HEARTS hypertension/diabetes programme in 11 Ministry of
+- **[Iraq](#iraq--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — NCDs cause an estimated 67% of all deaths in Iraq (CVD 39%, cancer 9%, diabetes 6%); nearly half
+- **[Kenya](#kenya--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Runs KHIS (Kenya Health Information System), a national DHIS2 platform deployed in 2011
+- **[Lebanon](#lebanon--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S MoPH has migrated disease surveillance to DHIS2 since 2014 (school-based) and expanded in 2017 to aggregate data
+- **[Liberia](#liberia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S MoH launched Project TREND in 2026 to tackle hypertension and diabetes, explicitly including the distribution of 900+
+- **[Malawi](#malawi--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Runs an integrated NCD program built on WHO PEN and PEN-Plus, with hypertension/diabetes screening and treatment at primary
+- **[Mali](#mali--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Deployed DHIS2 as its national health information system (SNISS/SLIS) from 2015, officially launched in 2017, covering 100% of
+- **[Mozambique](#mozambique--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S national HMIS is SISMA, the country's DHIS2 instance, used across health programs
+- **[Myanmar](#myanmar--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Rolled out WHO PEN in primary care from 2017, reaching 232 of 330 townships by 2020 and screening
+- **[Nepal](#nepal--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Endorsed WHO PEN under the EDCD/Department of Health Services and is scaling to all 77 districts, with a
+- **[Nicaragua](#nicaragua--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Participates in the regional HEARTS in the Americas initiative led by PAHO, which uses DHIS2 as the platform
+- **[Nigeria](#nigeria--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — One of the strongest and best-documented examples of DHIS2 use for cardiometabolic disease management
+- **[Panama](#panama--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Implemented PAHO's HEARTS in the Americas initiative since 2018, joining as part of the second cohort
+- **[Rwanda](#rwanda--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — One of the strongest national DHIS2 adopters (DHIS2 is the official national HMIS, hmis.moh.gov.rw) and uses DHIS2 specifically
+- **[Saint Lucia](#saint-lucia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — An active HEARTS in the Americas country: from January 2020 to December 2021, the Ministry of Health (with
+- **[Senegal](#senegal--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S national HMIS is DHIS2 (senegal.dhis2.org), and the Ministry of Health has actively integrated NCD/cardiometabolic indicators into routine
+- **[Sierra Leone](#sierra-leone--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Hypertension data through DHIS2 as the national HMIS (in use since 2012); facility-level monitoring/evaluation officers submit records to
+- **[South Africa](#south-africa--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The original home of DHIS (developed at University of Western Cape in the 1990s) and operates the system
+- **[Sri Lanka](#sri-lanka--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — DHIS2 across preventive-health institutes within the MoH and is one of the lead implementers of the Diabetes Compass
+- **[Tajikistan](#tajikistan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Piloted WHO PEN/HEARTS in primary care in one region (19 PHC centres), achieving improved BP control over 12
+- **[Tanzania](#tanzania--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Introduced DHIS2 in 2013 as its national HMIS and the Ministry of Health hosts its operational instance at
+- **[Togo](#togo--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Explicitly uses DHIS2 to collect and analyse monthly surveillance data on hypertension and diabetes under the WHO PEN
+- **[Uganda](#uganda--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S national HMIS runs on DHIS2 and explicitly captures hypertension as a routine indicator
+- **[Vietnam](#vietnam--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Documented use of DHIS2 Tracker for community-based hypertension and diabetes screening
+- **[Zimbabwe](#zimbabwe--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Actively implemented integrated hypertension and diabetes screening within its HIV programme, with data captured in a customised DHIS2
 
 ### MODERATE (12)
 
 _DHIS2 is the country HMIS and cardiometabolic activity exists, but the search did not surface explicit DHIS2 capture of diabetes/hypertension/CVD._
 
-- **[Afghanistan](#afghanistan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MoPH Data Warehouse runs on DHIS2 but routine NCD indicators not documented; STEPS carries surveillance
-- **[Angola](#angola-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 transition underway as core HMIS but no cardiometabolic module documented yet
-- **[Burkina Faso](#burkina-faso-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — ENDOS-BF DHIS2 in production since 2013 with Tracker modules but no documented cardiometabolic use
-- **[Cambodia](#cambodia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National HMIS transitioning to DHIS2 in 2024-2025; aggregate diabetes and hypertension counts captured separately from registries
-- **[Colombia](#colombia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SISPRO and RIPS are domestic registries; DHIS2 use limited to regional HEARTS dashboard reporting
-- **[Equatorial Guinea](#equatorial-guinea-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 national HMIS piloted February-May 2025 covering IMCI; no cardiometabolic modules yet
-- **[Eswatini](#eswatini-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 HMIS alongside WHO-PEN@Scale trial but no dedicated cardiometabolic module confirmed
-- **[Guinea](#guinea-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 surveillance since 2018 post-Ebola but no NCD or HEARTS registry confirmed
-- **[Niger](#niger-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 SNIS instance supports WHO-PEN rollout in 9 districts but no cardiometabolic Tracker documented
-- **[Sao Tomé and Principe](#sao-tomé-and-principe-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 with Tracker module since 2020 for individual-level registries; cardiometabolic configuration not documented
-- **[Somalia](#somalia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 is national data backbone with NCD integration explicitly flagged pending maturity gains
-- **[Somalia - Puntland State](#somalia---puntland-state-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Operates within federal Somalia DHIS2 backbone; NCD integration flagged as future priority not current use
+- **[Afghanistan](#afghanistan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a high cardiometabolic burden (hypertension ~46%, diabetes ~13% per the 2018 STEPS survey)
+- **[Angola](#angola--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a rising hypertension and diabetes epidemic (urban DM prevalence 5.7-9.2%)
+- **[Burkina Faso](#burkina-faso--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — ENDOS-BF (Entrepôt National des Données de la Santé du Burkina Faso), a DHIS2-based national HMIS in production since
+- **[Cambodia](#cambodia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Scaled up integrated type-2 diabetes and hypertension care via WHO PEN at health centres and NCD clinics at
+- **[Colombia](#colombia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Was among the first cohort of HEARTS in the Americas implementers (2015–2017) and is part of the PAHO
+- **[Equatorial Guinea](#equatorial-guinea--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Began deploying DHIS2 as its national HMIS through a partnership between EHAS, FRS, MINSABS, and the University of
+- **[Eswatini](#eswatini--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A major implementer of WHO-PEN, having piloted decentralised hypertension/diabetes care and now scaling via the EU-funded WHO-PEN@Scale cluster-randomised
+- **[Guinea](#guinea--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Adopted DHIS2 nationally for disease surveillance starting in 2018 after a 2017 pilot (post-Ebola HIS reforms)
+- **[Niger](#niger--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A national DHIS2 instance (dhisniger.ne) as the backbone of its SNIS (Système National d'Information Sanitaire)
+- **[Sao Tomé and Principe](#sao-tomé-and-principe--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — São Tomé and Príncipe has officially adopted DHIS2 as its national HMIS, with WHO and UNDP support
+- **[Somalia](#somalia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S national HMIS is built on DHIS2 and recognized as the "national data backbone" for disease surveillance and
+- **[Somalia - Puntland State](#somalia---puntland-state--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Puntland operates within Somalia's federal-level DHIS2-based HMIS, which is described in WHO EMRO and policy literature as the
 
 ### LIKELY (20)
 
 _DHIS2 is the country HMIS and cardiometabolic care exists, but no direct evidence linking the two was found._
 
-- **[Botswana](#botswana-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 aggregate HMIS alongside OpenMRS; InterCARE trial leverages digital infrastructure but no NCD module confirmed
-- **[Cape Verde](#cape-verde-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 deployed nationally for COVID-19 but diabetes management still paper-based per MoH manual
-- **[Chad](#chad-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 national HMIS since 2022 with 96% district reporting but no cardiometabolic registry evidence
-- **[Congo Republic (Brazzaville)](#congo-republic-brazzaville-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National DHIS2 launched with WHO PEN pilots in 20 districts but no cardiometabolic linkage confirmed
-- **[Côte d'Ivoire](#côte-divoire-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SIGSANTE DHIS2 since 2015 with WHO Technical Working Group; no NCD module surfaced
-- **[Guyana](#guyana-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National HEARTS expansion since 2023 likely feeding PAHO DHIS2 platform but country-specific use unconfirmed
-- **[Honduras](#honduras-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — PAHO HEARTS DHIS2 platform supports CVD indicators regionally but Honduras-specific use not documented
-- **[Jamaica](#jamaica-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 used for National Cancer Registry but no diabetes or hypertension surveillance documented
-- **[Lesotho](#lesotho-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 national HMIS alongside ComBaCaL CHW screening on separate tablet app; no cardiometabolic module confirmed
-- **[Madagascar](#madagascar-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 core HMIS across 58 districts and 1687 facilities but no cardiometabolic module confirmed
-- **[Mauritania](#mauritania-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Regional aliases list HMIS as DHIS2 but no specific NCD or cardiometabolic module described
-- **[Namibia](#namibia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 national HMIS via MoHSS but no explicit cardiometabolic registry or HEARTS package documented
-- **[Papua New Guinea](#papua-new-guinea-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — NHIS on DHIS2 but no individual-level diabetes or hypertension tracking surfaced for HEARTS-style program
-- **[Paraguay](#paraguay-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Participates in PAHO HEARTS DHIS2 platform at INCAP but Paraguay-specific deployment not documented
-- **[South Sudan](#south-sudan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 national HMIS since 2018 but cardiometabolic indicators not operationalised in MoH
-- **[Sudan](#sudan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 for hospital reporting per WHO EMRO but no operational diabetes hypertension or CVD modules
-- **[Timor Leste](#timor-leste-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — TLHIS DHIS2 supports Timor Hearts program targeting 50000 hypertension and diabetes patients by 2025
-- **[Venezuela](#venezuela-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — HEARTS pilot in La Marroquina plausibly feeds PAHO DHIS2 platform but country-specific deployment undocumented
-- **[Zambia](#zambia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Long-standing DHIS2 national HMIS alongside TASKPEN trial but no published DHIS2 Tracker for NCDs surfaced
-- **[Zanzibar](#zanzibar-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Related digital systems to mainland Tanzania DHIS2 but explicit Tracker cardiometabolic case management unconfirmed
+- **[Botswana](#botswana--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — DHIS2 for aggregate routine HMIS reporting alongside OpenMRS for clinic-level EMR
+- **[Cape Verde](#cape-verde--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A high and rising NCD burden: hypertension prevalence reached ~34% (2019) and roughly 70% of all deaths are
+- **[Chad](#chad--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Transitioned its national HMIS to DHIS2 in 2022 and became the 69th country to deploy DHIS2 nationally, with
+- **[Congo Republic (Brazzaville)](#congo-republic-brazzaville--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Congo-Brazzaville has implemented DHIS2 — its national launch was documented publicly by DHIS2 — and has adopted WHO
+- **[Côte d'Ivoire](#côte-divoire--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S national health information system is DHIS2-based and branded "SIGSANTE", deployed by the Ministry of Health since 2015
+- **[Guyana](#guyana--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Adopted the Global HEARTS Initiative in 2021 and, with PAHO/WHO support, launched the national expansion of HEARTS in
+- **[Honduras](#honduras--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — ~650,000 people with diabetes and ~1.3 million adults aged 30-79 with hypertension
+- **[Jamaica](#jamaica--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a major NCD burden, with ~34.9% adult hypertension and ~12% diabetes prevalence
+- **[Lesotho](#lesotho--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a double burden of NCDs alongside HIV/TB
+- **[Madagascar](#madagascar--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S Ministry of Public Health operates DHIS2 as its core HMIS, with 58 District Health Services and 1,687
+- **[Mauritania](#mauritania--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S HMIS is listed in regional aliases as DHIS2 but the available open-source/academic literature does not describe specific
+- **[Namibia](#namibia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — DHIS2 as its national HMIS (rolled out through MoHSS with MEASURE Evaluation support)
+- **[Papua New Guinea](#papua-new-guinea--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A high and rising burden of diabetes and hypertension, and is part of the RESist-NCD program (2024–2028) covering
+- **[Paraguay](#paraguay--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Documented high diabetes and hypertension prevalence and gaps in primary care readiness in Family Health Units (USF)
+- **[South Sudan](#south-sudan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Used DHIS2 as its electronic HMIS since 2018, scaled to all counties, with active expansion to integrate LMIS,
+- **[Sudan](#sudan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S Federal Ministry of Health uses DHIS2 for hospital reporting, per the WHO EMRO 2020 HIS assessment, but
+- **[Timor Leste](#timor-leste--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Timor-Leste runs an ambitious "Timor Hearts" programme adopting WHO PEN and HEARTS-D packages, targeting 50,000 hypertension and diabetes
+- **[Venezuela](#venezuela--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Piloted the WHO/PAHO HEARTS initiative for hypertension control in primary care (e.g., La Marroquina community, 2023)
+- **[Zambia](#zambia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A national NCD surveillance system implemented by the Ministry of Health, with WHO STEPS surveys in 2017 and
+- **[Zanzibar](#zanzibar--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Following a STEPS survey and Service Provision Assessment, the Zanzibar Ministry of Health established an NCD unit and
 
 ### UNCLEAR (10)
 
 _Mixed or ambiguous signals on DHIS2 use for cardiometabolic data._
 
-- **[Djibouti](#djibouti-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Digitalising HIS and adopting HEARTS but no public source confirms DHIS2 for cardiometabolic surveillance
-- **[Haiti](#haiti-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Part of HEARTS in the Americas DHIS2 platform but Haiti-specific cardiometabolic registry use not confirmed
-- **[Pakistan](#pakistan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 used in some provinces for routine data but cardiometabolic-specific national use not documented
-- **[Palestine](#palestine-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — MoH NCD surveillance uses eSTEPS ODK and UNRWA e-Health rather than DHIS2
-- **[Philippines](#philippines-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2 not dominant national HMIS; PhilPEN runs Hypertension e-Registry on iClinicSys and DOH eHealth
-- **[Seychelles](#seychelles-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — SEY-PEN handles hypertension and diabetes screening but no public source documents DHIS2 as the platform
-- **[Solomon Islands](#solomon-islands-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 confirmed; HMIS reporting historically used other tools and Pacific regional systems
-- **[Somaliland](#somaliland-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National health information database launched but DHIS2 not identified as platform for NCDs
-- **[Syria North West](#syria-north-west-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Whole-of-Syria cluster uses EWARN and HeRAMS reporting; no DHIS2-based NCD surveillance confirmed inside region
-- **[Vanuatu](#vanuatu-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — HMIS used for routine reporting but no DHIS2 Tracker cardiometabolic registry or HEARTS implementation found
+- **[Djibouti](#djibouti--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Been actively engaged in adopting the WHO HEARTS package and developing national guidelines for hypertension and diabetes management
+- **[Haiti](#haiti--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S EMMUS-VI (2016-17) documents very high hypertension prevalence (49% women, 38% men aged 35-64)
+- **[Pakistan](#pakistan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A high cardiometabolic disease burden and has conducted WHO STEPS surveys, but the search did not surface direct
+- **[Palestine](#palestine--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A heavy NCD burden and conducted a WHO STEPS survey in 2022, but data collection used the eSTEPS
+- **[Philippines](#philippines--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The Philippines runs the PhilPEN program (adapted from WHO PEN) with Hypertension and Diabetes Clubs at public clinics,
+- **[Seychelles](#seychelles--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A well-developed NCD program (SEY-PEN, adapted from WHO PEN) addressing hypertension and diabetes with WHO technical support and
+- **[Solomon Islands](#solomon-islands--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces an extreme NCD burden (more than 80% of National Referral Hospital admissions linked to diabetes, heart disease,
+- **[Somaliland](#somaliland--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Faces a large cardiometabolic burden (hypertension ~41%, diabetes ~19% in recent Hargeisa surveys)
+- **[Syria North West](#syria-north-west--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — In Northwest Syria's humanitarian response, NGO and UN-coordinated NCD services (diabetes, hypertension) operate at primary care facilities supported
+- **[Vanuatu](#vanuatu--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Conducted WHO STEPS surveys (2011, 2013) to assess NCD risk factors including raised blood pressure, blood glucose and
 
 ### NONE (17)
 
 _Country uses a non-DHIS2 system for cardiometabolic data, or no DHIS2 deployment found._
 
-- **[Algeria](#algeria-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 footprint; NCD surveillance through WHO STEPS and SISDZ rather than HMIS
-- **[Argentina](#argentina-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 deployment; SNVS 2.0 and HiperDia-style registries anchor national cardiometabolic surveillance
-- **[Brazil](#brazil-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; DATASUS runs HiperDia hypertension and diabetes registry plus VIGITEL and SIM
-- **[Costa Rica](#costa-rica-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; CCSS runs EDUS and the SVD diabetes surveillance system independently
-- **[DPR Korea](#dpr-korea-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Closed national HIS separate from DHIS2 ecosystem; HEARTS roadmap under WHO preparation
-- **[India](#india-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No national DHIS2; NCD-IT Simple App and Ayushman Bharat anchor IHCI hypertension registries
-- **[Indonesia](#indonesia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; MoH runs ASDK/SatuSehat/SIMPUS architecture and Posbindu PTM web-based surveillance
-- **[Kazakhstan](#kazakhstan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; UNEHS national electronic records support diabetes and NCD surveillance
-- **[Kyrgyzstan](#kyrgyzstan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; national PHC database and State Register of Diabetes Patients drive surveillance
-- **[Mauritius](#mauritius-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; Health Information Bureau and periodic national NCD surveys carry cardiometabolic surveillance
-- **[Morocco](#morocco-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 evidence; NCD surveillance through STEPS framework with digital tools under exploration
-- **[Norway](#norway-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — DHIS2's home does not use it clinically; NDR-A and HUNT registries handle cardiometabolic surveillance
-- **[Suriname](#suriname-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 use confirmed for any health program; NCD surveillance via national surveys and PAHO frameworks
-- **[Syria MoH](#syria-moh-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 evidence inside MoH-controlled areas; HMIS runs as separate platform with WHO NCD kit support
-- **[Thailand](#thailand-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; MOPH HDC and NHSO databases handle long-running HTN and DM screening reporting requirements
-- **[Ukraine](#ukraine-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; national NHSU eHealth platform runs cardiometabolic data under WHO/Europe HEARTS rollout
-- **[Uzbekistan](#uzbekistan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; bespoke UZ-SPEED NCD tool digitises screening under WHO PEN/HEARTS rollout
+- **[Algeria](#algeria--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — High cardiometabolic burden, with national STEPS surveys (2003, 2016-17) documenting hypertension ~26-46% and increasing diabetes prevalence (T2DM ~46%
+- **[Argentina](#argentina--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Well-established national NCD surveillance via the Ministry of Health's National Directorate for NCDs and the SNVS 2.0 surveillance
+- **[Brazil](#brazil--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Runs sophisticated NCD surveillance through its SUS, including the dedicated HiperDia registry (SIS-HIPERDIA) for hypertension and diabetes patient
+- **[Costa Rica](#costa-rica--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A national Diabetes Surveillance System (SVD) managed by Caja Costarricense de Seguro Social (CCSS) and the Ministry of
+- **[DPR Korea](#dpr-korea--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — NCDs (CVD, cancer, diabetes) are the leading causes of illness and premature death in DPR Korea
+- **[India](#india--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Runs the National Programme for Prevention and Control of NCDs (NP-NCD, formerly NPCDCS) and the India Hypertension Control
+- **[Indonesia](#indonesia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S NCD surveillance and screening are organised through Posbindu PTM (community-based integrated coaching posts) and the Directorate P2PTM's
+- **[Kazakhstan](#kazakhstan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A Unified National Electronic Health System (UNEHS) that supports diabetes and NCD surveillance via national electronic records, not
+- **[Kyrgyzstan](#kyrgyzstan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — NCDs cause 83% of deaths in Kyrgyzstan
+- **[Mauritius](#mauritius--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — One of the world's highest burdens of type 2 diabetes, hypertension, and CVD, monitored through periodic national NCD
+- **[Morocco](#morocco--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S NCD burden is dominated by CVD (38% of deaths) with high diabetes and hypertension prevalence documented through
+- **[Norway](#norway--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The development home of DHIS2 (HISP Centre at the University of Oslo), but the country itself does not
+- **[Suriname](#suriname--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A high cardiometabolic burden (hypertension ~33%, diabetes ~10% in coastal districts per the Suriname Health Study)
+- **[Syria MoH](#syria-moh--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — No evidence that Syria's Ministry of Health (Damascus-controlled areas) uses DHIS2 for diabetes, hypertension, or broader NCD surveillance
+- **[Thailand](#thailand--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Extensive NCD surveillance and a long-running national HTN/DM screening and reporting requirement tied to MOPH targets, but uses
+- **[Ukraine](#ukraine--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A heavy cardiometabolic burden (≈1/3 hypertensive, ~7% diabetes
+- **[Uzbekistan](#uzbekistan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Rolling out WHO PEN/HEARTS clinical protocols at primary care and has developed the UZ-SPEED NCD tool (in partnership
 
 ### UNKNOWN (15)
 
 _Insufficient information to assess._
 
-- **[Dominica](#dominica-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No public source identifies national HIS platform; PAHO Caribbean HEARTS dashboards likely used
-- **[Egypt](#egypt-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Ministry-led HMIS not identified as DHIS2; 100 Million Seha screening runs separately
-- **[Eritrea](#eritrea-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — National HMIS platform not described; WHO-PEN pilots and STEPS surveillance without confirmed DHIS2
-- **[Gabon](#gabon-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — 2026 WHO pilot training providers across four departments; no DHIS2 cardiometabolic platform identified
-- **[Guinea Bissau](#guinea-bissau-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No national DHIS2 deployment confirmed; population registries fragmented and limited for cardiometabolic surveillance
-- **[Jordan](#jordan-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — HEARTS embedded in existing HIS but no source documents DHIS2 as Jordan's NCD platform
-- **[Kiribiati](#kiribiati-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 evidence for diabetes hypertension or CVD; NCD monitoring rests on STEPS and PEN registers
-- **[Lao](#lao-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — Uses DHIS2 for routine HMIS but cardiometabolic registry application not directly confirmed in sources
-- **[Libya](#libya-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 evidence; NCD surveillance through WHO STEPS methodology and NCDC-led national survey
-- **[Maldives](#maldives-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No national DHIS2 deployment documented; Health Protection Agency runs separate HMIS
-- **[Mongolia](#mongolia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2; MongPEN runs on homegrown eHealth and ePrescription infrastructure for cardiometabolic screening
-- **[Tonga](#tonga-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 use documented; Pacific NCD reporting typically uses bespoke SPC-supported tools and clinical registries
-- **[Tunisia](#tunisia-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 evidence; national HMIS historically uses bespoke SIGS/SI-NCD platforms for cardiometabolic surveillance
-- **[Western Sahara](#western-sahara-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No country-specific NCD digital surveillance system; data reported under Morocco or via UNHCR channels
-- **[Yemen](#yemen-cardiometabolic-diabeteshypertensioncvd-dhis2-profile)** — No DHIS2 use documented for diabetes hypertension or CVD; national HMIS fragmented by conflict
+- **[Dominica](#dominica--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — No public source describes Dominica using DHIS2 for cardiometabolic surveillance
+- **[Egypt](#egypt--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — S "100 Million Seha" national screening initiative targets early detection and management of diabetes and hypertension at population
+- **[Eritrea](#eritrea--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Implemented the WHO STEPS approach and piloted the WHO-PEN protocols at primary health centres in Asmara, with a
+- **[Gabon](#gabon--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A pilot in 2026 with WHO to integrate hypertension and diabetes management into community-level care, training 98 providers
+- **[Guinea Bissau](#guinea-bissau--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Guinea-Bissau has documented high hypertension prevalence (~27% in Bissau) and significant diabetes burden, but the formal NCD care
+- **[Jordan](#jordan--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Very high NCD burden: ~78% of deaths are NCD-related; adult hypertension ~52% and diabetes ~20% in 45-69 group
+- **[Kiribiati](#kiribiati--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Kiribati has heavy NCD burden, with hypertension ~17.3% and WHO PEN being implemented in 5 clinics in Tarawa
+- **[Lao](#lao--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — PDR has implemented WHO PEN and HEARTS-aligned NCD interventions but no publicly available source documents DHIS2 specifically as
+- **[Libya](#libya--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Documented rising NCD burden — CVD, hypertension, diabetes and cancer drive mortality and morbidity
+- **[Maldives](#maldives--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — The Maldives has high NCD burden (CVD, diabetes, hypertension are leading causes of mortality) and runs WHO STEPS
+- **[Mongolia](#mongolia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — Implemented "MongPEN" since 2019 (a Mongolian adaptation of WHO PEN + HEARTS for CVD risk assessment) and an
+- **[Tonga](#tonga--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — An extreme NCD burden (NCDs cause ~83% of deaths
+- **[Tunisia](#tunisia--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — A high cardiometabolic burden (regional surveys show very high prevalences of obesity, hypertension, and diabetes) but no surfaced
+- **[Western Sahara](#western-sahara--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — No specific evidence of cardiometabolic surveillance programmes, HEARTS/PEN implementation, or DHIS2 use for diabetes/hypertension was found for Western
+- **[Yemen](#yemen--cardiometabolic-diabeteshypertensioncvd--dhis2-profile)** — No direct evidence of DHIS2 use for diabetes, hypertension or CVD management in Yemen surfaced in this search
 
 ---
-
 ### Afghanistan — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
 #### Summary
@@ -808,20 +806,14 @@ DHIS2 is established in Cape Verde for COVID-19/immunization. NCD policy exists 
 2. **Dia mundial da diabetes — INSP Cabo Verde** — https://insp.gov.cv/index.php/component/content/article/105-slideshow/338-dia-mundial-da-diabetes [BROKEN: unreachable]
    National Institute of Public Health diabetes awareness materials.
 ##### English query results
-3. **Deploying DHIS2 for COVID-19 Vaccine Delivery in Lusophone Africa (incl. Cape Verde)** — https://dhis2.org/lusophone-africa-covid-vaccine/
-   Documents DHIS2 deployment in Cape Verde for COVID-19 vaccination/surveillance.
-
-4. **Hypertension, diabetes, and cardiovascular disease nexus: urbanization and lifestyle in Cabo Verde** — https://www.tandfonline.com/doi/full/10.1080/16549716.2024.2414524
+3. **Hypertension, diabetes, and cardiovascular disease nexus: urbanization and lifestyle in Cabo Verde** — https://www.tandfonline.com/doi/full/10.1080/16549716.2024.2414524
    2024 study on cardiometabolic burden and urbanization in Cabo Verde.
 
-5. **State of multi-morbidity among adults in Cape Verde: 2020 WHO STEPS NCD survey** — https://doi.org/10.1093/pubmed/fdaf031
+4. **State of multi-morbidity among adults in Cape Verde: 2020 WHO STEPS NCD survey** — https://doi.org/10.1093/pubmed/fdaf031
    17.9% multi-morbidity; hypertension 37.2% in men; diabetes 5% in women.
 
-6. **Alcohol consumption among persons living with hypertension: Cape Verde** — https://pmc.ncbi.nlm.nih.gov/articles/PMC11884126/
+5. **Alcohol consumption among persons living with hypertension: Cape Verde** — https://pmc.ncbi.nlm.nih.gov/articles/PMC11884126/
    Population-based study leveraging STEPS data.
-
-7. **HISP Centre and World Diabetes Foundation Partner to Strengthen Digital Tools for NCDs** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Regional initiative to expand DHIS2 NCD toolkit (Cape Verde not explicitly named).
 
 
 ### Central African Republic — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -853,12 +845,6 @@ WHO Country Office report explicitly cites DHIS2 as the source of routine hypert
 6. **Prevalence and associated factors of undiagnosed hypertension among adults in CAR** — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9643345/
    7 in 10 CAR adults with hypertension are undiagnosed (2017 STEPS analysis).
 
-7. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community thread on DHIS2 NCD implementations.
-
-8. **HISP Centre and World Diabetes Foundation Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-    Initiative to strengthen DHIS2 NCD digital tools.
-
 
 ### Chad — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -871,32 +857,22 @@ DHIS2 is the national HMIS in Chad, so aggregate NCD indicators (diabetes/hypert
 #### Search Results
 
 ##### French query results
-1. **DHIS2 en tant que système de gestion de l'information sanitaire au Tchad — DHIS2 Community** — https://community.dhis2.org/t/dhis2-en-tant-que-systeme-de-gestion-de-l-information-sanitaire-au-tchad/50835
-   Discussion technique sur le déploiement national.
-
-2. **Lancement officiel de DHIS2 au Tchad — DHIS2 Community** — https://community.dhis2.org/t/lancement-officiel-de-dhis2-au-tchad/50605
-   Annonce officielle du lancement (PADS / Ministère de la Santé Publique).
-
-3. **Profil de la néphropathie diabétique à l'Hôpital Général de N'Djamena — Pan African Medical Journal** — https://panafrican-med-journal.com/content/article/24/193/full/
+1. **Profil de la néphropathie diabétique à l'Hôpital Général de N'Djamena — Pan African Medical Journal** — https://panafrican-med-journal.com/content/article/24/193/full/
    Étude hospitalière sur complications du diabète.
 
-4. **Prévalence des complications médicales chez les diabétiques hospitalisés à N'Djamena — HSD** — https://www.hsd-fmsb.org/index.php/hsd/article/view/553
+2. **Prévalence des complications médicales chez les diabétiques hospitalisés à N'Djamena — HSD** — https://www.hsd-fmsb.org/index.php/hsd/article/view/553
    Comorbidités diabète–HTA chez patients tchadiens.
 
-5. **Plan National de Développement Sanitaire 2018–2021 — Tchad** — https://www.prb.org/wp-content/uploads/2020/06/Tchad-Plan-National-de-Developpement-Sanitaire-2018-2021.pdf
+3. **Plan National de Développement Sanitaire 2018–2021 — Tchad** — https://www.prb.org/wp-content/uploads/2020/06/Tchad-Plan-National-de-Developpement-Sanitaire-2018-2021.pdf
    Cadre national, intégration MNT.
 
-6. **L'hypertension artérielle masquée chez les diabétiques de type 2 (région) — ScienceDirect** — https://www.sciencedirect.com/science/article/abs/pii/S0003392821001657
+4. **L'hypertension artérielle masquée chez les diabétiques de type 2 (région) — ScienceDirect** — https://www.sciencedirect.com/science/article/abs/pii/S0003392821001657
    Étude clinique sur HTA masquée chez diabétiques.
 
-7. **PADS — Programme d'Appui aux Districts Sanitaires au Tchad** — https://www.pads-tchad.org/
+5. **PADS — Programme d'Appui aux Districts Sanitaires au Tchad** — https://www.pads-tchad.org/
    Partenaire de mise en œuvre DHIS2.
 ##### English query results
-8. **Chad transitions to DHIS2-based health information management — DHIS2** — https://dhis2.org/chad-hmis-transition/
-   Chad becomes 69th country with national DHIS2; >96% district reporting end-2022.
-
-9. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-    Cross-country experiences (Chad not explicitly named).
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Chile — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -910,34 +886,25 @@ PAHO/DHIS2 documentation explicitly describes DHIS2 use in Chile for cardiovascu
 #### Search Results
 
 ##### Spanish query results
-1. **Uso de DHIS2 para apoyar la salud cardiovascular en las Américas — DHIS2** — https://dhis2.org/es/hearts-support-cardiovascular-health-americas/
-   Describes DHIS2 implementation in Chile and other Americas countries for HEARTS/CVD data.
-
-2. **Construyendo una plataforma epidemiológica en Chile con expertos locales — DHIS2** — https://dhis2.org/es/chile-national-health-platform/
-   MINSAL DHIS2 platform: RENCI cancer registry, Paxlovid, expansion to NCD/CVD surveillance.
-
-3. **Reorientación de los Programas de Hipertensión y Diabetes — MINSAL** — https://www.minsal.cl/portal/url/item/75fcbd5dc347e5efe04001011f012019.pdf
+1. **Reorientación de los Programas de Hipertensión y Diabetes — MINSAL** — https://www.minsal.cl/portal/url/item/75fcbd5dc347e5efe04001011f012019.pdf
    National policy document on HTN/DM program redesign.
 
-4. **Diabetes Clinical Pathway — Chile (PAHO)** — https://www.paho.org/en/documents/diabetes-clinical-pathway-chile
+2. **Diabetes Clinical Pathway — Chile (PAHO)** — https://www.paho.org/en/documents/diabetes-clinical-pathway-chile
    National clinical pathway.
 
-5. **Epidemiología de la Diabetes Mellitus en Chile — Revista Médica Clínica Las Condes** — https://www.elsevier.es/es-revista-revista-medica-clinica-las-condes-202-articulo-epidemiologia-de-la-diabetes-mellitus-S0716864016300037
+3. **Epidemiología de la Diabetes Mellitus en Chile — Revista Médica Clínica Las Condes** — https://www.elsevier.es/es-revista-revista-medica-clinica-las-condes-202-articulo-epidemiologia-de-la-diabetes-mellitus-S0716864016300037
    Review on Chilean DM epidemiology.
 
-6. **Diabetes mellitus tipo 2 — Superintendencia de Salud** — https://www.superdesalud.gob.cl/orientacion-en-salud/diabetes-mellitus-tipo-2/
+4. **Diabetes mellitus tipo 2 — Superintendencia de Salud** — https://www.superdesalud.gob.cl/orientacion-en-salud/diabetes-mellitus-tipo-2/
    Official patient/provider information.
 
-7. **Perfil de usuarios con diabetes e hipertensión y resultados clínicos** — https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-85602018000300161
+5. **Perfil de usuarios con diabetes e hipertensión y resultados clínicos** — https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0718-85602018000300161
    Study on patient profile and outcomes.
 ##### English query results
-8. **Integrating hypertension and diabetes management using HEARTS — PMC** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9440730/
+6. **Integrating hypertension and diabetes management using HEARTS — PMC** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9440730/
    HEARTS implementation framework relevant to Chile.
 
-9. **Hypertension Registry System Design — DHIS2 Docs** — https://docs.dhis2.org/en/topics/metadata/non-communicable-diseases/hypertension-control/design.html
-   DHIS2 reference design used in HEARTS programs.
-
-10. **Prescription drug coverage of hypertension, diabetes, dyslipidemia in Chile — PLOS One** — https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0297807
+7. **Prescription drug coverage of hypertension, diabetes, dyslipidemia in Chile — PLOS One** — https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0297807
     National study on chronic disease coverage.
 
 
@@ -970,17 +937,11 @@ Colombia participates in HEARTS in the Americas with DHIS2-based dashboards; car
 6. **Diabetes mellitus tipo 2: Latinoamérica y Colombia, último quinquenio** — http://www.scielo.org.co/scielo.php?script=sci_arttext&pid=S0121-52562023000200035
    Recent five-year analysis.
 ##### English query results
-7. **Using DHIS2 to support cardiovascular health in the Americas — DHIS2** — https://dhis2.org/hearts-support-cardiovascular-health-americas/
-   Colombia named among HEARTS/DHIS2 implementer countries in the Americas.
-
-8. **Integrating hypertension and diabetes management: HEARTS as a tool — PMC** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9440730/
+7. **Integrating hypertension and diabetes management: HEARTS as a tool — PMC** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9440730/
    HEARTS framework background.
 
-9. **Comparative evaluation of ASCVD, SCORE-2, HEARTS risk scores in Colombian adults — Frontiers** — https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2025.1734611/full
+8. **Comparative evaluation of ASCVD, SCORE-2, HEARTS risk scores in Colombian adults — Frontiers** — https://www.frontiersin.org/journals/cardiovascular-medicine/articles/10.3389/fcvm.2025.1734611/full
    2025 Colombian study comparing CVD risk scores including HEARTS.
-
-10. **Hypertension Registry System Design — DHIS2 Docs** — https://docs.dhis2.org/en/topics/metadata/non-communicable-diseases/hypertension-control/design.html
-    Reference design supporting HEARTS DHIS2 registries.
 
 
 ### Comores — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -1047,21 +1008,9 @@ DHIS2 has been launched at country level and WHO-PEN is being scaled, so NCD agg
 
 3. **Néphropathie diabétique au CHU de Brazzaville — ScienceDirect** — https://www.sciencedirect.com/science/article/abs/pii/S1957255715300481
    Étude clinique.
-
-4. **Surveillance des maladies — DHIS2 (fr)** — https://dhis2.org/fr/disease-surveillance/
-   Documentation des fonctions de surveillance DHIS2.
 ##### English query results
-5. **Fighting NCDs in Malawi and Sri Lanka with the Diabetes Compass Project — DHIS2** — https://dhis2.org/fighting-ncds-in-malawi-and-sri-lanka-with-the-diabetes-compass-project/
-   Regional DHIS2 NCD reference (Congo not explicitly named).
-
-6. **HISP Centre and World Diabetes Foundation Partnership — DHIS2** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Regional initiative to strengthen DHIS2 NCD tools.
-
-7. **Diabetes care, Congolese context — IDF members (Republic of Congo)** — https://idf.org/our-network/regions-and-members/africa/members/democratic-republic-of-congo/association-des-diabetiques-du-congo/
+4. **Diabetes care, Congolese context — IDF members (Republic of Congo)** — https://idf.org/our-network/regions-and-members/africa/members/democratic-republic-of-congo/association-des-diabetiques-du-congo/
    Country diabetes association profile.
-
-8. **NCDs and DHIS2: Learning from Country Experiences — DHIS2 Community** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Country-experience discussion.
 
 
 ### Costa Rica — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -1159,7 +1108,7 @@ Djibouti is investing in digital health and has adopted HEARTS/PEN concepts, but
 3. **Sanofi Global Health et la CNSS déploient leur partenariat — Afrimag** — https://afrimag.net/djibouti-sanofi-global-health-et-la-cnss-deploient-leur-partenariat/
    Tripartite partnership covering oncology, diabetes, hypertension: therapeutic education, prevention, and management of NCDs.
 ##### English query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Dominica — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -1389,7 +1338,7 @@ DHIS2 is being implemented nationally for general HMIS, but no evidence of speci
 1. **Sistema de Información – Guinea Ecuatorial — Enlace Hispano Americano de Salud (EHAS)** — https://ehas.org/que-hacemos/sis/sis-guinea-ecuatorial/
    Description of DHIS2 implementation in Equatorial Guinea via EHAS, FRS, MINSABS and UiO, with first pilot in 2025.
 ##### English query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Eritrea — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -1496,7 +1445,7 @@ No public evidence links DHIS2 to Gabon's hypertension/diabetes program. The HEA
 2. **L'hypertension artérielle masquée chez les diabétiques de type 2 : Prévalence, facteurs associés et retentissement cardiovasculaire — ScienceDirect** — https://www.sciencedirect.com/science/article/abs/pii/S0003392821001657
    Clinical research on masked hypertension in T2DM patients (relevant regional context).
 ##### English query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Gambia — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -1984,9 +1933,6 @@ Kazakhstan uses its own Unified National Electronic Health System for diabetes a
 1. **Epidemiology of type 1 and type 2 diabetes mellitus in Kazakhstan: data from Unified National Electronic Health System 2014–2019 (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9650815/
    Uses national EHR (UNEHS) for six-year diabetes prevalence/incidence/mortality study — main NCD data backbone in Kazakhstan.
 
-2. **HISP Centre and World Diabetes Foundation Partnership for NCDs** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Global DHIS2-NCD partnership; Kazakhstan not listed as participating country.
-
 
 ### Kenya — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2029,9 +1975,6 @@ No published source ties Kiribati's NCD/cardiometabolic programs to DHIS2; PEN i
 1. **Kiribati NCD Risk Factors STEPS Report (FAO/WHO)** — https://www.fao.org/fileadmin/templates/agphome/documents/horticulture/WHO/fiji/steps/Kiribati_STEPS_Report.pdf
    Government NCD STEPS survey results including hypertension and diabetes prevalence.
 
-2. **NCDs and DHIS2: Learning from Country Experiences (DHIS2 Community)** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Forum discussion of country NCD experiences; Kiribati not mentioned.
-
 
 ### Kyrgyzstan — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2059,9 +2002,6 @@ Kyrgyzstan's NCD data flow runs through national PHC EHR and the State Register 
 5. **Addressing NCDs in Primary Healthcare in Kyrgyzstan: Knowledge and Behavioral Changes (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC10353050/
    Population study on NCD awareness and behavior.
 
-6. **HISP Centre and World Diabetes Foundation Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Global DHIS2-NCD partnership; Kyrgyzstan not named as implementing country.
-
 
 ### Lao — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2076,9 +2016,6 @@ DHIS2 is used in Lao for routine HMIS, but there is no direct documentation of c
 ##### English query results
 1. **Integrating hypertension and diabetes management in primary health care settings: HEARTS as a tool (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9440730/
    Academic review of integrated HTN/DM via HEARTS in primary care.
-
-2. **NCDs and DHIS2: Learning from Country Experiences (DHIS2 Community)** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Forum thread on country NCD experiences using DHIS2.
 
 
 ### Lebanon — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -2146,15 +2083,6 @@ The MoH explicitly cites DHIS2 as the destination system for Project TREND NCD r
 1. **MoH Launches 'Project TREND' to Tackle Hypertension, Diabetes Burden (MoH Liberia)** — https://moh.gov.lr/news/2026/moh-launches-project-trend-to-tackle-hypertension-diabetes-burden/
    Official MoH announcement: 900+ NCD registers distributed, reporting integrated into national DHIS2.
 
-2. **Ministry of Health, Republic of Liberia (DHIS2 community presentation)** — https://community.dhis2.org/uploads/short-url/by1wvHvf1nHdykWrngTnQVHvhaC.pdf
-   MoH Liberia presentation on DHIS2 use.
-
-3. **NCDs and DHIS2: Learning from Country Experiences (DHIS2 Community)** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Forum thread covering DHIS2-NCD experiences across countries.
-
-4. **HISP Centre and World Diabetes Foundation Partnership for NCDs** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Global HISP-WDF partnership to expand DHIS2 NCD modules.
-
 
 ### Libya — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2179,9 +2107,6 @@ No published evidence identified for DHIS2 use in Libya's cardiometabolic survei
 4. **Cross-sectional pilot study about the health status of diabetic patients in Misurata, Libya (PubMed)** — https://pubmed.ncbi.nlm.nih.gov/23066426/
    Clinical pilot study on diabetic patient health status in Libya.
 
-5. **HISP Centre and World Diabetes Foundation Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Global DHIS2-NCD partnership; Libya not named.
-
 
 ### Madagascar — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2194,28 +2119,19 @@ DHIS2 is the national HMIS and almost certainly carries aggregate NCD/HTN/DM ind
 #### Search Results
 
 ##### French query results
-1. **Santé – DHIS2 (French)** — https://dhis2.org/fr/health/
-   DHIS2 health portal (French) describing global use cases including NCDs.
-
-2. **Madagascar et le HISP UiO s'associent pour lancer l'initiative numérique One Health et SIL** — https://dhis2.org/fr/madagascar-hisp-uio-one-health-initiative/
-   Government-HISP UiO partnership announcement for One Health and lab information systems on DHIS2.
-
-3. **Ministère de la Santé Publique — Plan Stratégique de Renforcement du Système d'Information Sanitaire (PSRSIS 2023-2027)** — https://www.msanp.gov.mg/upload/documents/PSRSIS_2023-2027.pdf
+1. **Ministère de la Santé Publique — Plan Stratégique de Renforcement du Système d'Information Sanitaire (PSRSIS 2023-2027)** — https://www.msanp.gov.mg/upload/documents/PSRSIS_2023-2027.pdf
    Government HIS strengthening plan referencing DHIS2 as core HMIS.
 
-4. **Documentation MSANP DHIS-2 API** — https://doc.dhis2.pivot-dashboard.org/overview.html [BROKEN: unreachable]
+2. **Documentation MSANP DHIS-2 API** — https://doc.dhis2.pivot-dashboard.org/overview.html [BROKEN: unreachable]
    Technical documentation for Madagascar MoH DHIS2 API/dashboards.
 
-5. **Madagascar: Travailleurs - Santé - Diabète et hypertension gagnent du terrain (allAfrica)** — https://fr.allafrica.com/stories/202605110904.html
+3. **Madagascar: Travailleurs - Santé - Diabète et hypertension gagnent du terrain (allAfrica)** — https://fr.allafrica.com/stories/202605110904.html
    News piece on rising diabetes/hypertension burden in Madagascar.
-
-6. **Mis en place d'un système de suivi via DHIS2 tracker et Event (maternité sans risque, Madagascar) — DHIS2 Community** — https://community.dhis2.org/t/mis-en-place-d-un-systeme-de-suivi-des-programmes-au-niveau-de-la-division-maternite-sans-risque-a-travers-dhis2-tracker-et-event-cas-de-madagascar/58817
-   Example of DHIS2 Tracker use in Madagascar (maternal health) — proves Tracker capability in country.
 ##### English query results
-7. **MSANP — Ministère de la Santé Publique Madagascar** — https://ministere-sante.mg/
+4. **MSANP — Ministère de la Santé Publique Madagascar** — https://ministere-sante.mg/
    Official MoH portal.
 
-8. **Plan de développement du secteur santé 2020-2024 (Madagascar)** — https://scorecard.prb.org/wp-content/uploads/2022/03/Plan-de-de%CC%81veloppement-du-secteur-sante%CC%81-2020-2024..pdf
+5. **Plan de développement du secteur santé 2020-2024 (Madagascar)** — https://scorecard.prb.org/wp-content/uploads/2022/03/Plan-de-de%CC%81veloppement-du-secteur-sante%CC%81-2020-2024..pdf
    Sector plan noting NCD coordination gaps.
 
 
@@ -2230,25 +2146,22 @@ DHIS2 is the national HMIS and an NCD module digitizing the government's NCD dat
 #### Search Results
 
 ##### English query results
-1. **Fighting NCDs in Malawi and Sri Lanka with the Diabetes Compass Project** — https://dhis2.org/fighting-ncds-in-malawi-and-sri-lanka-with-the-diabetes-compass-project/
-   Describes the MoH Community Health Services NCD module on DHIS2, deployed March 2024, and the WDF screening algorithm for hypertension/diabetes risk and referral. (Note: dhis2.org source — retained for context only.)
-
-2. **Malawi NCD Guidelines 2022** — https://www.differentiatedservicedelivery.org/wp-content/uploads/NCD-guidelines-2022.pdf
+1. **Malawi NCD Guidelines 2022** — https://www.differentiatedservicedelivery.org/wp-content/uploads/NCD-guidelines-2022.pdf
    National NCD clinical guidelines covering hypertension, type 2 diabetes, chronic respiratory disease and the Integrated Chronic Care Clinic (IC3) model.
 
-3. **DHIS2 Research Data — Malawi** — https://data.research.dhis2.org/Malawi
+2. **DHIS2 Research Data — Malawi** — https://data.research.dhis2.org/Malawi
    Open dataset reflecting Malawi DHIS2 routine data, including NCD-relevant indicators.
 
-4. **Training Mid-Level Providers to Treat Severe NCDs in Neno, Malawi through PEN-Plus** — https://annalsofglobalhealth.org/articles/10.5334/aogh.3750
+3. **Training Mid-Level Providers to Treat Severe NCDs in Neno, Malawi through PEN-Plus** — https://annalsofglobalhealth.org/articles/10.5334/aogh.3750
    Annals of Global Health study describing the PEN-Plus model at Neno, including patient registry and follow-up systems.
 
-5. **Integrating diabetes and hypertension control in the NCD platform, Malawi (WDF18-1588)** — https://www.worlddiabetesfoundation.org/what-we-do/projects/wdf18-1588/
+4. **Integrating diabetes and hypertension control in the NCD platform, Malawi (WDF18-1588)** — https://www.worlddiabetesfoundation.org/what-we-do/projects/wdf18-1588/
    World Diabetes Foundation project page detailing scale-up of integrated hypertension/diabetes care within Malawi's NCD platform.
 
-6. **Accessing clinical services and retention in care following screening for hypertension and diabetes among Malawian adults** — https://pubmed.ncbi.nlm.nih.gov/27552644/
+5. **Accessing clinical services and retention in care following screening for hypertension and diabetes among Malawian adults** — https://pubmed.ncbi.nlm.nih.gov/27552644/
    PubMed study on urban/rural retention after community screening — context for routine data needs.
 
-7. **Diabetes and hypertension control in Malawi's NCD response, WDF18-1588** — https://www.worlddiabetesfoundation.org/projects/malawi-wdf18-1588 [BROKEN: 404]
+6. **Diabetes and hypertension control in Malawi's NCD response, WDF18-1588** — https://www.worlddiabetesfoundation.org/projects/malawi-wdf18-1588 [BROKEN: 404]
    Project summary on integration of D/H care into Malawi's NCD response.
 
 
@@ -2263,19 +2176,7 @@ No specific evidence of DHIS2 implementation in the Maldives for cardiometabolic
 #### Search Results
 
 ##### English query results
-1. **Health Data Toolkit — DHIS2** — https://dhis2.org/health-data-toolkit/
-   Generic toolkit including standardized metadata, Tracker modules, dashboards for diabetes, hypertension, asthma, CRD. (No Maldives-specific deployment mentioned.)
-
-2. **Hypertension Registry System Design (DHIS2 docs)** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design for hypertension registry that can be extended to diabetes/CVD.
-
-3. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community forum thread on NCD implementations; Maldives not cited.
-
-4. **HISP Centre and World Diabetes Foundation Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Four-year partnership to strengthen NCD data in DHIS2; Maldives not listed among demonstration countries.
-
-5. **Integrating hypertension data: CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
+1. **Integrating hypertension data: CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
    Case study from Senegal; relevant for comparable small-system designs.
 
 
@@ -2307,11 +2208,8 @@ DHIS2 is Mali's national routine HMIS used for epidemiological surveillance; exp
 
 6. **Evaluation des connaissances et pratiques chez les diabétiques de type 2 à l'hôpital du Mali en 2024** — https://revue-rasp.org/rasp/article/view/877
    Recent diabetes study at Hôpital du Mali (context — does not specifically describe DHIS2 use).
-
-7. **Mali met en œuvre un eSIGL intégré s'appuyant sur DHIS2 et MEDEXIS** — https://dhis2.org/fr/mali-integrated-logistics-2/
-   Confirms ongoing DHIS2 expansion (logistics). (dhis2.org — for context.)
 ##### English query results
-8. **DHIS2 Research Data / global toolkit** — referenced via Health Data Toolkit and HISP-WDF partnership pages.
+7. **DHIS2 Research Data / global toolkit** — referenced via Health Data Toolkit and HISP-WDF partnership pages.
 
 
 ### Mauritania — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -2325,16 +2223,7 @@ DHIS2 is the indicated national HMIS, but specific cardiometabolic registry/HEAR
 #### Search Results
 
 ##### English query results
-1. **Health Data Toolkit — DHIS2** — https://dhis2.org/health-data-toolkit/
-   Reference toolkit for diabetes/hypertension/asthma/CRD (no Mauritania-specific case).
-
-2. **HISP Centre and WDF Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Multi-country NCD-DHIS2 partnership (Mauritania not listed).
-
-3. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community thread; Mauritania not mentioned.
-
-4. **CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
+1. **CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
    Regional (Senegal) case study; relevant for francophone West Africa.
 
 
@@ -2349,23 +2238,14 @@ No documented DHIS2 deployment for NCD surveillance in Mauritius; the country re
 #### Search Results
 
 ##### English query results
-1. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Generic DHIS2 design (no Mauritius implementation).
-
-2. **Health Data Toolkit — DHIS2** — https://dhis2.org/health-data-toolkit/
-   Generic toolkit.
-
-3. **Mauritius NCD Survey 2015 Report** — https://www.cidp-cro.com/wp-content/uploads/2021/12/Mauritius-NCD-Survey-2015-Report.pdf
+1. **Mauritius NCD Survey 2015 Report** — https://www.cidp-cro.com/wp-content/uploads/2021/12/Mauritius-NCD-Survey-2015-Report.pdf
    National NCD survey covering diabetes, hypertension, CVD prevalence and risk factors.
 
-4. **Mauritius MoH STEPS Report (2004)** — https://cdn.who.int/media/docs/default-source/ncds/ncd-surveillance/data-reporting/mauritius/steps/2004-steps-report-mauritius.pdf
+2. **Mauritius MoH STEPS Report (2004)** — https://cdn.who.int/media/docs/default-source/ncds/ncd-surveillance/data-reporting/mauritius/steps/2004-steps-report-mauritius.pdf
    Earlier STEPS-style NCD risk factor survey.
 
-5. **Prevalence and risk factors of hypertension in Mauritius (PMC, 2024)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC11637371/
+3. **Prevalence and risk factors of hypertension in Mauritius (PMC, 2024)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC11637371/
    Recent cross-sectional analysis of hypertension; uses survey data, not routine DHIS2.
-
-6. **Non-communicable Diseases — DHIS2 Documentation** — https://docs.dhis2.org/en/implement/health/chis-community-health-information-system/design/non-communicable-diseases.html
-   Reference design.
 
 
 ### Mongolia — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -2381,15 +2261,6 @@ No specific evidence that Mongolia uses DHIS2 for routine cardiometabolic survei
 ##### English query results
 1. **Mongolia: crafting essential country-specific tools to tackle NCDs (WHO)** — https://www.who.int/news-room/feature-stories/detail/mongolia-essential-country-specific-tools-to-tackle-ncds
    WHO feature on MongPEN launch (2019), HEARTS integration, and use of ePrescription for CVD risk data capture in Darkhan-Uul and Songinokhairkhan.
-
-2. **Health Data Toolkit — DHIS2** — https://dhis2.org/health-data-toolkit/
-   Generic toolkit (no Mongolia case).
-
-3. **HISP Centre and WDF Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   NCD-DHIS2 partnership (Mongolia not listed).
-
-4. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design.
 
 
 ### Morocco — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -2409,22 +2280,19 @@ Morocco's HMIS is not DHIS2-based for cardiometabolic surveillance; national NCD
 2. **Examining NCDs in Morocco: A Close Look at Cardiovascular Health (Brown UJPH, 2024)** — https://sites.brown.edu/publichealthjournal/2024/03/17/examining-non-communicable-diseases-in-morocco-a-close-look-at-cardiovascular-health/
    Overview of CVD burden and surveillance.
 
-3. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Generic reference.
-
-4. **Integrating hypertension data into routine health data collection: CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
+3. **Integrating hypertension data into routine health data collection: CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
    Regional francophone case study (not Morocco).
 
-5. **Digital Healthcare Innovation in Morocco: Telemedicine, IoMT, AI for Chronic Disease Management (MDPI, 2024)** — https://www.mdpi.com/2673-7426/6/2/22
+4. **Digital Healthcare Innovation in Morocco: Telemedicine, IoMT, AI for Chronic Disease Management (MDPI, 2024)** — https://www.mdpi.com/2673-7426/6/2/22
    Reviews Morocco's digital chronic-disease ecosystem (no DHIS2 mentioned).
 
-6. **Morocco — STEPS 2017 (WHO microdata)** — https://extranet.who.int/ncdsmicrodata/index.php/catalog/544
+5. **Morocco — STEPS 2017 (WHO microdata)** — https://extranet.who.int/ncdsmicrodata/index.php/catalog/544
    National STEPS dataset.
 
-7. **Epidemiology of Cardiovascular Diseases in Morocco: A Systematic Review (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9380084/
+6. **Epidemiology of Cardiovascular Diseases in Morocco: A Systematic Review (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9380084/
    Systematic review of CVD epidemiology.
 
-8. **Prevalence and correlates of type 2 diabetes among adults in Morocco, 2017 (Nature Sci Rep)** — https://www.nature.com/articles/s41598-022-20368-4
+7. **Prevalence and correlates of type 2 diabetes among adults in Morocco, 2017 (Nature Sci Rep)** — https://www.nature.com/articles/s41598-022-20368-4
    National diabetes prevalence study.
 
 
@@ -2454,9 +2322,6 @@ SISMA is Mozambique's DHIS2-based HMIS and supports routine reporting; explicit 
 5. **Assessment of care provision for hypertension at an Urban Hospital in Mozambique (PubMed)** — https://pubmed.ncbi.nlm.nih.gov/31852481/
    Care delivery study on hypertension management.
 
-6. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community discussion (Mozambique briefly referenced through SISMA).
-
 
 ### Myanmar — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
 
@@ -2481,16 +2346,10 @@ DHIS2 Tracker is used for community NCD screening data under SUNI-SEA, and Myanm
 4. **Challenges and Opportunities in Digital Screening for Hypertension and Diabetes in Community Groups of Older Adults in Vietnam (JMIR, 2024)** — https://www.jmir.org/2024/1/e54127
    Regional methodological reference (relevant to SUNI-SEA implementation approach used in Myanmar).
 
-5. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design.
-
-6. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community thread.
-
-7. **Experiences from the pilot implementation of WHO PEN in Myanmar (PLOS ONE)** — https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229081
+5. **Experiences from the pilot implementation of WHO PEN in Myanmar (PLOS ONE)** — https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229081
    Peer-reviewed PEN pilot evaluation.
 
-8. **WHO Surveillance of NCDs in Myanmar** — https://www.who.int/teams/noncommunicable-diseases/surveillance/data/myanmar
+6. **WHO Surveillance of NCDs in Myanmar** — https://www.who.int/teams/noncommunicable-diseases/surveillance/data/myanmar
    National STEPS and NCD surveillance data.
 
 
@@ -2514,16 +2373,7 @@ DHIS2 is Namibia's national routine HMIS; cardiometabolic-specific tracker/regis
 3. **Prevalence and predictors of hypertension in Namibia: A national-level cross-sectional study (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC6147578/
    National hypertension prevalence analysis.
 
-4. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design.
-
-5. **HISP Centre and WDF Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Multi-country NCD-DHIS2 partnership (Namibia not specifically listed).
-
-6. **NCDs and DHIS2: Learning from Country Experiences** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community thread.
-
-7. **CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
+4. **CARDIO4Cities and DHIS2 in Dakar, Senegal** — https://link.springer.com/article/10.1007/s44250-025-00240-8
    Regional reference case.
 
 
@@ -2550,13 +2400,10 @@ DHIS2 is used for cardiometabolic program M&E by AMPATH Nepal (hypertension and 
 4. **Need for HTA supported risk factor screening for hypertension and diabetes in Nepal (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC9376353/
    Systematic scoping review.
 
-5. **Hypertension Registry System Design — DHIS2 docs** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design.
-
-6. **Tackling cardiovascular health and disease in Nepal: epidemiology and strategies (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC4898564/
+5. **Tackling cardiovascular health and disease in Nepal: epidemiology and strategies (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC4898564/
    National CVD epidemiology overview.
 
-7. **PEN-Plus Project — Kathmandu Institute of Child Health (KIOCH)** — https://kioch.org.np/projects/pen-plus-project/
+6. **PEN-Plus Project — Kathmandu Institute of Child Health (KIOCH)** — https://kioch.org.np/projects/pen-plus-project/
    PEN-Plus implementation in Nepal.
 
 
@@ -2625,13 +2472,9 @@ National DHIS2 (SNIS) is confirmed; aggregate NCD reporting via DHIS2 is plausib
 6. **Optimiser la prise en charge du diabète et de l'hypertension (Niger) — Askaan Santé** — https://askaan.org/en/nos-actions-vaccination-sante-publique-mnt-dff/optimiser-la-prise-en-charge-du-diabete-et-de-lhypertension-niger/
    Project supporting Niger MoH on NCD diagnosis and management, focused on hypertension and diabetes.
 ##### English query results
-7. **HISP Centre and World Diabetes Foundation Partnership** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/
-   Multi-country initiative strengthening MoH capacity to use DHIS2 for diabetes, hypertension, asthma and CRD (regional, includes francophone West Africa partners).
-
-8. **DHIS2 Hypertension Registry System Design** — https://docs.dhis2.org/en/implement/health/non-communicable-diseases/hypertension-control/design.html
-   Reference design for the DHIS2 hypertension control package potentially deployable in Niger.
+*(no remaining results after filtering generic dhis2.org links)*
 ##### Hausa query results
-9. **Ciwon Suga (Diabetes) — WikiHausa** — https://wikihausa.com.ng/ciwon-suga-diabetes/
+7. **Ciwon Suga (Diabetes) — WikiHausa** — https://wikihausa.com.ng/ciwon-suga-diabetes/
     General Hausa-language consumer health information on diabetes; no DHIS2-specific Niger results returned in Hausa.
 
 
@@ -2781,7 +2624,6 @@ Panama is named in PAHO sources as a HEARTS-in-the-Americas participating countr
 8. **Evaluating WHO HEARTS Model for Hypertension and Diabetes Management: Guatemala pilot (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC11483012/
    Pilot study illustrating DHIS2-supported HEARTS implementation in the region.
 
-##### Targeted HMIS-angle re-search (2026)
 9. **Minsa fortalece abordaje integral de las ENT con la iniciativa global HEARTS — Ministerio de Salud, Panamá** — https://www.minsa.gob.pa/noticia/minsa-fortalece-abordaje-integral-de-las-enfermedades-no-transmisibles-con-la-iniciativa
    MoH communiqué confirming HEARTS implementation in Panama with MoH/CSS, including training of health teams from 41 facilities (later expanded to 78 PHC facilities).
 
@@ -3118,8 +2960,7 @@ NCD programs are active, but evidence of DHIS2 underpinning hypertension/diabete
 4. **Solomon Islands health facilitators strengthen regional fight against diabetes (WHO WPRO, 2025)** — https://www.who.int/westernpacific/about/how-we-work/pacific-support/news/detail/12-08-2025-solomon-islands-health-facilitators-strengthen-regional-fight-against-diabetes
    Recent WHO WPRO note on Solomon Islands diabetes capacity-building.
 ##### Pidgin query results
-5. **NCDs and DHIS2: Learning from Country Experiences — DHIS2 Community** — https://community.dhis2.org/t/ncds-and-dhis2-learning-from-country-experiences/48128
-   Community thread on NCD country experiences (no Solomon Islands implementation reported in retrieved excerpt).
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Somalia - Puntland State — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -3136,7 +2977,7 @@ DHIS2 covers Puntland as part of Somalia's national HMIS; cardiometabolic indica
 1. **The Unrecognized Challenge: A Value-Based Policy Approach to Combat NCDs in Somalia's Health Sector (Research Square, 2025)** — https://www.researchsquare.com/article/rs-7925625/v1
    National-level policy paper covering Puntland as part of federal HMIS planning for NCD integration into DHIS2.
 ##### Somali query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Somalia — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -3156,9 +2997,7 @@ DHIS2 is the national HMIS; NCD/cardiometabolic indicators are not yet fully ope
 2. **Comprehensive assessment of Somalia's health information system 2022 (WHO EMRO)** — https://applications.emro.who.int/docs/9789292742188-eng.pdf
    WHO EMRO HIS assessment confirming DHIS2 as national HMIS and identifying NCD-data gaps.
 ##### Somali query results
-3. **HISP Centre and World Diabetes Foundation Partner to Strengthen Digital Tools for NCDs** — https://dhis2.org/hisp-centre-world-diabetes-foundation-partnership/ (excluded: dhis2.org)
-
-(Note: One promising hit on dhis2.org was filter-excluded per protocol.)
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Somaliland — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -3352,7 +3191,7 @@ No evidence of DHIS2 deployment in Suriname for cardiometabolic or any other hea
 1. **A National Surveillance Survey on Noncommunicable Disease Risk Factors: Suriname Health Study Protocol (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC4526944/
    Suriname's national NCD risk-factor survey protocol — relies on survey methodology, not routine DHIS2 reporting.
 ##### Dutch query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 
 
 ### Syria MoH — Cardiometabolic (Diabetes/Hypertension/CVD) & DHIS2 Profile
@@ -3399,7 +3238,7 @@ Humanitarian actors using DHIS2 elsewhere for Syrian NCD cohorts may have presen
 #### Search Results
 
 ##### Arabic query results
-*(no remaining results after filtering generic WHO/PAHO/RTSL links)*
+*(no remaining results after filtering generic dhis2.org links)*
 ##### English query results
 1. **Access to essential NCD medicines during conflicts: CVD, diabetes, epilepsy in Northern Syria (PMC)** — https://pmc.ncbi.nlm.nih.gov/articles/PMC12677547/
    Cross-sectional assessment of NCD medicine availability across NW and NE Syria public facilities and pharmacies.
@@ -3482,7 +3321,6 @@ Tanzania's national HMIS is DHIS2 (Ministry of Health portal at dhis.moh.go.tz) 
 7. **Prevalence of HTN and associated factors among DM patients, Kilimanjaro (ScienceDirect)** — https://www.sciencedirect.com/science/article/pii/S2213398423001744
    Hospital-based cross-sectional analysis.
 
-##### HMIS-angle re-search (DHIS2 / Ministry of Health)
 8. **Tanzania HMIS portal (Ministry of Health DHIS2 instance)** — https://dhis.moh.go.tz/
    Operational national DHIS2 instance hosted by the Tanzania Ministry of Health.
 
