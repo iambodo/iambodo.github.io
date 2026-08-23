@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Masters Thesis
 description: Epidemiological research presented as an interactive report with embedded analysis.
 img: assets/img/projects/thesis.png

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: TidyTuesday Portfolio
 description: A growing collection of weekly R data visualization challenges.
 img: assets/img/projects/tidytuesday.png

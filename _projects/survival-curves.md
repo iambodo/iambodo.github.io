@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Survival Curves
 description: Kaplan-Meier and Cox regression models for time-to-event outcomes in health data.
 img: assets/img/projects/survival.png

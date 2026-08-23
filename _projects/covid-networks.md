@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Covid Networks
 description: Mapping COVID-19 transmission networks via DHIS2 case surveillance data.
 img: assets/img/projects/covid-networks.png

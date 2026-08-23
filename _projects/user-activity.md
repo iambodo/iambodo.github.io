@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: User Activity in Tracker and Dashboards
 description: Analysing DHIS2 user login patterns and dashboard engagement via the API.
 img: assets/img/projects/user-activity.png

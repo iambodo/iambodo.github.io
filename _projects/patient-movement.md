@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Visualizing Patient Movement
 description: Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs.
 img: assets/img/projects/patient-movement.png

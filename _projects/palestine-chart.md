@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Palestine Chart
 description: Reproductive health indicators from Palestinian eRegistry, linked to published papers.
 img: assets/img/projects/palestine.png

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Event Relationships
 description: Network visualization of tracked entity relationships across DHIS2 Tracker programs.
 img: assets/img/projects/event-relationships.png

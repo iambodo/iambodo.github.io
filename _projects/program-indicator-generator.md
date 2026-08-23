@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Program Indicator Generator
 description: Automate DHIS2 program indicator creation at scale using the metadata API.
 img: assets/img/projects/program-indicators.png

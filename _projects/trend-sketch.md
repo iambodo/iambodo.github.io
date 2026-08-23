@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Trend Sketch
 description: Interactive trend visualizations for DHIS2 aggregate data with comparative overlays.
 img: assets/img/projects/trend-sketch.png
