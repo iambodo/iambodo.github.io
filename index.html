@@ -38,7 +38,6 @@
     <li><a href="/#epi">Epidemiology</a></li>
     <li><a href="/#tidy">TidyTuesday</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/assets/cv.pdf" target="_blank" class="btn btn-primary" style="padding:0.3rem 0.9rem;font-size:0.78rem;">CV</a></li>
   </ul>
 </nav>
 
@@ -63,6 +62,10 @@
       <a href="https://github.com/iambodo" target="_blank" class="btn btn-ghost">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
+      </a>
+      <a href="/projects/odonnell_CV.pdf" target="_blank" class="btn btn-ghost">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        CV
       </a>
     </div>
   </div>
@@ -98,26 +101,52 @@
     <a href="https://github.com/iambodo/dhis2-trend-sketch" target="_blank" class="card">
       <div class="card-bg card-bg-dhis2"></div>
       
-      <div class="card-illustration" style="background-image: url(''); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="background-image: url('/assets/img/projects/trend_sketch.png'); background-size: cover; background-position: center;"></div>
       
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
         <p class="card-tag">DHIS2 App</p>
         <h3 class="card-title">Trend Sketch</h3>
-        <p class="card-desc">Interactive trend visualizations for DHIS2 aggregate data with comparative overlays.</p>
+        <p class="card-desc">User-generated predictions of trends in DHIS2 indicators to enable crowd-sourced forecasts.</p>
       </div>
     </a>
     
     <a href="https://github.com/iambodo/dhis2-event-relationships-plugin" target="_blank" class="card">
       <div class="card-bg card-bg-dhis2"></div>
       
-      <div class="card-illustration" style="background-image: url(''); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="background-image: url('/assets/img/projects/event_relationships.png'); background-size: cover; background-position: center;"></div>
       
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
         <p class="card-tag">DHIS2 App</p>
         <h3 class="card-title">Event Relationships</h3>
         <p class="card-desc">Network visualization of tracked entity relationships across DHIS2 programs.</p>
+      </div>
+    </a>
+    
+    <a href="https://github.com/iambodo/dhis2-pi-boundaries-explainer" target="_blank" class="card">
+      <div class="card-bg card-bg-dhis2"></div>
+      
+      <div class="card-illustration">
+        <svg viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="illu-network">
+          <line x1="40" y1="30" x2="260" y2="30" stroke="rgba(78,205,196,0.1)" stroke-width="1"/>
+          <line x1="40" y1="70" x2="260" y2="70" stroke="rgba(78,205,196,0.1)" stroke-width="1"/>
+          <line x1="40" y1="110" x2="260" y2="110" stroke="rgba(78,205,196,0.1)" stroke-width="1"/>
+          <line x1="40" y1="150" x2="260" y2="150" stroke="rgba(78,205,196,0.3)" stroke-width="1.5"/>
+          <line x1="40" y1="20" x2="40" y2="150" stroke="rgba(78,205,196,0.3)" stroke-width="1.5"/>
+          <polyline points="60,120 95,95 130,105 165,60 200,45 235,40" stroke="#4ecdc4" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="60,120 95,95 130,105 165,60 200,45 235,40 235,150 60,150" fill="rgba(78,205,196,0.06)"/>
+          <polyline points="60,135 95,120 130,130 165,115 200,105 235,85" stroke="#e8956d" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2"/>
+          <circle cx="165" cy="60" r="4" fill="#4ecdc4"/>
+          <circle cx="235" cy="40" r="4" fill="#4ecdc4"/>
+        </svg>
+      </div>
+      
+      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="card-content">
+        <p class="card-tag">DHIS2 App</p>
+        <h3 class="card-title">Program Indicator Boundaries Explainer</h3>
+        <p class="card-desc">Interactive visualization of time dimensionality in indicators to support configuration.</p>
       </div>
     </a>
     
@@ -138,7 +167,7 @@
     <a href="https://community.dhis2.org/t/contact-tracing-covid-19-cases-r-shiny-app-available-for-download/39101" target="_blank" class="card">
       <div class="card-bg card-bg-r"></div>
       
-      <div class="card-illustration" style="background-image: url(''); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="background-image: url('https://dhis2.b-cdn.net/uploads/default/original/3X/5/b/5bf71c6971be0c98349a56bfb984d3421eb3f959.png'); background-size: cover; background-position: center;"></div>
       
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
@@ -174,16 +203,29 @@
       </div>
     </a>
     
-    <a href="https://github.com/iambodo/tutorials/ereg_migration_viz_types.html" target="_blank" class="card">
+    <a href="projects/tutorials/ereg_migration_viz_types.html" target="_blank" class="card">
       <div class="card-bg card-bg-r"></div>
       
-      <div class="card-illustration" style="background-image: url(''); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="background-image: url('/assets/img/projects/patient_movement.gif'); background-size: cover; background-position: center;"></div>
       
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
         <p class="card-tag">R · ggplot2</p>
         <h3 class="card-title">Visualizing Patient Movement</h3>
         <p class="card-desc">Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs.</p>
+      </div>
+    </a>
+    
+    <a href="https://rpubs.com/iambodo/westwingtext" target="_blank" class="card">
+      <div class="card-bg card-bg-r"></div>
+      
+      <div class="card-illustration" style="background-image: url('/assets/img/projects/west_wing_chart.png'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="card-content">
+        <p class="card-tag">R · ggplot2 · Tidytext</p>
+        <h3 class="card-title">Statistics in West Wing Dialogue, 2020</h3>
+        <p class="card-desc">Unrelated to DHIS2 - data mining project on the language of statistics in The West Wing.</p>
       </div>
     </a>
     
@@ -227,10 +269,10 @@
       </div>
     </a>
     
-    <a href="#" target="_blank" class="card">
+    <a href="projects/tutorials/survival_curves.png" target="_blank" class="card">
       <div class="card-bg card-bg-epi"></div>
       
-      <div class="card-illustration" style="background-image: url(''); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="background-image: url('/assets/img/projects/survival_curves.png'); background-size: cover; background-position: center;"></div>
       
       <div class="card-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div class="card-content">
@@ -254,6 +296,30 @@
   </div>
   <div class="cards-scroll">
     
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/cocktails_26may2020" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      
+      <div class="card-illustration" style="height:150px; background-image: url('https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/cocktails_26may2020/shots.svg'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-content">
+        <p class="card-tag">2020-05</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Cocktails Prices in Norway</h3>
+        
+      </div>
+    </a>
+    
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/freedSlaves_16June20" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      
+      <div class="card-illustration" style="height:150px; background-image: url('https://github.com/iambodo/tidyTuesdays/blob/master/freedSlaves_16June20/animation2.gif?raw=true'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-content">
+        <p class="card-tag">2020-06</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Slaves Freed During Transatlantic Transport, 1860-1870</h3>
+        
+      </div>
+    </a>
+    
     <a href="https://github.com/iambodo/tidyTuesdays/tree/master/xmen_2020June30" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
       <div class="card-bg card-bg-tidy"></div>
       
@@ -266,14 +332,50 @@
       </div>
     </a>
     
-    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/cocktails_26may2020" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/spaceWalks_13July2020" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
       <div class="card-bg card-bg-tidy"></div>
       
-      <div class="card-illustration" style="height:150px; background-image: url('https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/cocktails_26may2020/shots.svg'); background-size: cover; background-position: center;"></div>
+      <div class="card-illustration" style="height:150px; background-image: url('https://github.com/iambodo/tidyTuesdays/blob/master/spaceWalks_13July2020/spacewalks.jpg'); background-size: cover; background-position: center;"></div>
       
       <div class="card-content">
-        <p class="card-tag">2020-05</p>
-        <h3 class="card-title" style="font-size:0.95rem;">Cocktails Prices in Norway</h3>
+        <p class="card-tag">2021-08</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Spacewalks Networks</h3>
+        
+      </div>
+    </a>
+    
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/beerAwards_20Oct20" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      
+      <div class="card-illustration" style="height:150px; background-image: url('https://github.com/iambodo/tidyTuesdays/blob/master/beerAwards_20Oct20/p.png?raw=true'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-content">
+        <p class="card-tag">2020-10</p>
+        <h3 class="card-title" style="font-size:0.95rem;">US Beer Awards</h3>
+        
+      </div>
+    </a>
+    
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/broadband_11May21" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      
+      <div class="card-illustration" style="height:150px; background-image: url('https://github.com/iambodo/tidyTuesdays/blob/master/broadband_11May21/Rplot03.jpeg?raw=true'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-content">
+        <p class="card-tag">2021-05</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Broadband Access in Austin, TX</h3>
+        
+      </div>
+    </a>
+    
+    <a href="https://github.com/iambodo/tidyTuesdays/tree/master/refugee_data_2021Aug31" target="_blank" class="card" style="flex: 0 0 220px; height: 280px;">
+      <div class="card-bg card-bg-tidy"></div>
+      
+      <div class="card-illustration" style="height:150px; background-image: url('https://github.com/iambodo/tidyTuesdays/blob/master/refugee_data_2021Aug31/afghan_usmap.png?raw=true'); background-size: cover; background-position: center;"></div>
+      
+      <div class="card-content">
+        <p class="card-tag">2021-08</p>
+        <h3 class="card-title" style="font-size:0.95rem;">Afghan Refugee Resettlement in the US</h3>
         
       </div>
     </a>
