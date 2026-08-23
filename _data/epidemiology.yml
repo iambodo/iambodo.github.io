@@ -5,13 +5,13 @@
   tag: "Prediction · Hypertension · Nigeria"
   desc: "Predicting dropout from care among 40,000 hypertensive patients tracked by DHIS2 in Nigeria."
   url: "projects/nhci_analyses/manuscript_20aug.html"
-  img: "projects/roc_curve_compare.png"
+  img: "assets/img/projects/roc_curve_compare.png"
 
 - title: "Digital Interventions for Palestinian Reproductive Health"
   tag: "Epidemiology · eRegistry"
   desc: "Support for Palestinian eRegistry. Designed DHIS2 SMS+dashboards and analyzed data for publication."
   url: "https://academic.oup.com/oodh/article/doi/10.1093/oodh/oqad010/7241429"
-  img: "assets/img/projects/pal_anc_chart.png"
+  img: "assets/img/projects/pal_anc_trial.png"
 
 - title: "Survival Curves"
   tag: "R · Survival Analysis"
