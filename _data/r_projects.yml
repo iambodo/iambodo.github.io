@@ -2,14 +2,14 @@
 # Fields: title, tag, desc, url, img (optional)
 
 - title: "Covid Networks"
-  tag: "R · igraph"
+  tag: "R · igraph · Shiny"
   desc: "Mapping COVID-19 transmission networks via DHIS2 case surveillance data."
   url: "https://community.dhis2.org/t/contact-tracing-covid-19-cases-r-shiny-app-available-for-download/39101"
   img: "https://dhis2.b-cdn.net/uploads/default/original/3X/5/b/5bf71c6971be0c98349a56bfb984d3421eb3f959.png"
 
 - title: "Program Indicator Generator"
-  tag: "R · DHIS2 API"
-  desc: "Automate DHIS2 program indicator creation at scale using the metadata API."
+  tag: "R · Shiny"
+  desc: "Automate DHIS2 program indicator creation in bulk with the metadata API."
   url: "https://github.com/iambodo/dhis2_pi_generator"
   img: "assets/img/projects/pi_generator.png"
 
@@ -21,12 +21,12 @@
 
 - title: "Visualizing Patient Movement"
   tag: "R · ggplot2"
-  desc: "Sankey and flow diagrams for patient pathways through DHIS2 Tracker programs."
+  desc: "Experimental diagrams of patient paths in MCH programs."
   url: "projects/tutorials/ereg_migration_viz_types.html"
   img: "assets/img/projects/patient_movement.gif"
 
 - title: "Statistics in West Wing Dialogue, 2020"
   tag: "R · ggplot2 · Tidytext"
-  desc: "Unrelated to DHIS2 - data mining project on the language of statistics in The West Wing."
+  desc: "Early data mining project on the language of statistics in The West Wing."
   url: "https://rpubs.com/iambodo/westwingtext"
   img: "assets/img/projects/west_wing_chart.png"
