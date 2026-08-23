@@ -2,14 +2,14 @@
 # Fields: title, tag, desc, url, img (optional)
 
 - title: "Masters Thesis: Hypertension Dropouts"
-  tag: "Prediction · Hypertension · Nigeria"
+  tag: "Prediction · Hypertension"
   desc: "Predicting dropout from care among 40,000 hypertensive patients tracked by DHIS2 in Nigeria."
   url: "projects/nhci_analyses/manuscript_20aug.html"
   img: "assets/img/projects/roc_curve_compare.png"
 
 - title: "Maternal Healthcare in Palestine"
-  tag: "Epidemiology · eRegistry · DHIS2"
-  desc: "Built SMS&dashboard pipeline for Palestinian eRegistry; analyzed data for publication."
+  tag: "Epidemiology · DHIS2"
+  desc: "Built SMS&dashboard pipeline for eRegistry; analyzed data for publication."
   url: "https://academic.oup.com/oodh/article/doi/10.1093/oodh/oqad010/7241429"
   img: "assets/img/projects/pal_anc_trial.png"
 
