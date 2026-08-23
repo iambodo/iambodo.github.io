@@ -5,7 +5,7 @@
   tag: "DHIS2 App"
   desc: "User-generated predictions of trends in DHIS2 indicators to enable crowd-sourced forecasts."
   url: "https://github.com/iambodo/dhis2-trend-sketch"
-  img: "assets/img/projects/trend_sketch.png"
+  img: "https://github.com/iambodo/dhis2-trend-sketch/blob/main/resources/img/trend-sketch_example1.0.gif.gif?raw=true"
 
 - title: "Event Relationships"
   tag: "DHIS2 App"
@@ -17,3 +17,10 @@
   tag: "DHIS2 App"
   desc: "Interactive visualization of time dimensionality in indicators to support configuration."
   url: "https://github.com/iambodo/dhis2-pi-boundaries-explainer"
+  img: "https://docs.dhis2.org/en/implement/database-design/tracker-system-design/resources/images/image20.png"
+
+- title: "Health Data Toolkit"
+  tag: "DHIS2 Metadata"
+  desc: "Collab wwith WHO on model DHIS2 systems for immunization, HIV, TB,  maternal health, etc"
+  url: "https://dhis2.org/health-data-toolkit/"
+  img: "https://dhis2.org/wp-content/uploads/HMIS-Package-Demo-Dashboard.png"

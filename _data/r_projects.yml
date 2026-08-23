@@ -11,13 +11,13 @@
   tag: "R · DHIS2 API"
   desc: "Automate DHIS2 program indicator creation at scale using the metadata API."
   url: "https://github.com/iambodo/dhis2_pi_generator"
-  img: ""
+  img: "assets/img/projects/pi_generator.png"
 
 - title: "User Activity in Tracker"
   tag: "R · RMarkdown"
   desc: "Analysing DHIS2 user login patterns and dashboard engagement via the API."
   url: "projects/dhis2_users_rmarkdown.html"
-  img: ""
+  img: "assets/img/projects/user_activity.png"
 
 - title: "Visualizing Patient Movement"
   tag: "R · ggplot2"

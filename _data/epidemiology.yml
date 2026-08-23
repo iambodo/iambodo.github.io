@@ -1,17 +1,17 @@
 # Epidemiology cards
 # Fields: title, tag, desc, url, img (optional)
 
-- title: "Masters Thesis"
-  tag: "MSc Thesis"
-  desc: "Predicting dropout from care among 40,000 hypertension patients in Nigeria."
+- title: "Masters Thesis: Hypertension Dropout Model"
+  tag: "Prediction · Hypertension · Nigeria"
+  desc: "Predicting dropout from care among 40,000 hypertensive patients tracked by DHIS2 in Nigeria."
   url: "projects/nhci_analyses/manuscript_20aug.html"
   img: "projects/roc_curve_compare.png"
 
-- title: "Palestine Chart"
+- title: "Digital Interventions for Palestinian Reproductive Health"
   tag: "Epidemiology · eRegistry"
-  desc: "Reproductive health indicators from Palestinian eRegistry. Linked to published papers."
+  desc: "Support for Palestinian eRegistry. Designed DHIS2 SMS+dashboards and analyzed data for publication."
   url: "https://academic.oup.com/oodh/article/doi/10.1093/oodh/oqad010/7241429"
-  img: "projects/pal_anc_chart.png"
+  img: "assets/img/projects/pal_anc_chart.png"
 
 - title: "Survival Curves"
   tag: "R · Survival Analysis"
