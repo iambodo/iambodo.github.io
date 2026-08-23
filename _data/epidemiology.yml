@@ -16,5 +16,5 @@
 - title: "Survival Curves"
   tag: "R · Survival Analysis"
   desc: "Kaplan-Meier and Cox regression models for time-to-event outcomes in health data."
-  url: "#"
-  img: ""
+  url: "projects/tutorials/survival_curves.png"
+  img: "assets/img/projects/survival_curves.png"

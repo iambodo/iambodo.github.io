@@ -1,12 +1,39 @@
 # Add entries here — one block per card.
 # Fields: title, date, img (URL or local path), url (link), desc (optional caption)
 
+- title: "Cocktails Prices in Norway"
+  date: "2020-05"
+  img: "https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/cocktails_26may2020/shots.svg"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/cocktails_26may2020"
+
+- title: "Slaves Freed During Transatlantic Transport, 1860-1870"
+  date: "2020-06"
+  img: "https://github.com/iambodo/tidyTuesdays/blob/master/freedSlaves_16June20/animation2.gif?raw=true"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/freedSlaves_16June20"
+
 - title: "Avengers and the Bechdel Test"
   date: "2020-06"
   img: "https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/xmen_2020June30/avengers.jpg"
   url: "https://github.com/iambodo/tidyTuesdays/tree/master/xmen_2020June30"
 
-- title: "Cocktails Prices in Norway"
-  date: "2020-05"
-  img: "https://raw.githubusercontent.com/iambodo/tidyTuesdays/master/cocktails_26may2020/shots.svg"
-  url: "https://github.com/iambodo/tidyTuesdays/tree/master/cocktails_26may2020"
+- title: "Spacewalks Networks"
+  date: "2021-08"
+  img: "  https://github.com/iambodo/tidyTuesdays/blob/master/spaceWalks_13July2020/spacewalks.jpg"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/spaceWalks_13July2020"
+
+- title: "US Beer Awards"
+  date: "2020-10"
+  img: "https://github.com/iambodo/tidyTuesdays/blob/master/beerAwards_20Oct20/p.png?raw=true"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/beerAwards_20Oct20"
+  
+- title: "Broadband Access in Austin, TX"
+  date: "2021-05"
+  img: "https://github.com/iambodo/tidyTuesdays/blob/master/broadband_11May21/Rplot03.jpeg?raw=true"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/broadband_11May21"
+
+- title: "Afghan Refugee Resettlement in the US"
+  date: "2021-08"
+  img: "https://github.com/iambodo/tidyTuesdays/blob/master/refugee_data_2021Aug31/afghan_usmap.png?raw=true"
+  url: "https://github.com/iambodo/tidyTuesdays/tree/master/refugee_data_2021Aug31"
+
+

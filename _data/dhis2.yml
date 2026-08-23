@@ -3,12 +3,17 @@
 
 - title: "Trend Sketch"
   tag: "DHIS2 App"
-  desc: "Interactive trend visualizations for DHIS2 aggregate data with comparative overlays."
+  desc: "User-generated predictions of trends in DHIS2 indicators to enable crowd-sourced forecasts."
   url: "https://github.com/iambodo/dhis2-trend-sketch"
-  img: ""
+  img: "assets/img/projects/trend_sketch.png"
 
 - title: "Event Relationships"
   tag: "DHIS2 App"
   desc: "Network visualization of tracked entity relationships across DHIS2 programs."
   url: "https://github.com/iambodo/dhis2-event-relationships-plugin"
-  img: ""
+  img: "assets/img/projects/event_relationships.png"
+
+- title: "Program Indicator Boundaries Explainer"
+  tag: "DHIS2 App"
+  desc: "Interactive visualization of time dimensionality in indicators to support configuration."
+  url: "https://github.com/iambodo/dhis2-pi-boundaries-explainer"
