@@ -6,6 +6,29 @@ This report pulls together the DHIS2 NCD country profiles for the 11 SPARK-NCD m
 
 Baseline ratings come from structured, multi-language NCD web searches in July 2026 (cardiometabolic, cancer and CRD country profiles); each original profile is included below under its country and domain. For this report every country × domain was searched again on 2 November 2026. A rating was changed only when a specific new source justified it. Changed cells are marked **†** and the earlier rating is listed under [Changes since the baseline](#changes-since-the-baseline). These changes apply **only to this report**; the source profiles are unchanged.
 
+### How to read the ratings
+
+**System maturity** describes how deeply DHIS2 captures data for the condition. **Evidence level** describes how directly the sources support that maturity rating. For example, Tanzania cancer is rated Tracker (pilot) · Indicative: a DHIS2 oncology tracker is being piloted, but the documentation is still indirect.
+
+| System maturity | Meaning |
+|---|---|
+| **Tracker** | Patient- or case-level data captured in DHIS2 Tracker (e.g. a cancer registry, NCD screening tracker). |
+| **Aggregate** | Routine counts for the condition (screening, cases, treatment) reported in DHIS2 data sets. |
+| **HMIS-only** | DHIS2 is the national HMIS, but no source shows this condition's data being captured in it. |
+| **None** | No DHIS2 use for this condition. |
+| **Unknown** | Cannot be assessed from available sources. |
+
+A qualifier in parentheses shows deployment status: **pilot** (limited sites or scope), **planned** (in an official plan, not yet live), **partial** (only part of the condition or only some facilities, e.g. cervical screening but no registry), or **abandoned**. No qualifier means operational.
+
+| Evidence level | Meaning |
+|---|---|
+| **Confirmed** | A named source (government report, peer-reviewed paper, programme document) states that DHIS2 captures this condition's data. |
+| **Indicative** | Indirect support only: DHIS2 is the HMIS and the condition is likely reported, or the capture is planned or piloted. |
+| **Absent** | Searched, but no evidence of DHIS2 capture for this condition was found. |
+| **Unknown** | Not assessed. |
+
+The **All NCDs** summary takes the deepest maturity across the three domains, together with that domain's evidence level. Sources exclude dhis2.org pages. Government reports, peer-reviewed papers and WHO, Africa CDC and UNICEF documents from the last five years were preferred.
+
 ## Contents
 
 - [Summary table](#summary-table)
@@ -23,7 +46,6 @@ Baseline ratings come from structured, multi-language NCD web searches in July 2
   - [South Sudan](#south-sudan)
   - [Tanzania](#tanzania)
   - [Zambia](#zambia)
-- [Rating definitions](#rating-definitions)
 
 ## Summary table
 
@@ -1592,23 +1614,3 @@ DHIS2 is Zambia's national HMIS and national asthma/PEN-Plus activity exists, bu
 [↑ Summary table](#summary-table)
 
 ---
-
-## Rating definitions
-
-**System maturity** (how deeply DHIS2 captures data for the condition)
-
-- **Tracker**: patient- or case-level capture in DHIS2 (e.g. a cancer registry or NCD tracker).
-- **Aggregate**: routine counts for the condition are reported in DHIS2.
-- **HMIS-only**: DHIS2 is the national HMIS, but no source shows this condition being captured.
-- **None**: no DHIS2 use for this condition.
-- **Unknown**: cannot be assessed from available sources.
-- A qualifier in parentheses shows the deployment status: pilot, planned, partial or abandoned. No qualifier means operational.
-
-**Evidence level** (how strong the supporting sources are)
-
-- **Confirmed**: a named source states that DHIS2 captures this condition's data.
-- **Indicative**: indirect, planned or pilot evidence only.
-- **Absent**: searched, but no evidence found.
-- **Unknown**: not assessed.
-
-Sources exclude dhis2.org pages. Government reports, peer-reviewed papers and WHO, Africa CDC and UNICEF documents from the last five years were preferred.
